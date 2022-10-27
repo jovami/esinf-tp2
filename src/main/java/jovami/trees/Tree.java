@@ -28,6 +28,10 @@ public class Tree<E extends Comparable<E>> extends BST<E>{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    protected boolean isLeaf(Node<E> node) {
+        return node != null && !node.hasLeft() && !node.hasRight();
+    }
+
     /*
      * build a list with all elements of the tree. The elements in the
      * left subtree in ascending order and the elements in the right subtree
@@ -53,25 +57,41 @@ public class Tree<E extends Comparable<E>> extends BST<E>{
      * @return tree without leaves
      */
     public BST<E> autumnTree() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        var ret = new BST<E>();
+        ret.root = copyRec(this.root);
+        return ret;
     }
 
     private Node<E> copyRec(Node<E> node) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (node == null || isLeaf(node))
+            return null;
+
+        Node<E> left = copyRec(node.getLeft());
+        Node<E> right = copyRec(node.getRight());
+
+        return new Node<E>(node.getElement(), left, right);
     }
 
     /**
      * @return the the number of nodes by level.
      */
     public int[] numNodesByLevel() {
+        if (this.root == null)
+            return null;
 
-        throw new UnsupportedOperationException("Not supported yet.");
+        var ret = new int[this.height()+1];
+        numNodesByLevel(this.root, ret, 0);
+
+        return ret;
     }
 
     private void numNodesByLevel(Node<E> node, int[] result, int level) {
+        if (node == null)
+            return;
 
-        throw new UnsupportedOperationException("Not supported yet.");
-
+        result[level]++;
+        numNodesByLevel(node.getLeft(), result, level+1);
+        numNodesByLevel(node.getRight(), result, level+1);
     }
 
     public boolean perfectBalanced() {

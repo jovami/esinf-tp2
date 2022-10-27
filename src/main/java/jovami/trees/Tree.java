@@ -1,4 +1,4 @@
-package jovami;
+package jovami.trees;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Stack;
  * @param <E>
  */
 
-public class TREE<E extends Comparable<E>> extends BST<E>{
+public class Tree<E extends Comparable<E>> extends BST<E>{
 
     /*
      * @param element A valid element within the tree
@@ -24,7 +24,7 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
     }
 
 
-    public boolean isLeaf(E element){
+    public boolean isLeaf(E element) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -36,7 +36,7 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
      * @return    returns a list with the elements of the left subtree
      * in ascending order and the elements in the right subtree is descending order.
      */
-    public Iterable<E> ascdes(){
+    public Iterable<E> ascdes() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -56,53 +56,53 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private Node<E> copyRec(Node<E> node){
+    private Node<E> copyRec(Node<E> node) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * @return the the number of nodes by level.
      */
-    public int[] numNodesByLevel(){
+    public int[] numNodesByLevel() {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private void numNodesByLevel(Node<E> node, int[] result, int level){
+    private void numNodesByLevel(Node<E> node, int[] result, int level) {
 
         throw new UnsupportedOperationException("Not supported yet.");
 
     }
 
-    public boolean perfectBalanced(){
+    public boolean perfectBalanced() {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private boolean perfectBalanced(Node<E> node){
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-
-    public E lowestCommonAncestor(E elem1, E elem2){
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    private Node<E> lowestCommonAncestor(Node<E> node, E elem1, E elem2){
+    private boolean perfectBalanced(Node<E> node) {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
-    public BST<E>  minCompletSubtree(E elem1, E elem2){
+    public E lowestCommonAncestor(E elem1, E elem2) {
+
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private Node<E> lowestCommonAncestor(Node<E> node, E elem1, E elem2) {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
-    public BST<E>  construcTreeposOrder (ArrayList<E> posOrder){
+    public BST<E>  minCompletSubtree(E elem1, E elem2) {
+
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
+    public BST<E>  construcTreeposOrder (ArrayList<E> posOrder) {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -4,26 +4,26 @@ package jovami;
  *
  * @author DEI-ESINF
  */
-public class TextWord implements Comparable<TextWord>{
+public class TextWord implements Comparable<TextWord> {
 
     private String word;
     private int ocorrences;
 
-    public TextWord(String word, int ocorrences){
+    public TextWord(String word, int ocorrences) {
         setWord(word,ocorrences);
     }
 
-    public void setWord(String word, int ocorrences){
+    public void setWord(String word, int ocorrences) {
         this.word=word;
         this.ocorrences=ocorrences;
     }
-    public void incOcorrences(){
+    public void incOcorrences() {
         this.ocorrences++;
     }
-    public String getWord(){
+    public String getWord() {
         return word;
     }
-    public int getOcorrences(){
+    public int getOcorrences() {
         return ocorrences;
     }
 
@@ -32,7 +32,7 @@ public class TextWord implements Comparable<TextWord>{
         return word.compareTo(o.getWord());
     }
 
-    public String toString(){
+    public String toString() {
         return "<"+word+">:"+ocorrences;
     }
 }

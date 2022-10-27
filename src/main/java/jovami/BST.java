@@ -154,20 +154,26 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree
      */
-    public int size(){
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int size() {
+        return size(this.root);
     }
 
-    private int size(Node<E> node){
-        throw new UnsupportedOperationException("Not supported yet.");
+    private int size(Node<E> node) {
+        if (node == null)
+            return 0;
+
+        int left = size(node.getLeft());
+        int right = size(node.getRight());
+
+        return 1 + left + right;
     }
 
     /*
      * Returns the height of the tree
      * @return height
      */
-    public int height(){
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int height() {
+        return height(this.root);
     }
 
     /*
@@ -175,8 +181,14 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * @param node A valid Node within the tree
      * @return height
      */
-    protected int height(Node<E> node){
-        throw new UnsupportedOperationException("Not supported yet.");
+    protected int height(Node<E> node) {
+        if (node == null)
+            return 0;
+
+        int left = height(node.getLeft());
+        int right = height(node.getRight());
+
+        return 1 + Math.max(left, right);
     }
 
     /**

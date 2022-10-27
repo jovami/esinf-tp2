@@ -1,4 +1,3 @@
-
 package jovami;
 
 import java.util.ArrayList;
@@ -16,27 +15,27 @@ import java.util.Stack;
 
 public class TREE<E extends Comparable<E>> extends BST<E>{
 
-   /*
-   * @param element A valid element within the tree
-   * @return true if the element exists in tree false otherwise
-   */
+    /*
+     * @param element A valid element within the tree
+     * @return true if the element exists in tree false otherwise
+     */
     public boolean contains(E element) {
-         throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
     public boolean isLeaf(E element){
-         throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-   /*
-   * build a list with all elements of the tree. The elements in the
-   * left subtree in ascending order and the elements in the right subtree
-   * in descending order.
-   *
-   * @return    returns a list with the elements of the left subtree
-   * in ascending order and the elements in the right subtree is descending order.
-   */
+    /*
+     * build a list with all elements of the tree. The elements in the
+     * left subtree in ascending order and the elements in the right subtree
+     * in descending order.
+     *
+     * @return    returns a list with the elements of the left subtree
+     * in ascending order and the elements in the right subtree is descending order.
+     */
     public Iterable<E> ascdes(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -50,23 +49,23 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
     }
 
     /**
-    * Returns the tree without leaves.
-    * @return tree without leaves
-    */
+     * Returns the tree without leaves.
+     * @return tree without leaves
+     */
     public BST<E> autumnTree() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private Node<E> copyRec(Node<E> node){
-           throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-    * @return the the number of nodes by level.
-    */
+     * @return the the number of nodes by level.
+     */
     public int[] numNodesByLevel(){
 
-       throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private void numNodesByLevel(Node<E> node, int[] result, int level){
@@ -77,7 +76,7 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
 
     public boolean perfectBalanced(){
 
-       throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     private boolean perfectBalanced(Node<E> node){

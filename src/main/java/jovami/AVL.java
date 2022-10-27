@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jovami;
 
 /**
@@ -70,11 +65,11 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
 
     public boolean equals(Node<E> root1, Node<E> root2) {
         if (root1 == null && root2 == null)
-           return true;
+            return true;
         else if (root1 != null && root2 != null) {
             if (root1.getElement().compareTo(root2.getElement()) == 0) {
                 return equals(root1.getLeft(), root2.getLeft())
-                        && equals(root1.getRight(), root2.getRight());
+                    && equals(root1.getRight(), root2.getRight());
             } else
                 return false;
         }

@@ -1,4 +1,3 @@
-
 package jovami;
 
 /**
@@ -34,6 +33,6 @@ public class TextWord implements Comparable<TextWord>{
     }
 
     public String toString(){
-    return "<"+word+">:"+ocorrences;
-}
+        return "<"+word+">:"+ocorrences;
+    }
 }

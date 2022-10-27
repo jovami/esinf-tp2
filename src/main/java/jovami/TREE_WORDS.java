@@ -1,4 +1,3 @@
-
 package jovami;
 
 import java.io.File;
@@ -16,7 +15,7 @@ import java.util.Scanner;
 public class TREE_WORDS extends BST<TextWord> {
 
     public void createTree() throws FileNotFoundException{
-        Scanner readfile = new Scanner(new File("src/PL/xxx.xxx"));
+        Scanner readfile = new Scanner(new File("src/main/java/jovami/xxx.xxx"));
         while(readfile.hasNextLine()){
             String[] pal = readfile.nextLine().split("(\\,)|(\\s)|(\\.)");
             for(String word : pal)
@@ -28,7 +27,7 @@ public class TREE_WORDS extends BST<TextWord> {
 
     /**
      * Inserts a new word in the tree, or increments the number of its occurrences.
-       * @param element
+     * @param element
      */
     @Override
     public void insert(TextWord element){

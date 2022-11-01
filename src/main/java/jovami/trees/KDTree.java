@@ -27,10 +27,29 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         }
     }
 
+    protected E nearestNeightbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX) {
+        if (node == null) {return null;}
+
+        double d = Point2D.distanceSq(node.coords.x, node.coords.y, x, y);
+        double closestDist = Point2D.distanceSq(closestNode.coords.x, closestNode.coords.y, x, y);
+
+        if (closestDist > d){ closestNode = node;}
+
+        double delta = divX ? x - node.coords.x : y - node.coords.y;
+        double delta2 = delta * delta;
+
+        Node<E> node1 = delta < 0 ? node.getLeft() : node.getRight();
+        Node<E> node2 = delta < 0 ? node.getRight() : node.getLeft();
+        return null;
+    }
+
+    private KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX){
+        if (node.coords.equals(currentNode.coords))
+            return null;
+    }
 
     @Override
     public E nearestNeightbor(double x, double y) {
-
         return null;
     }
 

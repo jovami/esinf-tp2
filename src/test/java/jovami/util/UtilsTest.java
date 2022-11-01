@@ -9,23 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author DEI-ESINF
  */
-public class BSTSortTest {
+public class UtilsTest {
 
-    public BSTSortTest() {
+    public UtilsTest() {
     }
 
-    /**
-     * Test of sortByBST method, of class BSTSort.
-     */
     @Test
-    public void testSortByBST() {
+    public void testAVLSort() {
         List<String> lStrIni = Arrays.asList("rui","joao","carlos","filipe","berta","ze","cunha");
         List<String> lStrRes = Arrays.asList("berta","carlos","cunha","filipe","joao","rui","ze");
 
         List<Integer> lIntIni = Arrays.asList(12,4,8,2,4,5,78,1,6);
         List<Integer> lIntRes = Arrays.asList(1,2,4,5,6,8,12,78);
 
-        assertEquals(lIntRes, BSTSort.sortByBST(lIntIni));
-        assertEquals(lStrRes, BSTSort.sortByBST(lStrIni));
+        assertEquals(lIntRes, Utils.avlSort(lIntIni));
+        assertEquals(lStrRes, Utils.avlSort(lStrIni));
     }
 }

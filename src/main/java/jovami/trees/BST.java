@@ -101,18 +101,43 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * So its access level is protected
      */
     protected Node<E> find(Node<E> node, E element) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        node = root;
+        boolean find = false;
+
+        while(node != null && !find)
+        {
+            if(node.getElement() == element)
+                find = true;
+            if(element.compareTo(node.getElement()) < 0)
+                node = node.getLeft();
+            if(element.compareTo(node.getElement()) > 0)
+                node = node.getRight();
+        }
+
+        return node;
     }
 
     /*
      * Inserts an element in the tree.
      */
     public void insert(E element) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        root = insert(element,root());
     }
 
     private Node<E> insert(E element, Node<E> node) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(node == null)
+            return new Node<E>(element,null,null);
+
+        if(node.getElement().compareTo(element) == 0)
+            node.setElement(element);
+
+        if(node.getElement().compareTo(element) > 0)
+            node.setLeft(insert(element, node.getLeft()));
+        else
+        if(node.getElement().compareTo(element) < 0)
+            node.setRight(insert(element,node.getRight()));
+
+        return node;
     }
 
     /**
@@ -183,7 +208,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      */
     protected int height(Node<E> node) {
         if (node == null)
-            return 0;
+            return -1;
 
         int left = height(node.getLeft());
         int right = height(node.getRight());
@@ -196,11 +221,18 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * @return the smallest element within the tree
      */
     public E smallestElement() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return smallestElement(root);
     }
 
     protected E smallestElement(Node<E> node) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        if(node == null)
+            return null;
+        if(node.getLeft() == null)
+            return node.getElement();
+        else
+            return smallestElement(node.getLeft());
+
     }
 
     /*
@@ -283,11 +315,27 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * @return a map with a list of nodes by each tree level
      */
     public Map<Integer,List<E>> nodesByLevel() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        Map<Integer, List<E>> result = new HashMap<>();
+        processBstByLevel(root, result, 0);
+
+        return result;
+
     }
 
     private void processBstByLevel(Node<E> node, Map<Integer,List<E>> result, int level) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (node == null) {
+            return;
+        }
+
+        if (!result.containsKey(level)) {
+            result.put(level, new ArrayList<E>());
+        }
+        List<E> list = result.get(level);
+        list.add(node.getElement());
+
+        processBstByLevel(node.getLeft(), result, level + 1);
+        processBstByLevel(node.getRight(), result, level + 1);
     }
 
     //#########################################################################

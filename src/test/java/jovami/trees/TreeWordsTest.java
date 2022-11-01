@@ -3,13 +3,17 @@ package jovami.trees;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author DEI-ESINF
  */
+@Disabled
 public class TreeWordsTest {
 
     public TreeWordsTest() {

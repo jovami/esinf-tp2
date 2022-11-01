@@ -114,7 +114,7 @@ public class AVLTest {
         System.out.println("------------------------------------");
     }
 
-     @Test
+    @Test
     public void testEquals() {
         System.out.println("equals");
         AVL<Integer> instance = new AVL<>();

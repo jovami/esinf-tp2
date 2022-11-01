@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author DEI-ESINF
  */
+@Disabled
 public class TreeTest {
     Integer[] arr = {20,15,10,13,8,17,40,50,30,7};
     int[] nnodes= {1,2,4,2,1};

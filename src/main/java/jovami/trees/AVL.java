@@ -45,23 +45,22 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
 
     @Override
     public void insert(E element) {
-        this.root = insert(element, root);
+        this.root = insert(element, this.root);
     }
 
     private Node<E> insert(E element, Node<E> node) {
         if (node == null)
-            return new Node(element, null, null);
-        if (node.getElement() == element)
+            return new Node<E>(element, null, null);
+
+        if (node.getElement() == element) {
             node.setElement(element);
-        else {
-            //TODO greater then
-            if (node.getElement().equals(element)) { //node.getElement() > element)
+        } else {
+            if (element.compareTo(node.getElement()) < 0) {
                 node.setLeft(insert(element, node.getLeft()));
-                node = balanceNode(node);
-            } else {
-                node.setRight(insert(element, node.getLeft()));
-                node = balanceNode(node);
+            } else if (element.compareTo(node.getElement()) > 0) {
+                node.setRight(insert(element, node.getRight()));
             }
+            node = balanceNode(node);
         }
         return node;
     }

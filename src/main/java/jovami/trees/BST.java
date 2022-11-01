@@ -64,6 +64,10 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         public void setRight(Node<E> rightChild) {
             this.right = rightChild;
         }
+
+        public boolean isLeaf() {
+            return this.left == null && this.right == null;
+        }
     }
     //----------- end of nested Node class -----------
 
@@ -130,12 +134,10 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
 
         if(node.getElement().compareTo(element) == 0)
             node.setElement(element);
-
-        if(node.getElement().compareTo(element) > 0)
+        else if(node.getElement().compareTo(element) > 0)
             node.setLeft(insert(element, node.getLeft()));
         else
-        if(node.getElement().compareTo(element) < 0)
-            node.setRight(insert(element,node.getRight()));
+            node.setRight(insert(element, node.getRight()));
 
         return node;
     }
@@ -150,11 +152,11 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     private Node<E> remove(E element, Node<E> node) {
 
         if (node == null) {
-            return null;    //throw new IllegalArgumentException("Element does not exist");
+            return null;
         }
         if (element.compareTo(node.getElement())==0) {
             // node is the Node to be removed
-            if (node.getLeft() == null && node.getRight() == null) { //node is a leaf (has no childs)
+            if (node.isLeaf()) {
                 return null;
             }
             if (node.getLeft() == null) {   //has only right child

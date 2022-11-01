@@ -64,7 +64,7 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         if (node == null)
             return new Node<>(element, null, null);
 
-        if (node.getElement() == element) {
+        if (node.getElement().equals(element)) {
             node.setElement(element);
         } else {
             if (element.compareTo(node.getElement()) < 0) {
@@ -85,7 +85,7 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
     private Node<E> remove(E element, BST.Node<E> node) {
         if (node == null)
             return null;
-        if (node.getElement() == element) {
+        if (node.getElement().equals(element)) {
             if (node.getLeft() == null && node.getRight() == null)
                 return null;
             if (node.getLeft().getElement().equals(element))

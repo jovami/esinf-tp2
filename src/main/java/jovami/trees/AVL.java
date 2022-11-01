@@ -1,11 +1,10 @@
 package jovami.trees;
 
 /**
- *
- * @author DEI-ESINF
  * @param <E>
+ * @author DEI-ESINF
  */
-public class AVL <E extends Comparable<E>> extends BST<E> {
+public class AVL<E extends Comparable<E>> extends BST<E> {
 
 
     private int balanceFactor(Node<E> node) {
@@ -14,18 +13,30 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
     }
 
     private Node<E> rightRotation(Node<E> node) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
+        Node<E> leftson = node.getLeft();
+        node.setLeft(leftson.getRight());
+        leftson.setRight(node);
+        node = leftson;
+        return node;
     }
 
     private Node<E> leftRotation(Node<E> node) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
+        Node<E> rightson = node.getRight();
+        node.setRight(rightson.getLeft());
+        rightson.setLeft(node);
+        node = rightson;
+        return node;
     }
 
     private Node<E> twoRotations(Node<E> node) {
-
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (balanceFactor(node) < 0) {
+            node.setLeft(leftRotation(node.getLeft()));
+            node = rightRotation(node);
+        } else {
+            node.setRight(rightRotation(node.getRight()));
+            node = leftRotation(node);
+        }
+        return node;
     }
 
     private Node<E> balanceNode(Node<E> node) {
@@ -38,7 +49,21 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
     }
 
     private Node<E> insert(E element, Node<E> node) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (node == null)
+            return new Node(element, null, null);
+        if (node.getElement() == element)
+            node.setElement(element);
+        else {
+            //TODO greater then
+            if (node.getElement().equals(element)) { //node.getElement() > element)
+                node.setLeft(insert(element, node.getLeft()));
+                node = balanceNode(node);
+            } else {
+                node.setRight(insert(element, node.getLeft()));
+                node = balanceNode(node);
+            }
+        }
+        return node;
     }
 
     @Override
@@ -69,7 +94,7 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
         } else if (root1 != null && root2 != null) {
             if (root1.getElement().compareTo(root2.getElement()) == 0) {
                 return equals(root1.getLeft(), root2.getLeft())
-                    && equals(root1.getRight(), root2.getRight());
+                        && equals(root1.getRight(), root2.getRight());
             } else {
                 return false;
             }

@@ -1,5 +1,7 @@
 package jovami;
 
+import jovami.model.stores.AreaTree;
+
 /**
  * App
  * Singleton pattern based class,
@@ -7,11 +9,16 @@ package jovami;
  */
 public class App {
 
+    private final AreaTree areaTree;
+
 
     private App() {
-
+        this.areaTree = new AreaTree();
     }
 
+    public AreaTree getAreaTree(){
+        return this.areaTree;
+    }
 
 
     /* singleton pattern */

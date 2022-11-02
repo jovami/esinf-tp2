@@ -48,7 +48,8 @@ public class CSVReader {
             while ((line = br.readLine()) != null) {
                 tmp = line.split(delimiter);
                 if (tmp.length != EXPECTED_COLUMNS) {
-                    throw new Exception(String.format("error: the csv file contains invalid data!\nOffending Line:\n\t%s", line));
+                    continue;
+                    //throw new Exception(String.format("error: the csv file contains invalid data!\nOffending Line:\n\t%s", line));
                 } else {
                     // remove " at begining and " at end
                     if(quotationMarks) {

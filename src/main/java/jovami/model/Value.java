@@ -9,7 +9,7 @@ public class Value {
     private Flag flag;
 
 
-    public Value(float value, String unit, Flag flag) {
+    public Value(String unit, float value,  Flag flag) {
         this.value = value;
         this.unit = unit;
         this.flag = flag;

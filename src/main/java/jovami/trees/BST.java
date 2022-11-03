@@ -102,13 +102,21 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * Searches for the given element in the tree, returning an {@code Optional}
      * describing the result of the search
      *
-     * @param element the element to search for
+     * @param element   the element to search for
      * @return an optional describing the result
      */
     public Optional<E> find(E element) {
         return this.find(element, (e, nodeEl) -> e.compareTo(nodeEl));
     }
 
+    /**
+     * Searches for the given element in the tree, returning an {@code Optional}
+     * describing the result of the search
+     *
+     * @param element   the element to search for
+     * @param cmp       the comparator to use to find the object
+     * @return an optional describing the result
+     */
     public Optional<E> find(E element, Comparator<? super E> cmp) {
         E ret = null;
 
@@ -122,7 +130,8 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
-     * @param element    the element to find
+     * @param element   the element to find
+     * @param cmp       the comparator to use to find the object
      * @return the Node that contains the Element, or null otherwise
      *
      * This method despite not being essential is very useful.

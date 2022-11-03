@@ -9,8 +9,7 @@ import java.util.List;
  */
 public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterface<E> {
 
-
-    public static class KDNode<E> extends BST.Node <E>{
+    public static class KDNode<E> extends BST.Node<E>{
         protected Point2D.Double coords;
 
         /**
@@ -20,11 +19,65 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
          * @param leftChild  reference to a left child node
          * @param rightChild reference to a right child node
          */
-
-        public KDNode(E e, Node<E> leftChild, Node<E> rightChild, double x, double y) {
+        public KDNode(E e, KDNode<E> leftChild, KDNode<E> rightChild, double x, double y) {
             super(e, leftChild, rightChild);
             coords = new Point2D.Double(x, y);
         }
+
+        public double getX(){return this.coords.getX();}
+        public double getY(){return this.coords.getY();}
+
+        public E getElement() {
+            return this.getElement();
+        }
+        public KDNode<E> getLeft() {
+            return this.getLeft();
+        }
+        public KDNode<E> getRight() {
+            return this.getLeft();
+        }
+    }
+
+    private KDNode<E> root;
+
+    public KDTree(){
+        root = null;
+    }
+
+    private final Comparator<KDNode<E>> cmpX = new Comparator<KDNode<E>>() {
+        @Override
+        public int compare(KDNode<E> p1, KDNode<E> p2) {
+            return Double.compare(p1.getX(), p2.getX());
+        }
+    };
+
+    private final Comparator<KDNode<E>> cmpY = new Comparator<KDNode<E>>() {
+        @Override
+        public int compare(KDNode<E> p1, KDNode<E> p2) {
+            return Double.compare(p1.getY(), p2.getY());
+        }
+    };
+
+    public void insert(E e, Point2D.Double coords){
+        KDNode<E> node = new KDNode<>(e, null, null, coords.getX(), coords.getY());
+        insert(root, node, true);
+    }
+
+    public void insert(KDNode<E> currentNode, KDNode<E> node, boolean divX){
+        if (node.coords.equals(currentNode.coords))
+            return;
+
+        int cmpResult = (divX ? cmpX : cmpY).compare(node, currentNode);
+        if (cmpResult == -1)
+            if (currentNode.getLeft() == null)
+                currentNode.setLeft(node);
+            else
+                insert(currentNode.getLeft(), node, !divX);
+        else
+        if (currentNode.getRight() == null)
+            currentNode.setRight(node);
+        else
+            insert(currentNode.getRight(), node, !divX);
     }
 
     protected E nearestNeightbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX) {
@@ -41,11 +94,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         Node<E> node1 = delta < 0 ? node.getLeft() : node.getRight();
         Node<E> node2 = delta < 0 ? node.getRight() : node.getLeft();
         return null;
-    }
-
-    private KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX){
-        if (node.coords.equals(currentNode.coords))
-            return null;
     }
 
     @Override

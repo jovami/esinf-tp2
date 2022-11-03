@@ -1,6 +1,6 @@
 package jovami;
 
-import jovami.exercicios.*;
+import jovami.exercises.*;
 
 import java.util.LinkedList;
 
@@ -12,14 +12,14 @@ public class Main {
     public static void main(String[] args) {
         App.getInstance(); // init App
 
-        var exercicios = new LinkedList<Runnable>();
-        exercicios.add(new Exercicio1());
-        /*exercicios.add(new Exercicio2());
-        exercicios.add(new Exercicio3());
-        exercicios.add(new Exercicio4());
-        exercicios.add(new Exercicio5());*/
+        var exercises = new LinkedList<Runnable>();
+        exercises.add(new Exercise1());
+        /* exercises.add(new Exercise2());
+        exercises.add(new Exercise3());
+        exercises.add(new Exercise4());
+        exercises.add(new Exercise5()); */
 
-        exercicios.forEach(r -> {
+        exercises.forEach(r -> {
             System.out.printf("<----- %s ----->\n", r.getClass().getSimpleName());
             r.run();
             System.out.println();

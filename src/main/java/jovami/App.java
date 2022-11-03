@@ -1,6 +1,7 @@
 package jovami;
 
 import jovami.model.stores.AreaTree;
+import jovami.model.stores.ItemTree;
 
 /**
  * App
@@ -10,14 +11,20 @@ import jovami.model.stores.AreaTree;
 public class App {
 
     private final AreaTree areaTree;
+    private final ItemTree itemTree;
 
 
     private App() {
         this.areaTree = new AreaTree();
+        this.itemTree = new ItemTree();
     }
 
     public AreaTree getAreaTree(){
         return this.areaTree;
+    }
+
+    public ItemTree getItemTree(){
+        return this.itemTree;
     }
 
 

@@ -1,15 +1,20 @@
 package jovami.model;
 
+import jovami.trees.AVL;
+
 import java.awt.geom.Point2D;
 import java.util.Objects;
 
 public class Area implements Comparable<Area> {
+
 
     private String areaCode;
     private String codeM49;
     private String areaName;
     private Coordinate coords;
     private String country;
+
+    private final AVL<Item> treeItem ;
 
 
     public Area(String areaCode, String codeM49, String areaName, double latitude, double longitude, String country) {
@@ -18,15 +23,14 @@ public class Area implements Comparable<Area> {
         this.areaName = areaName;
         this.coords = new Coordinate(latitude,longitude);
         this.country = country;
+        this.treeItem = new AVL<>();
+
+
     }
 
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
-    }
+    public void setAreaCode(String areaCode) {this.areaCode = areaCode;}
 
-    public void setCodeM49(String codeM49) {
-        this.codeM49 = codeM49;
-    }
+    public void setCodeM49(String codeM49) {this.codeM49 = codeM49;}
 
     public String getAreaCode() {
         return areaCode;
@@ -47,6 +51,32 @@ public class Area implements Comparable<Area> {
     public String getCountry() {
         return country;
     }
+
+    //----------------------------------------
+    //-------------AVL<Item>------------------
+
+    public AVL<Item> getTreeItem() {
+        return treeItem;
+    }
+
+    public boolean addItem(Item item)
+    {
+        this.treeItem.insert(item);
+        return true;
+    }
+
+    public Item getItemByItemCode(String itemCode)
+    {
+        for(Item item: treeItem.inOrder())
+        {
+            if(item.getItemCode().compareToIgnoreCase(itemCode) == 0)
+                return item;
+        }
+
+        return null;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

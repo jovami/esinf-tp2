@@ -34,30 +34,49 @@ public class CSVReader {
 
         String line;
         String[] tmp;
-
+        
         try (var br = new BufferedReader(new FileReader(dir))) {
             maybeSkipBOM(br);
             line = br.readLine();
-
+            
             if (!isHeader(line))
-                throw new Exception("error: the header of the file is INVALID");
+            {
+                tmp = line.split(delimiter);
+                if (tmp.length == EXPECTED_COLUMNS) {
+                                      
+                    // remove " at begining and " at end
+                    boolean quotationMarks = checkQuotationMark(br);
+                    if(quotationMarks) {
+                        
+                        tmp[0] = tmp[0].replaceAll("\"", "");
+                        tmp[tmp.length - 1] = tmp[tmp.length - 1].replaceAll("\"", "");
+                        
+                    }
+                    info.add(tmp);
+                } 
+                
+            }
+            //throw new Exception ("error: the header of the file is INVALID");
             boolean quotationMarks = checkQuotationMark(br);
             if (quotationMarks){
                 delimiter = '"' + delimiter + '"';
             }
             while ((line = br.readLine()) != null) {
+                
                 tmp = line.split(delimiter);
                 if (tmp.length != EXPECTED_COLUMNS) {
                     continue;
                     //throw new Exception(String.format("error: the csv file contains invalid data!\nOffending Line:\n\t%s", line));
-                } else {
+                } else {                    
                     // remove " at begining and " at end
                     if(quotationMarks) {
+                        
                         tmp[0] = tmp[0].replaceAll("\"", "");
                         tmp[tmp.length - 1] = tmp[tmp.length - 1].replaceAll("\"", "");
+                        
                     }
                     info.add(tmp);
-                }
+                }               
             }
         } catch (IOException e) {
             System.err.println("Error reading file. Aborting...");

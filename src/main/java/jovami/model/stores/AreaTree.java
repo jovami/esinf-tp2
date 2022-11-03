@@ -1,11 +1,8 @@
 package jovami.model.stores;
 
 import jovami.model.Area;
-import jovami.model.Item;
 import jovami.trees.AVL;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class AreaTree {
 
@@ -26,9 +23,23 @@ public class AreaTree {
 
     public Area getAreaByAreaCode(String areaCode)
     {
+
         for(Area area: tree.inOrder())
         {
-            if(area.getAreaCode().compareToIgnoreCase(areaCode) == 0)
+            if(area.getAreaCode().compareToIgnoreCase("") != 0 )
+                if (area.getAreaCode().compareToIgnoreCase(areaCode) == 0)
+                    return area;
+
+        }
+
+        return null;
+    }
+
+    public Area getAreaByCodeM49(String codeM49)
+    {
+        for(Area area: tree.inOrder())
+        {
+            if(area.getCodeM49().compareToIgnoreCase(codeM49) == 0)
                 return area;
             else
                 return null;
@@ -58,6 +69,24 @@ public class AreaTree {
         }
 
         return null;
+    }
+
+    /**
+     * checks if area is already leaf in the tree
+     * @param area
+     * @return boolean
+     */
+    public boolean exists(Area area)
+    {
+
+        if(getAreaByAreaName(area.getAreaName()).getAreaName().compareToIgnoreCase(area.getAreaName()) == 0) {
+            if(getAreaByAreaName(area.getAreaName()).getAreaCode().compareToIgnoreCase("") == 0
+                && getAreaByAreaName(area.getAreaName()).getCodeM49().compareToIgnoreCase("") == 0 )
+                return true;
+        }
+
+        return false;
+        
     }
 
 

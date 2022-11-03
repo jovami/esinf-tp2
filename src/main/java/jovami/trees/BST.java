@@ -93,6 +93,10 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return this.root == null;
     }
 
+    public Node<E> find(E element) {
+        return find(root,element);
+    }
+
     /**
      * Returns the Node containing a specific Element, or null otherwise.
      *

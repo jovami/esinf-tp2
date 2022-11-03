@@ -1,7 +1,7 @@
 package jovami.exercicios;
 
 import jovami.App;
-import jovami.model.Area;
+import jovami.model.*;
 import jovami.model.reader.CSVHeader;
 import jovami.model.reader.CSVReader;
 
@@ -45,6 +45,7 @@ public class Exercicio1 implements Runnable{
         }*/
 
         readAllFiles();
+        test();
 
     }
 
@@ -57,6 +58,18 @@ public class Exercicio1 implements Runnable{
 
         private int getColuna() {return i;}
 
+
+    }
+
+    private enum ColunasItemCodes {
+        
+        ITEMCODE(0), ITEMCPC(1), ITEMDESCRIPTION(2);
+        
+        private final int i;
+
+        ColunasItemCodes(int i) {this.i = i;}
+
+        private int getColuna() {return i;}
 
     }
 
@@ -84,9 +97,6 @@ public class Exercicio1 implements Runnable{
     }
 
 
-    //ADD BY JONAS
-    //ADD BY JONAS
-    //ADD BY JONAS
     public void readAllFiles()
     {
         final File folder = new File("src/main/ficheiroscsv");
@@ -94,6 +104,7 @@ public class Exercicio1 implements Runnable{
 
         for(File f: filenames)
         {
+            //System.out.println(""+f.getName());
             if(f.getName().contains("AreaCoordinates"))
             {
                 
@@ -106,10 +117,25 @@ public class Exercicio1 implements Runnable{
                 }      
 
             }
-            else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium") 
-                    || f.getName().contains("shuffle_small"))
+            else if(f.getName().contains("ItemCodes_shuffled"))
             {
+                
                 try {
+                    File dir = fileDirReader(f.getName());
+                    this.csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
+                    csvReader.readCSV(dir);
+                    saveInfoItemCodes(csvReader.readCSV(dir));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } 
+                
+            }
+            else if(f.getName().contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"))
+            {
+                /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium") 
+                    || f.getName().contains("shuffle_small")) */
+                
+                  try {
                     File dir = fileDirReader(f.getName());
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
@@ -117,10 +143,6 @@ public class Exercicio1 implements Runnable{
                 } catch (Exception e) {
                     e.printStackTrace();
                 } 
-            }else if(f.getName().contains("ItemCodes_shuffled"))
-            {
-                //TO DO
-                continue;
             }else{
                 continue;
             }
@@ -129,10 +151,6 @@ public class Exercicio1 implements Runnable{
 
     }
 
-    //ADD BY JONAS
-    //ADD BY JONAS
-    //ADD BY JONAS
-    //ADD BY JONAS
     public void listFilesForFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
@@ -144,7 +162,6 @@ public class Exercicio1 implements Runnable{
         }
     }
 
-    
 
     public void saveInfoAreaCoordinates(List<String[]> list) {
         String areaCode, codeM49, areaName, country;
@@ -173,7 +190,7 @@ public class Exercicio1 implements Runnable{
             
             areaName = info[ColunasAreaCoordinates.AREANOME.getColuna()];  
 
-            System.out.println(""+country + " " + latitude + " " + longitude + " " + areaName);
+            //System.out.println(""+country + " " + latitude + " " + longitude + " " + areaName);
 
              saveAreaCoordinates(areaName, latitude, longitude, country);   
 
@@ -192,13 +209,42 @@ public class Exercicio1 implements Runnable{
         System.out.println("AREA NAME = " + x.getAreaName());*/
     }
 
+
+    public void saveInfoItemCodes(List<String[]> list)
+    {
+        String itemCode, itemCPC, itemDescription;    
+
+        for(String[] info: list)
+        {
+            itemCode = info[ColunasItemCodes.ITEMCODE.getColuna()];
+            itemCPC = info[ColunasItemCodes.ITEMCPC.getColuna()];
+            itemDescription = info[ColunasItemCodes.ITEMDESCRIPTION.getColuna()];
+
+            //System.out.println("Item Codes" + itemCode);
+            saveItemCodes(itemCode, itemCPC, itemDescription);
+        }
+
+        
+    }
+
+    public void saveItemCodes(String itemCode, String itemCPC, String itemDescription)
+    {
+        Item item = new Item(itemCode, itemCPC, itemDescription);
+
+        app.getItemTree().addItem(item);
+
+        /*Item x = app.getItemTree().getItemByItem(item);
+        System.out.println("ITEM" + x.getItemCPC());*/
+    }
+
+
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
         String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType,yearCode, unit, flag;
         int year;
         float value;
         
-        System.out.println("SHUFFLE SHUFFLE SHUFFLE SHUFFLE SHUFFLE");
+        
         for(String[] info: list)
         {
             areaCode = info[ColunasShuffle.AREACODE.getColuna()];
@@ -215,24 +261,74 @@ public class Exercicio1 implements Runnable{
             value = Float.parseFloat(info[ColunasShuffle.VALUE.getColuna()]);
             flag = info[ColunasShuffle.FLAG.getColuna()];
 
-            /*app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
-            app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);
-            System.out.println(""+app.getAreaTree().getAreaByAreaName(areaName).toString());*/
-            
-            
-
             /*System.out.println(""+areaCode + " " + codeM49 + " " + areaName + " " + itemCode
                                 + " " + itemCPC + " " + itemDescription + " " + elementCode + " " + elementType 
                                 + " " + yearCode + " " + year + " " + unit + " " + value + " " + flag);*/
 
-             //saveAreaCoordinates(areaName, latitude, longitude, country);   
 
+            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
+           
         }
          
     }
 
-    
+    public void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription, 
+                                String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
+    {
 
+        /*System.out.println(""+areaCode + " " + codeM49 + " " + areaName + " " + itemCode
+        + " " + itemCPC + " " + itemDescription + " " + elementCode + " " + elementType 
+        + " " + yearCode + " " + year + " " + unit + " " + value + " " + flag);*/
+
+            //UPDATE VALUES OF areaCode e codeM49 in area
+            Area temp = new Area (areaCode, codeM49, areaName , 0,0,"");
+            
+            if(app.getAreaTree().exists(temp))
+            {
+                
+                app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
+                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);                
+                //System.out.println("xxxxxxxxx  "+app.getAreaTree().getAreaByAreaName(areaName).toString());  
+                
+                
+            }
+
+            Item item = new Item(itemCode, itemCPC, itemDescription);
+                
+
+                
+            if(app.getItemTree().exists(item))
+            {
+                    
+                    //System.out.println("ITEM="+item.toString());
+                    
+                    app.getAreaTree().getAreaByAreaCode(areaCode).addItem(item);
+
+                    //System.out.println("area = "+ app.getAreaTree().getAreaByAreaCode(areaCode).toString());
+                    //System.out.println();
+
+                    //System.out.println("Item code "+ itemCode);
+                    //System.out.println("XXXXXXXXX " + app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode));
+
+                    //System.out.println(""+app.getAreaTree().getAreaByAreaCode(areaCode).getTreeItem().toString());
+                    Element element = new Element(elementCode,elementType);
+                    app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode).addElement(element);
+
+                    //System.out.println(""+app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode).getTreeElement().toString());
+                    Year yea = new Year(yearCode,year);
+                    app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode)
+                        .getElementByElementCode(elementCode).addYear(yea);
+
+                    Value val = new Value( unit,  value,  Flag.valueOf(flag));
+                    app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode)
+                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);    
+                
+            }
+                
+
+    }
+
+    
     private File getFileFromResource(String fileName) throws URISyntaxException {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
@@ -251,6 +347,60 @@ public class Exercicio1 implements Runnable{
     }
 
     
-    
+    public void test()
+    {
+        System.out.println("---SIGA TESTAR SIGA TESTAR SIGA TESTAR---");
+
+        Area pt = new Area("174","'620","Portugal",39.399872,-8.224454,"PT");
+        Year yea1 = new Year("1981",1981);
+        Year yea2 = new Year("1990",1990);
+
+        //System.out.println(""+pt.toString());
+        //System.out.println(""+ app.getAreaTree().getTree().toString());
+        //System.out.println(""+ app.getItemTree().getTree().toString());
+        //System.out.println(""+ app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()));
+        //System.out.println(""+ app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().toString());
+
+        //deveria dar duas ocorrencias
+        System.out.println(""+ app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getItemByItemCode("44").getTreeElement().toString());
+        
+        
+        /*int count = 0;
+        for(Item item: app.getAreaTree().getAreaByAreaCode("174").getTreeItem().inOrder())
+        {
+            System.out.println("item" + item.toString());
+            count ++;
+        }
+        System.out.println("count="+ count);*/
+
+        for(Item item: app.getAreaTree().getAreaByAreaCode("174").getTreeItem().inOrder())
+        {
+            for(Element elem: item.getTreeElement().inOrder())
+                System.out.println(item.toString() + "  " + elem.toString());
+        }
+
+
+        
+        for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
+        {
+            
+            for(Element elem : item.getTreeElement().inOrder())
+            {
+                for(Year ye : elem.getTreeYear().inOrder())
+                {
+                    if(ye.getYear() >= yea1.getYear() && ye.getYear() <= yea2.getYear())
+                    {
+                         for(Value val : ye.getTreeValue().inOrder())
+                         {
+                            //System.out.println("" + item.toString());
+                            //System.out.println("" + elem.toString());
+                         }   
+                    }
+                }
+            }
+        }
+
+        
+    }
 
 }

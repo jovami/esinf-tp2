@@ -7,6 +7,13 @@ public enum CSVHeader {
             return "country,latitude,longitude,area";
         }
     },
+    HEADER_ITEMCODES(3, ",")
+    {
+        @Override
+        public String toString() {
+            return "itemCode,itemCPC,itemDescription";
+        }
+    },
     HEADER_FLAGS(2 , ",") {
         @Override
         public String toString() {

@@ -2,7 +2,7 @@ package jovami.model;
 
 import java.util.Objects;
 
-public class Value {
+public class Value implements Comparable<Value> {
 
     private float value;
     private String unit;
@@ -47,5 +47,10 @@ public class Value {
                 ", unit='" + unit + '\'' +
                 ", flag=" + flag +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Value o) {
+        return 0;
     }
 }

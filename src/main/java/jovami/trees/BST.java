@@ -1,6 +1,7 @@
 package jovami.trees;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,9 +106,13 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * @return an optional describing the result
      */
     public Optional<E> find(E element) {
+        return this.find(element, (e, nodeEl) -> e.compareTo(nodeEl));
+    }
+
+    public Optional<E> find(E element, Comparator<? super E> cmp) {
         E ret = null;
 
-        Node<E> node = this.find(this.root, element);
+        Node<E> node = this.find(this.root, element, cmp);
         if (node != null)
             ret = node.getElement();
 
@@ -125,12 +130,12 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * subclasses avoiding recoding.
      * So its access level is protected
      */
-    protected Node<E> find(Node<E> node, E element) {
+    protected Node<E> find(Node<E> node, E element, Comparator<? super E> cmp) {
         boolean found = false;
 
         while(node != null && !found) {
             // -1 if element < node.getElement(), 0 if ==, 1 if >
-            int result = Integer.signum(element.compareTo(node.getElement()));
+            int result = Integer.signum(cmp.compare(element, node.getElement()));
 
             switch (result) {
                 case -1:

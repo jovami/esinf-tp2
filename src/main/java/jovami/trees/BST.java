@@ -299,8 +299,8 @@ public class BST<E extends Comparable<E>>
     /**
      * Adds elements of the subtree rooted at Node node to the given
      * snapshot using an in-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
     private void inOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)
@@ -334,8 +334,8 @@ public class BST<E extends Comparable<E>>
     /**
      * Adds elements of the subtree rooted at Node node to the given
      * snapshot using an pre-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param consumer  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
     private void preOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)
@@ -369,8 +369,8 @@ public class BST<E extends Comparable<E>>
     /**
      * Adds positions of the subtree rooted at Node node to the given
      * snapshot using an post-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param consumer  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
     private void posOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)

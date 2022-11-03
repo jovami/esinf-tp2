@@ -129,6 +129,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         boolean found = false;
 
         while(node != null && !found) {
+            // -1 if element < node.getElement(), 0 if ==, 1 if >
             int result = Integer.signum(element.compareTo(node.getElement()));
 
             switch (result) {

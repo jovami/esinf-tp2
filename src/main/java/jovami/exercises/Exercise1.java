@@ -53,7 +53,7 @@ public class Exercise1 implements Runnable {
 
     private enum ColunasFlags {
 
-        FLAGTYPE(0), DESCRIPTION(1);
+        FLAGCODE(0), DESCRIPTION(1);
 
 
         private final int i;
@@ -147,7 +147,7 @@ public class Exercise1 implements Runnable {
         var store = app.flagStore();
 
         for (String[] info : list) {
-            code = info[ColunasFlags.FLAGTYPE.getColuna()].charAt(0);
+            code = info[ColunasFlags.FLAGCODE.getColuna()].charAt(0);
             name = info[ColunasFlags.DESCRIPTION.getColuna()];
              store.add(code, name);
 
@@ -252,10 +252,6 @@ public class Exercise1 implements Runnable {
                                 String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
     {
         var flagStore = app.flagStore();
-        /*System.out.println(""+areaCode + " " + codeM49 + " " + areaName + " " + itemCode
-        + " " + itemCPC + " " + itemDescription + " " + elementCode + " " + elementType
-        + " " + yearCode + " " + year + " " + unit + " " + value + " " + flag);*/
-
 
             //UPDATE VALUES OF areaCode e codeM49 in area
             Area temp = new Area (areaCode, codeM49, areaName , 0,0,"");
@@ -316,15 +312,6 @@ public class Exercise1 implements Runnable {
         Area pt = new Area("174","'620","Portugal",39.399872,-8.224454,"PT");
         Year yea1 = new Year("1981",1981);
         Year yea2 = new Year("1990",1990);
-
-        //deveria dar duas ocorrencias
-        /*int count = 0;
-        for(Item item: app.getAreaTree().getAreaByAreaCode("174").getTreeItem().inOrder())
-        {
-            System.out.println("item" + item.toString());
-            count ++;
-        }
-        System.out.println("count="+ count);*/
 
         int count = 0;
         for(Item item: app.getAreaTree().getAreaByAreaCode("174").getTreeItem().inOrder())

@@ -65,15 +65,7 @@ public class AreaTree {
      */
     public boolean exists(Area area)
     {
-
-        if(getAreaByAreaName(area.getAreaName()).getAreaName().compareToIgnoreCase(area.getAreaName()) == 0) {
-            if(getAreaByAreaName(area.getAreaName()).getAreaCode().compareToIgnoreCase("") == 0
-                && getAreaByAreaName(area.getAreaName()).getCodeM49().compareToIgnoreCase("") == 0 )
-                return true;
-        }
-
-        return false;
-        
+        return tree.find(area).isPresent();        
     }
 
 

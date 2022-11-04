@@ -46,11 +46,7 @@ public class ItemTree {
 
     public boolean exists(Item item)
     {
-
-        if(getItemByItem(item) != null)
-            return true;
-        else
-            return false;
+      return tree.find(item).isPresent(); 
     }
 
 }

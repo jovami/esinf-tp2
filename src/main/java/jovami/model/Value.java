@@ -2,15 +2,11 @@ package jovami.model;
 
 import java.util.Objects;
 
-public class Value implements Comparable<Value> {
+public class Value {
 
     private float value;
     private String unit;
     private Flag flag;
-
-    public Value(String unit, float value, char flagCode, String flagName) {
-        this(unit, value, new Flag(flagCode, flagName));
-    }
 
     public Value(String unit, float value, Flag flag) {
         this.value = value;
@@ -54,8 +50,5 @@ public class Value implements Comparable<Value> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Value o) {
-        return 0;
-    }
+
 }

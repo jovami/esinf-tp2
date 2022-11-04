@@ -54,7 +54,7 @@ public class Exercise1 implements Runnable {
     private enum ColunasFlags {
 
         FLAGTYPE(0), DESCRIPTION(1);
-        
+
 
         private final int i;
 
@@ -79,65 +79,51 @@ public class Exercise1 implements Runnable {
     }
 
 
-    public void readAllFiles()
-    {
+    public void readAllFiles() {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
         for(File f: filenames)
         {
+            String name = f.getName();
             //System.out.println(""+f.getName());
-            if(f.getName().contains("AreaCoordinates"))
-            {
-
+            if (name.contains("Production_Crops_Livestock_E_Flags")) {
                 try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
+                    this.csvReader = new CSVReader(CSVHeader.HEADER_FLAGS);
+                    saveInfoFlags(csvReader.readCSV(dir));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if(name.contains("AreaCoordinates")) {
+                try {
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_AREACOORDINATES);
                     saveInfoAreaCoordinates(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }
-            else if(f.getName().contains("ItemCodes_shuffled"))
-            {
-
+            } else if(name.contains("ItemCodes_shuffled")) {
                 try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
                     csvReader.readCSV(dir);
                     saveInfoItemCodes(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }
-            else if(f.getName().contains("Production_Crops_Livestock_E_Flags"))
-            {
-                try {
-                    File dir = fileDirReader(f.getName());
-                    this.csvReader = new CSVReader(CSVHeader.HEADER_FLAGS);
-                    csvReader.readCSV(dir);
-                    saveInfoFlags(csvReader.readCSV(dir));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            else if(f.getName().contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"))
-            {
+            } else if(name.contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
 
                   try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
                     saveInfoShuffle(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }else{
-                continue;
             }
         }
     }
@@ -154,6 +140,18 @@ public class Exercise1 implements Runnable {
         }
     }
 
+    private void saveInfoFlags(List<String[]> list) {
+        char code;
+        String name;
+
+        var store = app.flagStore();
+
+        for (String[] info : list) {
+            code = info[ColunasFlags.FLAGTYPE.getColuna()].charAt(0);
+            name = info[ColunasFlags.DESCRIPTION.getColuna()];
+            store.add(code, name);
+        }
+    }
 
     public void saveInfoAreaCoordinates(List<String[]> list) {
         String areaCode, codeM49, areaName, country;
@@ -219,25 +217,6 @@ public class Exercise1 implements Runnable {
     }
 
 
-    public void saveInfoFlags(List<String[]> list)
-    {
-        String flagType, description;
-
-        for(String[] info: list)
-        {
-            flagType = info[ColunasFlags.FLAGTYPE.getColuna()];
-            description = info[ColunasFlags.DESCRIPTION.getColuna()];
-
-            saveFlags(flagType,description);
-        }
-    }
-
-    public void saveFlags(String flagType, String description)
-    {
-        //Flag flag = new Flag(flagType,description);
-        //app.getFlagStore().addFlag(flag);
-    }
-
 
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
@@ -263,45 +242,50 @@ public class Exercise1 implements Runnable {
 
             flag = info[ColunasShuffle.FLAGTYPE.getColuna()];
 
-            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);           
-        }        
+            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
+        }
     }
 
-    
-    public void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription, 
+
+    public void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription,
                                 String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
     {
+        var flagStore = app.flagStore();
+        /*System.out.println(""+areaCode + " " + codeM49 + " " + areaName + " " + itemCode
+        + " " + itemCPC + " " + itemDescription + " " + elementCode + " " + elementType
+        + " " + yearCode + " " + year + " " + unit + " " + value + " " + flag);*/
+
 
             //UPDATE VALUES OF areaCode e codeM49 in area
             Area temp = new Area (areaCode, codeM49, areaName , 0,0,"");
 
             if(app.getAreaTree().exists(temp))
-            {               
+            {
                 app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
-                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);                                             
+                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);
             }
 
             Item item = new Item(itemCode, itemCPC, itemDescription);
-                               
+
             if(app.getItemTree().exists(item))
             {
-                    
+
                     Area areaTemp = app.getAreaTree().getAreaByAreaCode(areaCode);
-                                       
+
                     areaTemp.addItem(item);
 
 
                     Element element = new Element(elementCode,elementType);
 
                     areaTemp.getItemByItemCode(itemCode).addElement(element);
-                          
+
                     Year yea = new Year(yearCode,year);
                     areaTemp.getItemByItemCode(itemCode)
                         .getElementByElementCode(elementCode).addYear(yea);
 
-                    Value val = new Value( unit,  value,  Flag.valueOf(flag));
+                    Value val = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
                     areaTemp.getItemByItemCode(itemCode)
-                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);                   
+                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);
             }
     }
 

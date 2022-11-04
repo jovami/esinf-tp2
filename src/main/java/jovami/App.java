@@ -30,7 +30,11 @@ public class App {
         return this.itemTree;
     }
 
-    public FlagStore getFlagStore() {return this.flagStore;}
+
+    public FlagStore flagStore() {
+        return this.flagStore;
+    }
+
 
     /* singleton pattern */
     private static App singleton = null;

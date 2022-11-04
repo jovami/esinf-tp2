@@ -1,42 +1,50 @@
 package jovami.model.stores;
 
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Objects;
+import java.util.Optional;
+
 import jovami.model.Flag;
 
-import java.util.HashMap;
+/**
+ * FlagStore
+ */
+public class FlagStore implements Iterable<Flag> {
 
-public class FlagStore {
+    private final LinkedHashMap<Character, Flag> flags;
 
-    private final HashMap<String,String> flagStore;
+    public FlagStore() {
+        int capacity = 2 << 4;
+        this.flags = new LinkedHashMap<>(capacity);
+    }
 
-    public FlagStore() {this.flagStore = new HashMap<>();}
+    public Optional<Flag> get(char code) {
+        return Optional.ofNullable(this.flags.get(code));
+    }
 
-    public HashMap<String, String> getFlagStore() {return flagStore;}
+    public boolean add(char code, String name) {
+        if (this.flags.get(code) == null)
+            return false;
 
-    public boolean addFlag(Flag flag)
-    {
-        //flagStore.put(flag.getFlagType(),flag.getFlagDescription());
+        forceAdd(code, name);
         return true;
     }
 
-    public String getFlagDescription (String flagType)
-    {
-        return this.flagStore.get(flagType);
+    public void forceAdd(char code, String name) {
+        Objects.requireNonNull(name);
+        this.flags.put(code, new Flag(code, name));
     }
 
-    public Flag getFlagByFlag(Flag flag)
-    {
-        /*if(flagStore.containsKey(flag.getFlagType()))
-            return flag;
-        else
-            return null;*/
-
-        return null;
+    @Override
+    public Iterator<Flag> iterator() {
+        return this.flags.values().iterator();
     }
 
     @Override
     public String toString() {
         return "FlagStore{" +
-                "flagStore=" + flagStore +
+                "flagStore=" + flags +
                 '}';
     }
 }

@@ -1,21 +1,22 @@
 package jovami.model;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class Value {
 
-    private float value;
+    private Float value;
     private String unit;
     private Flag flag;
 
-    public Value(String unit, float value, Flag flag) {
+    public Value(String unit, Float value, Flag flag) {
         this.value = value;
         this.unit = unit;
         this.flag = flag;
     }
 
-    public float getValue() {
-        return value;
+    public Optional<Float> getValue() {
+        return Optional.ofNullable(value);
     }
 
     public String getUnit() {
@@ -31,7 +32,7 @@ public class Value {
         if (this == o) return true;
         if (!(o instanceof Value)) return false;
         Value value1 = (Value) o;
-        return Float.compare(value1.value, value) == 0
+        return value.equals(value1.value)
             && unit.equals(value1.unit)
             && flag.equals(value1.flag);
     }
@@ -49,6 +50,4 @@ public class Value {
                 ", flag=" + flag +
                 '}';
     }
-
-
 }

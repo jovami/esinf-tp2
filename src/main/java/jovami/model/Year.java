@@ -1,7 +1,6 @@
 package jovami.model;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public class Year implements Comparable<Year> {
 
@@ -25,8 +24,8 @@ public class Year implements Comparable<Year> {
         return this.yearCode;
     }
 
-    public Optional<Value> getValue() {
-        return Optional.ofNullable(this.value);
+    public Value getValue() {
+        return this.value;
     }
 
     public void addValue(Value value) {

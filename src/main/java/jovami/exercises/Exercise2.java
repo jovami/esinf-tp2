@@ -28,7 +28,7 @@ public class Exercise2 implements Runnable {
 
 
     // driver method
-    private Map<Triplet<Pair<Integer, Integer>, Item, Element>, Double>
+    private Map<Triplet<int[], Item, Element>, Float>
     nameTBD(final Area area, final int yearMin, final int yearMax)
     {
         // checks
@@ -40,9 +40,9 @@ public class Exercise2 implements Runnable {
 
         final int n = yearMax - yearMin + 1;
 
-        final Pair<Integer, Integer> interval = new Pair<>(yearMin, yearMax);
+        final int[] interval = new int[] { yearMin, yearMax };
 
-        final HashMap<Triplet<Pair<Integer, Integer>, Item, Element>, Double> avgMap;
+        final HashMap<Triplet<int[], Item, Element>, Float> avgMap;
 
         { // reduce scope for this part
             // TODO: find a nice value for this
@@ -55,7 +55,7 @@ public class Exercise2 implements Runnable {
             item.getTreeElement().forEach(element -> {
                 /* HACK: java doesn't allow updating variables inside lambdas
                          so we use a double[1] to work around it */
-                double hack[] = new double[1];
+                float hack[] = new float[1];
 
                 element.getTreeYear().forEach(year -> {
                     int y = year.getYear();

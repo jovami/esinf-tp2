@@ -13,7 +13,6 @@ public class Area implements Comparable<Area> {
     private String areaName;
     private Coordinate coords;
     private String country;
-
     private final AVL<Item> treeItem ;
 
 
@@ -76,6 +75,16 @@ public class Area implements Comparable<Area> {
         return null;
     }
 
+    public Item getItembyItem(Item item)
+    {
+        for(Item it: treeItem.inOrder())
+        {
+            if(it.compareTo(item) == 0)
+                return item;
+        }
+
+        return null;
+    }
 
 
     @Override
@@ -83,12 +92,12 @@ public class Area implements Comparable<Area> {
         if (this == o) return true;
         if (!(o instanceof Area)) return false;
         Area area = (Area) o;
-        return areaCode.equals(area.areaCode) && codeM49.equals(area.codeM49) && areaName.equals(area.areaName);
+        return areaCode.equals(area.areaCode) && codeM49.equals(area.codeM49) && areaName.equals(area.areaName) && coords.equals(area.coords) && country.equals(area.country) && treeItem.equals(area.treeItem);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(areaCode, codeM49, areaName);
+        return Objects.hash(areaCode, codeM49, areaName, coords, country, treeItem);
     }
 
     @Override
@@ -97,9 +106,11 @@ public class Area implements Comparable<Area> {
                 "areaCode='" + areaCode + '\'' +
                 ", codeM49='" + codeM49 + '\'' +
                 ", areaName='" + areaName + '\'' +
+                ", coords=" + coords +
+                ", country='" + country + '\'' +
+                ", treeItem=" + treeItem +
                 '}';
     }
-
 
     //TO:DO
     @Override

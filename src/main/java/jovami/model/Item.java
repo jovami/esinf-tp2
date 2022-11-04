@@ -9,9 +9,6 @@ public class Item implements Comparable<Item> {
     private String itemCode;
     private String itemCPC;
     private String itemDescription;
-
-
-
     private final AVL<Element> treeElement ;
 
     public Item(String itemCode, String itemCPC, String itemDescription) {
@@ -59,9 +56,16 @@ public class Item implements Comparable<Item> {
         return null;
     }
 
+    public Element getElementByElement(Element element)
+    {
+        for(Element elm: treeElement.inOrder())
+        {
+            if(elm.compareTo(element) == 0)
+                return element;
+        }
 
-
-
+        return null;
+    }
 
 
     @Override
@@ -69,12 +73,12 @@ public class Item implements Comparable<Item> {
         if (this == o) return true;
         if (!(o instanceof Item)) return false;
         Item item = (Item) o;
-        return itemCode.equals(item.itemCode) && itemCPC.equals(item.itemCPC) && itemDescription.equals(item.itemDescription);
+        return itemCode.equals(item.itemCode) && itemCPC.equals(item.itemCPC) && itemDescription.equals(item.itemDescription) && treeElement.equals(item.treeElement);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemCode, itemCPC, itemDescription);
+        return Objects.hash(itemCode, itemCPC, itemDescription, treeElement);
     }
 
     @Override
@@ -83,6 +87,7 @@ public class Item implements Comparable<Item> {
                 "itemCode='" + itemCode + '\'' +
                 ", itemCPC='" + itemCPC + '\'' +
                 ", itemDescription='" + itemDescription + '\'' +
+                ", treeElement=" + treeElement +
                 '}';
     }
 

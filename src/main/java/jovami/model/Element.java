@@ -8,9 +8,7 @@ public class Element implements Comparable<Element> {
 
     private String elementCode;
     private String elementType;
-
     private final AVL<Year> treeYear ;
-
 
 
     public Element(String elementCode, String elementType) {
@@ -43,6 +41,17 @@ public class Element implements Comparable<Element> {
         return true;
     }
 
+    public Year getYearByYearCode(String yearCode)
+    {
+        for(Year yr: treeYear.inOrder())
+        {
+            if(yr.getYearCode().compareToIgnoreCase(yearCode) == 0)
+                return yr;
+        }
+
+        return null;
+    }
+
     public Year getYearByYear(Year year)
     {
         for(Year yr : treeYear.inOrder())
@@ -54,20 +63,17 @@ public class Element implements Comparable<Element> {
         return null;
     }
 
-
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Element)) return false;
         Element element = (Element) o;
-        return elementCode.equals(element.elementCode) && elementType.equals(element.elementType);
+        return elementCode.equals(element.elementCode) && elementType.equals(element.elementType) && treeYear.equals(element.treeYear);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(elementCode, elementType);
+        return Objects.hash(elementCode, elementType, treeYear);
     }
 
     @Override
@@ -75,6 +81,7 @@ public class Element implements Comparable<Element> {
         return "Element{" +
                 "elementCode='" + elementCode + '\'' +
                 ", elementType='" + elementType + '\'' +
+                ", treeYear=" + treeYear +
                 '}';
     }
 

@@ -381,7 +381,7 @@ public class Exercise1 implements Runnable {
 
 
 
-        for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
+        /* for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
         {
 
             for(Element elem : item.getTreeElement().inOrder())
@@ -398,9 +398,9 @@ public class Exercise1 implements Runnable {
                     }
                 }
             }
-        }
+        }*/
 
 
-    }
+     }
 
 }

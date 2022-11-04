@@ -8,8 +8,11 @@ public class Value implements Comparable<Value> {
     private String unit;
     private Flag flag;
 
+    public Value(String unit, float value, char flagCode, String flagName) {
+        this(unit, value, new Flag(flagCode, flagName));
+    }
 
-    public Value(String unit, float value,  Flag flag) {
+    public Value(String unit, float value, Flag flag) {
         this.value = value;
         this.unit = unit;
         this.flag = flag;
@@ -32,7 +35,9 @@ public class Value implements Comparable<Value> {
         if (this == o) return true;
         if (!(o instanceof Value)) return false;
         Value value1 = (Value) o;
-        return Float.compare(value1.value, value) == 0 && unit.equals(value1.unit) && flag == value1.flag;
+        return Float.compare(value1.value, value) == 0
+            && unit.equals(value1.unit)
+            && flag.equals(value1.flag);
     }
 
     @Override

@@ -1,22 +1,47 @@
 package jovami.model;
 
-public enum Flag {
+import java.util.Objects;
 
-    A("Official figure"),
-    E("Estimated value"),
-    I("Imputed value"),
-    M("Missing value"),
-    T("Unofficial figure");
+import jovami.util.Pair;
 
+/**
+ * Flag
+ */
+public class Flag {
 
-    private final String flagName;
+    private final Pair<Character, String> pair;
 
-    Flag(String flagName)
-    {
-        this.flagName = flagName;
+    public Flag(char code, String name) {
+        this.pair = new Pair<>(code, name);
     }
 
-    public String getFlagName() {
-        return flagName;
+    public char code() {
+        return this.pair.first();
+    }
+
+    public String name() {
+        return this.pair.second();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        else if (o == null || o.getClass() != this.getClass())
+            return false;
+        Flag f = (Flag) o;
+
+        return this.pair.equals(f.pair);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pair);
+    }
+
+    @Override
+    public String toString() {
+        return this.pair.toString();
     }
 }

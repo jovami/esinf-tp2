@@ -97,56 +97,52 @@ public class Exercise1 implements Runnable {
     }
 
 
-    public void readAllFiles()
-    {
+    public void readAllFiles() {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
         for(File f: filenames)
         {
+            String name = f.getName();
             //System.out.println(""+f.getName());
-            if(f.getName().contains("AreaCoordinates"))
-            {
-
+            if (name.contains("Flags")) {
                 try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
+                    this.csvReader = new CSVReader(CSVHeader.HEADER_FLAGS);
+                    saveInfoFlags(csvReader.readCSV(dir));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if(name.contains("AreaCoordinates")) {
+                try {
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_AREACOORDINATES);
                     saveInfoAreaCoordinates(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }
-            else if(f.getName().contains("ItemCodes_shuffled"))
-            {
-
+            } else if(name.contains("ItemCodes_shuffled")) {
                 try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
                     csvReader.readCSV(dir);
                     saveInfoItemCodes(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }
-            else if(f.getName().contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"))
-            {
+            } else if(name.contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
 
                   try {
-                    File dir = fileDirReader(f.getName());
+                    File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
                     saveInfoShuffle(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }else{
-                continue;
             }
-
         }
 
     }
@@ -162,6 +158,18 @@ public class Exercise1 implements Runnable {
         }
     }
 
+    private void saveInfoFlags(List<String[]> list) {
+        char code;
+        String name;
+
+        var store = app.flagStore();
+
+        for (String[] info : list) {
+            code = info[ColunasFlags.FLAG.getColuna()].charAt(0);
+            name = info[ColunasFlags.DESCRIPTION.getColuna()];
+            store.add(code, name);
+        }
+    }
 
     public void saveInfoAreaCoordinates(List<String[]> list) {
         String areaCode, codeM49, areaName, country;
@@ -276,6 +284,7 @@ public class Exercise1 implements Runnable {
                                 String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
     {
 
+        var flagStore = app.flagStore();
         /*System.out.println(""+areaCode + " " + codeM49 + " " + areaName + " " + itemCode
         + " " + itemCPC + " " + itemDescription + " " + elementCode + " " + elementType
         + " " + yearCode + " " + year + " " + unit + " " + value + " " + flag);*/
@@ -319,7 +328,7 @@ public class Exercise1 implements Runnable {
                     app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode)
                         .getElementByElementCode(elementCode).addYear(yea);
 
-                    Value val = new Value( unit,  value,  Flag.valueOf(flag));
+                    Value val = new Value( unit,  value,  flagStore.get(flag.charAt(0)).orElseThrow());
                     app.getAreaTree().getAreaByAreaCode(areaCode).getItemByItemCode(itemCode)
                         .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);
 

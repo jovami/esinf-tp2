@@ -44,7 +44,7 @@ public class Year implements Comparable<Year> {
         for(Value val : treeValue.inOrder())
         {
             if(val.getValue() == value.getValue() && val.getUnit().compareToIgnoreCase(value.getUnit()) == 0
-                && val.getFlag().getFlagName().compareToIgnoreCase(value.getFlag().getFlagName()) ==0 )
+                && val.getFlag().name().compareToIgnoreCase(value.getFlag().name()) ==0 )
                 return val;
         }
 

@@ -148,14 +148,9 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
             int result = Integer.signum(cmp.compare(element, node.getElement()));
 
             switch (result) {
-                case -1:
-                    node = node.getLeft();
-                    break;
-                case 1:
-                    node = node.getRight();
-                default:
-                    found = true;
-                    break;
+                case -1 -> node  = node.getLeft();
+                case +1 -> node  = node.getRight();
+                default -> found = true;
             }
         }
 

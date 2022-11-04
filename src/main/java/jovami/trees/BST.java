@@ -1,16 +1,18 @@
 package jovami.trees;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 
 /**
  *
  * @author DEI-ESINF
  */
-
 public class BST<E extends Comparable<E>> implements BSTInterface<E> {
 
     /** Nested static class for a binary search tree node. */
@@ -93,14 +95,41 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return this.root == null;
     }
 
-    public Node<E> find(E element) {
-        return find(root,element);
+    /**
+     * Searches for the given element in the tree, returning an {@code Optional}
+     * describing the result of the search
+     *
+     * @param element   the element to search for
+     * @return an optional describing the result
+     */
+    public Optional<E> find(E element) {
+        return this.find(element, (e, nodeEl) -> e.compareTo(nodeEl));
+    }
+
+    /**
+     * Searches for the given element in the tree, returning an {@code Optional}
+     * describing the result of the search
+     *
+     * @param element   the element to search for
+     * @param cmp       the comparator to use to find the object
+     * @return an optional describing the result
+     */
+    public Optional<E> find(E element, Comparator<? super E> cmp) {
+        Objects.requireNonNull(cmp);
+        E ret = null;
+
+        Node<E> node = this.find(this.root, element, cmp);
+        if (node != null)
+            ret = node.getElement();
+
+        return Optional.ofNullable(ret);
     }
 
     /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
-     * @param element    the element to find
+     * @param element   the element to find
+     * @param cmp       the comparator to use to find the object
      * @return the Node that contains the Element, or null otherwise
      *
      * This method despite not being essential is very useful.
@@ -108,18 +137,21 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * subclasses avoiding recoding.
      * So its access level is protected
      */
-    protected Node<E> find(Node<E> node, E element) {
-        node = root;
-        boolean find = false;
+    protected Node<E> find(Node<E> node, E element, Comparator<? super E> cmp) {
+        boolean found = false;
 
-        while(node != null && !find)
-        {
-            if(node.getElement() == element)
-                find = true;
-            if(element.compareTo(node.getElement()) < 0)
-                node = node.getLeft();
-            if(element.compareTo(node.getElement()) > 0)
-                node = node.getRight();
+        if (element == null)
+            return null;
+
+        while(node != null && !found) {
+            // -1 if element < node.getElement(), 0 if ==, 1 if >
+            int result = Integer.signum(cmp.compare(element, node.getElement()));
+
+            switch (result) {
+                case -1 -> node  = node.getLeft();
+                case +1 -> node  = node.getRight();
+                default -> found = true;
+            }
         }
 
         return node;

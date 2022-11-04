@@ -1,6 +1,7 @@
 package jovami;
 
 import jovami.model.stores.AreaTree;
+import jovami.model.stores.FlagStore;
 import jovami.model.stores.ItemTree;
 
 /**
@@ -12,11 +13,13 @@ public class App {
 
     private final AreaTree areaTree;
     private final ItemTree itemTree;
+    private final FlagStore flagStore;
 
 
     private App() {
         this.areaTree = new AreaTree();
         this.itemTree = new ItemTree();
+        this.flagStore = new FlagStore();
     }
 
     public AreaTree getAreaTree(){
@@ -27,6 +30,7 @@ public class App {
         return this.itemTree;
     }
 
+    public FlagStore getFlagStore() {return this.flagStore;}
 
     /* singleton pattern */
     private static App singleton = null;

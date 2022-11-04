@@ -61,6 +61,7 @@ public class Year implements Comparable<Year> {
         return "Year{" +
                 "yearCode='" + yearCode + '\'' +
                 ", year=" + year +
+                ", treeValue=" + treeValue +
                 '}';
     }
 }

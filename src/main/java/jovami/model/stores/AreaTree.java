@@ -35,19 +35,6 @@ public class AreaTree {
         return null;
     }
 
-    public Area getAreaByCodeM49(String codeM49)
-    {
-        for(Area area: tree.inOrder())
-        {
-            if(area.getCodeM49().compareToIgnoreCase(codeM49) == 0)
-                return area;
-            else
-                return null;
-        }
-
-        return null;
-    }
-
 
     public Area getAreaByAreaName(String areaName)
     {

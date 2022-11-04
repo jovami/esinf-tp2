@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -114,6 +115,7 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * @return an optional describing the result
      */
     public Optional<E> find(E element, Comparator<? super E> cmp) {
+        Objects.requireNonNull(cmp);
         E ret = null;
 
         Node<E> node = this.find(this.root, element, cmp);
@@ -137,6 +139,9 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      */
     protected Node<E> find(Node<E> node, E element, Comparator<? super E> cmp) {
         boolean found = false;
+
+        if (element == null)
+            return null;
 
         while(node != null && !found) {
             // -1 if element < node.getElement(), 0 if ==, 1 if >

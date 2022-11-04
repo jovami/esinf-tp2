@@ -40,4 +40,11 @@ public class FlagStore implements Iterable<Flag> {
     public Iterator<Flag> iterator() {
         return this.flags.values().iterator();
     }
+       
+    @Override
+    public String toString() {
+        return "FlagStore{" +
+                "flagStore=" + flagStore +
+                '}';
+    }
 }

@@ -31,21 +31,6 @@ public class ItemTree {
         return null;
     }
 
-
-    public Item getItemByItemCPC(String itemCPC)
-    {
-        for(Item item: tree.inOrder())
-        {
-            if(item.getItemCPC().compareToIgnoreCase(itemCPC) == 0)
-                return item;
-            else 
-                return null;
-        }
-        
-        return null;
-
-    }
-
     public Item getItemByItem(Item item)
     {
 

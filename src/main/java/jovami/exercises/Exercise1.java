@@ -149,7 +149,8 @@ public class Exercise1 implements Runnable {
         for (String[] info : list) {
             code = info[ColunasFlags.FLAGTYPE.getColuna()].charAt(0);
             name = info[ColunasFlags.DESCRIPTION.getColuna()];
-            store.add(code, name);
+             store.add(code, name);
+
         }
     }
 

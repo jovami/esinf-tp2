@@ -24,7 +24,7 @@ public class FlagStore implements Iterable<Flag> {
     }
 
     public boolean add(char code, String name) {
-        if (this.flags.get(code) == null)
+        if (this.flags.get(code) != null)
             return false;
 
         forceAdd(code, name);

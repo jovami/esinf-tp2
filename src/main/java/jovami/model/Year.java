@@ -51,21 +51,17 @@ public class Year implements Comparable<Year> {
         return null;
     }
 
-
-
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Year)) return false;
         Year year1 = (Year) o;
-        return year == year1.year;
+        return year == year1.year && yearCode.equals(year1.yearCode) && treeValue.equals(year1.treeValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(year);
+        return Objects.hash(yearCode, year, treeValue);
     }
 
     @Override
@@ -73,11 +69,12 @@ public class Year implements Comparable<Year> {
         return "Year{" +
                 "yearCode='" + yearCode + '\'' +
                 ", year=" + year +
+                ", treeValue=" + treeValue +
                 '}';
     }
 
     @Override
     public int compareTo(Year o) {
-        return 0;
+        return this.yearCode.compareToIgnoreCase(o.yearCode);
     }
 }

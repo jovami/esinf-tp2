@@ -1,12 +1,12 @@
-package jovami.exercicios;
+package jovami.exercises;
 
 import jovami.App;
 
-public class Exercicio5 implements Runnable{
+public class Exercise5 implements Runnable {
 
     private final App app;
 
-    public Exercicio5() {
+    public Exercise5() {
         app = App.getInstance();
     }
 

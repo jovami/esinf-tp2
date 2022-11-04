@@ -1,12 +1,12 @@
-package jovami.exercicios;
+package jovami.exercises;
 
 import jovami.App;
 
-public class Exercicio4 implements Runnable{
+public class Exercise2 implements Runnable {
 
     private final App app;
 
-    public Exercicio4() {
+    public Exercise2() {
         app = App.getInstance();
 
     }
@@ -15,4 +15,5 @@ public class Exercicio4 implements Runnable{
     public void run() {
 
     }
+
 }

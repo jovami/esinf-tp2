@@ -1,17 +1,23 @@
 package jovami.trees;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 
 /**
  *
  * @author DEI-ESINF
  */
-
-public class BST<E extends Comparable<E>> implements BSTInterface<E> {
+public class BST<E extends Comparable<E>>
+    implements BSTInterface<E>, Iterable<E>
+{
 
     /** Nested static class for a binary search tree node. */
     protected static class Node<E> {
@@ -93,14 +99,41 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         return this.root == null;
     }
 
-    public Node<E> find(E element) {
-        return find(root,element);
+    /**
+     * Searches for the given element in the tree, returning an {@code Optional}
+     * describing the result of the search
+     *
+     * @param element   the element to search for
+     * @return an optional describing the result
+     */
+    public Optional<E> find(E element) {
+        return this.find(element, (e, nodeEl) -> e.compareTo(nodeEl));
+    }
+
+    /**
+     * Searches for the given element in the tree, returning an {@code Optional}
+     * describing the result of the search
+     *
+     * @param element   the element to search for
+     * @param cmp       the comparator to use to find the object
+     * @return an optional describing the result
+     */
+    public Optional<E> find(E element, Comparator<? super E> cmp) {
+        Objects.requireNonNull(cmp);
+        E ret = null;
+
+        Node<E> node = this.find(this.root, element, cmp);
+        if (node != null)
+            ret = node.getElement();
+
+        return Optional.ofNullable(ret);
     }
 
     /**
      * Returns the Node containing a specific Element, or null otherwise.
      *
-     * @param element    the element to find
+     * @param element   the element to find
+     * @param cmp       the comparator to use to find the object
      * @return the Node that contains the Element, or null otherwise
      *
      * This method despite not being essential is very useful.
@@ -108,18 +141,21 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      * subclasses avoiding recoding.
      * So its access level is protected
      */
-    protected Node<E> find(Node<E> node, E element) {
-        node = root;
-        boolean find = false;
+    protected Node<E> find(Node<E> node, E element, Comparator<? super E> cmp) {
+        boolean found = false;
 
-        while(node != null && !find)
-        {
-            if(node.getElement() == element)
-                find = true;
-            if(element.compareTo(node.getElement()) < 0)
-                node = node.getLeft();
-            if(element.compareTo(node.getElement()) > 0)
-                node = node.getRight();
+        if (element == null)
+            return null;
+
+        while(node != null && !found) {
+            // -1 if element < node.getElement(), 0 if ==, 1 if >
+            int result = Integer.signum(cmp.compare(element, node.getElement()));
+
+            switch (result) {
+                case -1 -> node  = node.getLeft();
+                case +1 -> node  = node.getRight();
+                default -> found = true;
+            }
         }
 
         return node;
@@ -231,39 +267,47 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
     }
 
     protected E smallestElement(Node<E> node) {
-
         if(node == null)
             return null;
         if(node.getLeft() == null)
             return node.getElement();
         else
             return smallestElement(node.getLeft());
-
     }
 
-    /*
+    /**
      * Returns an iterable collection of elements of the tree, reported in in-order.
      * @return iterable collection of the tree's elements reported in in-order
      */
     public Iterable<E> inOrder() {
         List<E> snapshot = new ArrayList<>();
-        if (root!=null)
-            inOrderSubtree(root, snapshot);   // fill the snapshot recursively
+        inOrderForEach(snapshot::add);
         return snapshot;
+    }
+
+    /**
+     * Performs an action over all elements of the tree, reported in-order.
+     * @param action the action to perform
+     * @throws NullPointerException if the specified action is null
+    */
+    public void inOrderForEach(Consumer<? super E> action) {
+        Objects.requireNonNull(action);
+        if (this.root != null)
+            inOrderSubtree(this.root, action);
     }
 
     /**
      * Adds elements of the subtree rooted at Node node to the given
      * snapshot using an in-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
-    private void inOrderSubtree(Node<E> node, List<E> snapshot) {
+    private void inOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)
             return;
-        inOrderSubtree(node.getLeft(), snapshot);
-        snapshot.add(node.getElement());
-        inOrderSubtree(node.getRight(), snapshot);
+        inOrderSubtree(node.getLeft(), consumer);
+        consumer.accept(node.getElement());
+        inOrderSubtree(node.getRight(), consumer);
     }
 
     /**
@@ -272,23 +316,33 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      */
     public Iterable<E> preOrder() {
         List<E> snapshot = new ArrayList<>();
-        if (root!=null)
-            preOrderSubtree(root, snapshot);   // fill the snapshot recursively
+        preOrderForEach(snapshot::add);
         return snapshot;
+    }
+
+    /**
+     * Performs an action over all elements of the tree, reported pre-order.
+     * @param action the action to perform
+     * @throws NullPointerException if the specified action is null
+    */
+    public void preOrderForEach(Consumer<? super E> action) {
+        Objects.requireNonNull(action);
+        if (this.root != null)
+            preOrderSubtree(this.root, action);
     }
 
     /**
      * Adds elements of the subtree rooted at Node node to the given
      * snapshot using an pre-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
-    private void preOrderSubtree(Node<E> node, List<E> snapshot) {
+    private void preOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)
             return;
-        snapshot.add(node.getElement());
-        preOrderSubtree(node.getLeft(), snapshot);
-        preOrderSubtree(node.getRight(), snapshot);
+        consumer.accept(node.getElement());
+        preOrderSubtree(node.getLeft(), consumer);
+        preOrderSubtree(node.getRight(), consumer);
     }
 
     /**
@@ -297,23 +351,33 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
      */
     public Iterable<E> posOrder() {
         List<E> snapshot = new ArrayList<>();
-        if (root!=null)
-            posOrderSubtree(root, snapshot);   // fill the snapshot recursively
+        posOrderForEach(snapshot::add);
         return snapshot;
+    }
+
+    /**
+     * Performs an action over all elements of the tree, reported pos-order.
+     * @param action the action to perform
+     * @throws NullPointerException if the specified action is null
+    */
+    public void posOrderForEach(Consumer<? super E> action) {
+        Objects.requireNonNull(action);
+        if (this.root != null)
+            posOrderSubtree(this.root, action);
     }
 
     /**
      * Adds positions of the subtree rooted at Node node to the given
      * snapshot using an post-order traversal
-     * @param node       Node serving as the root of a subtree
-     * @param snapshot  a list to which results are appended
+     * @param node      Node serving as the root of a subtree
+     * @param consumer  An action to perform on node
      */
-    private void posOrderSubtree(Node<E> node, List<E> snapshot) {
+    private void posOrderSubtree(Node<E> node, Consumer<? super E> consumer) {
         if (node == null)
             return;
-        posOrderSubtree(node.getLeft(), snapshot);
-        posOrderSubtree(node.getRight(), snapshot);
-        snapshot.add(node.getElement());
+        posOrderSubtree(node.getLeft(), consumer);
+        posOrderSubtree(node.getRight(), consumer);
+        consumer.accept(node.getElement());
     }
 
     /*
@@ -373,4 +437,36 @@ public class BST<E extends Comparable<E>> implements BSTInterface<E> {
         toStringRec(root.getLeft(), level+1, sb);
     }
 
+
+    /*****************************Iterable<E> impl*****************************/
+
+    /**
+     * Returns an iterator over elements of type {@code E}.
+     * @implNote This method is highly inefficient due to an under-the-hood list
+     * of type {@code E} having to be built every time this method is invoked.
+     * Additionally, since this method is highly likely to be used in a while()
+     * construct, an unnecessary amount of operations is performed.
+     * It is highly recommended to use the BST::forEach() method with a lambda
+     * expression instead.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return this.inOrder().iterator();
+    }
+
+    /**
+     * Performs the given action for each element of the {@code Iterable}
+     * until all elements have been processed or the action throws an
+     * exception.
+     * Actions are performed using an in-order iteration.
+     * Exceptions thrown by the action are relayed to the caller.
+     * @throws NullPointerException if the specified action is null
+     */
+    @Override
+    public void forEach(Consumer<? super E> action) {
+        Objects.requireNonNull(action);
+        this.inOrderForEach(action);
+    }
 }

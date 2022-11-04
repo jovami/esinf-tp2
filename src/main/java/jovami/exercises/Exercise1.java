@@ -54,7 +54,7 @@ public class Exercise1 implements Runnable {
     private enum ColunasFlags {
 
         FLAGTYPE(0), DESCRIPTION(1);
-        
+
 
         private final int i;
 
@@ -147,7 +147,7 @@ public class Exercise1 implements Runnable {
         var store = app.flagStore();
 
         for (String[] info : list) {
-            code = info[ColunasFlags.FLAG.getColuna()].charAt(0);
+            code = info[ColunasFlags.FLAGTYPE.getColuna()].charAt(0);
             name = info[ColunasFlags.DESCRIPTION.getColuna()];
             store.add(code, name);
         }
@@ -217,25 +217,6 @@ public class Exercise1 implements Runnable {
     }
 
 
-    public void saveInfoFlags(List<String[]> list)
-    {
-        String flagType, description;
-
-        for(String[] info: list)
-        {
-            flagType = info[ColunasFlags.FLAGTYPE.getColuna()];
-            description = info[ColunasFlags.DESCRIPTION.getColuna()];
-
-            saveFlags(flagType,description);
-        }
-    }
-
-    public void saveFlags(String flagType, String description)
-    {
-        //Flag flag = new Flag(flagType,description);
-        //app.getFlagStore().addFlag(flag);
-    }
-
 
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
@@ -261,12 +242,12 @@ public class Exercise1 implements Runnable {
 
             flag = info[ColunasShuffle.FLAGTYPE.getColuna()];
 
-            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);           
-        }        
+            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
+        }
     }
 
-    
-    public void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription, 
+
+    public void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription,
                                 String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
     {
         var flagStore = app.flagStore();
@@ -279,32 +260,32 @@ public class Exercise1 implements Runnable {
             Area temp = new Area (areaCode, codeM49, areaName , 0,0,"");
 
             if(app.getAreaTree().exists(temp))
-            {               
+            {
                 app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
-                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);                                             
+                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);
             }
 
             Item item = new Item(itemCode, itemCPC, itemDescription);
-                               
+
             if(app.getItemTree().exists(item))
             {
-                    
+
                     Area areaTemp = app.getAreaTree().getAreaByAreaCode(areaCode);
-                                       
+
                     areaTemp.addItem(item);
 
 
                     Element element = new Element(elementCode,elementType);
 
                     areaTemp.getItemByItemCode(itemCode).addElement(element);
-                          
+
                     Year yea = new Year(yearCode,year);
                     areaTemp.getItemByItemCode(itemCode)
                         .getElementByElementCode(elementCode).addYear(yea);
 
                     Value val = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
                     areaTemp.getItemByItemCode(itemCode)
-                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);                   
+                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);
             }
     }
 

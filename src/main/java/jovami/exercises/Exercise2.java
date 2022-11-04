@@ -57,10 +57,10 @@ public class Exercise2 implements Runnable {
                          so we use a double[1] to work around it */
                 double hack[] = new double[1];
 
-                element.getYearTree().forEach(year -> {
+                element.getTreeYear().forEach(year -> {
                     int y = year.getYear();
                     if (y >= yearMin && y <= yearMax)
-                        hack[0] += year.getValue();
+                        hack[0] += year.getValue(); // FIX: Have each Year store a Value, not an AVL<Value>
                 });
                 avgMap.put(new Triplet<>(interval, item, element), hack[0] / n);
             });

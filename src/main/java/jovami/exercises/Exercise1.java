@@ -354,7 +354,7 @@ public class Exercise1 implements Runnable {
         }
         System.out.println("count="+ count);
 
-        
+
         /*for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
         {
             for(Element elem : item.getTreeElement().inOrder())

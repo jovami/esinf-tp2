@@ -1,6 +1,7 @@
 package jovami.exercises;
 
 import jovami.App;
+
 import jovami.model.Area;
 import jovami.model.Element;
 import jovami.model.Item;
@@ -15,7 +16,6 @@ import jovami.model.Year;
 import jovami.trees.KDTree;
 
 import java.util.Optional;
-
 
 
 public class Exercise4 implements Runnable {
@@ -35,7 +35,6 @@ public class Exercise4 implements Runnable {
         final String itemCode = "156", elementCode = "5419", year = "1965";
         getAreas(itemCode, elementCode, year);
 
-        List lista = (List) kdTree.inOrder();
         Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
     }
 

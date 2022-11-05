@@ -20,10 +20,29 @@ public class Exercise2 implements Runnable {
 
     @Override
     public void run() {
+        String areaCode = "174"; // FIXME: change to int
+        final int yearMin = 1996, yearMax = 2005;
+        var list = getAreaAverages(areaCode, yearMin, yearMax);
 
+        System.out.printf(
+                "Value averages for each Item and Element in the years %d..%d\n",
+                yearMin,
+                yearMax
+        );
+
+        for (var element : list)
+            System.out.println(element);
     }
 
     // methods to find the area by each property
+    public List<Triplet<String, String, Float>>
+    getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
+    {
+        Area a = app.getAreaTree().getAreaByAreaCode(areaCode);
+        var list = getAreaAverages(a, yearMin, yearMax);
+        Utils.mergeSort(list, Comparator.comparing(Triplet::third, Comparator.reverseOrder()));
+        return list;
+    }
 
 
     /****************************************************************************/

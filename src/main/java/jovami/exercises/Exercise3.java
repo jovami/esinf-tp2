@@ -5,7 +5,6 @@ import jovami.model.*;
 import jovami.model.stores.AreaTree;
 import jovami.model.stores.ItemTree;
 
-import jovami.util.ListPrinter;
 import jovami.util.Pair;
 
 import java.util.*;
@@ -40,6 +39,7 @@ public class Exercise3 implements Runnable {
         int topNumArea = 3;
 
        getTopNPairs(itemCode,elementCode,topNumArea);
+
         for (Pair<Area, Value> areaValuePair : listTopN) {
             System.out.printf("area: %s, Value: %.4f\n", areaValuePair.first().getAreaName(),
                     areaValuePair.second().getValue().orElse(0.0f));
@@ -49,7 +49,6 @@ public class Exercise3 implements Runnable {
     }
 
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
-      //  try{
             areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
@@ -58,29 +57,11 @@ public class Exercise3 implements Runnable {
                         Year year= e.get().getTreeYear().biggestElement();
                         addToList(area,year.getValue());
                     }
-                            /*.forEach(item -> {
-                        Optional<Element> e = item.getTreeElement().find(new Element(elementCode,null));
->>>>>>> feat(ex3): item complete
-                        if (e.isPresent()){
-                            Year year =  e.get().getTreeYear().biggestElement();
-                            addToList(area, year.getValue());
-                        }
-                    });
-
-                             */
                 }
             });
             sortListDescending(listBiggestValues);
 
             addTopNValuesToList(topNumArea);
-
-
-       // }catch (IndexOutOfBoundsException exception){
-         //   System.out.println("Area Tree is Empty");
-        //}
-
-
-
     }
 
     private void addTopNValuesToList(int topNumArea) {
@@ -93,10 +74,6 @@ public class Exercise3 implements Runnable {
         list.sort(comparator);
     }
 
-    private <E> void printTopNValues(List<E> listTopN) {
-        String header = "\nArea --- Value\n";
-        ListPrinter.print(listTopN, header, null);
-    }
 
     private void addToList(Area area, Value value){
         listBiggestValues.add(new Pair<>(area, value));

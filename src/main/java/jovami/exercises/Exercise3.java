@@ -26,8 +26,8 @@ public class Exercise3 implements Runnable {
 
     public Exercise3() {
         app = App.getInstance();
-        areaTree = new AreaTree();
-        itemTree = new ItemTree();
+        areaTree = app.getAreaTree();
+        itemTree = app.getItemTree();
 
 
     }
@@ -45,7 +45,7 @@ public class Exercise3 implements Runnable {
     }
 
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
-        try{
+      //  try{
             areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
                 if (i.isPresent()) {
@@ -63,9 +63,10 @@ public class Exercise3 implements Runnable {
 
             addTopNValuesToList(topNumArea);
 
-        }catch (IndexOutOfBoundsException exception){
-            System.out.println("Area Tree is Empty");
-        }
+
+       // }catch (IndexOutOfBoundsException exception){
+         //   System.out.println("Area Tree is Empty");
+        //}
 
 
 
@@ -88,6 +89,9 @@ public class Exercise3 implements Runnable {
 
     private void addToList(Area area, Value value){
         listBiggestValues.add(new Pair<>(area, value));
+
     }
+
+
 
 }

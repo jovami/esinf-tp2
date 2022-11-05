@@ -20,14 +20,14 @@ public class Exercise3 implements Runnable {
 
     ArrayList<Pair<Area,Value>> listTopN = new ArrayList<>();
     private final App app;
-    private AreaTree areaTree;
-    private ItemTree itemTree;
+    private final AreaTree areaTree;
+    private final ItemTree itemTree;
 
 
     public Exercise3() {
         app = App.getInstance();
-        AreaTree areaTree = new AreaTree();
-        ItemTree itemTree = new ItemTree();
+        areaTree = new AreaTree();
+        itemTree = new ItemTree();
 
 
     }
@@ -45,22 +45,30 @@ public class Exercise3 implements Runnable {
     }
 
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
-        areaTree.getTree().forEach(area -> {
-            Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
-            if (i.isPresent()) {
-                i.get().getTreeElement();
-                itemTree.getTree().forEach(item -> {
-                    Optional<Element> e = item.getTreeElement().find(item.getElementByElementCode(elementCode));
-                    if (e.isPresent()){
-                        Year year =  e.get().getTreeYear().biggestElement();
-                        addToList(area, year.getValue());
-                    }
-                });
-            }
-        });
-        sortListDescending(listBiggestValues);
+        try{
+            areaTree.getTree().forEach(area -> {
+                Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
+                if (i.isPresent()) {
+                    i.get().getTreeElement();
+                    itemTree.getTree().forEach(item -> {
+                        Optional<Element> e = item.getTreeElement().find(item.getElementByElementCode(elementCode));
+                        if (e.isPresent()){
+                            Year year =  e.get().getTreeYear().biggestElement();
+                            addToList(area, year.getValue());
+                        }
+                    });
+                }
+            });
+            sortListDescending(listBiggestValues);
 
-        addTopNValuesToList(topNumArea);
+            addTopNValuesToList(topNumArea);
+
+        }catch (IndexOutOfBoundsException exception){
+            System.out.println("Area Tree is Empty");
+        }
+
+
+
     }
 
     private void addTopNValuesToList(int topNumArea) {

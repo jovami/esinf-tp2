@@ -1,5 +1,7 @@
 package jovami.util;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import jovami.trees.AVL;
@@ -15,5 +17,11 @@ public class Utils {
         var avl = new AVL<E>();
         unsorted.forEach(avl::insert);
         return avl.inOrder();
+    }
+
+    public static <E> void
+    mergeSort(List<E> unsorted, Comparator<? super E> cmp)
+    {
+        unsorted.sort(cmp);
     }
 }

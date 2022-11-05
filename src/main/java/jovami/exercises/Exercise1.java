@@ -83,8 +83,7 @@ public class Exercise1 implements Runnable {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
-        for(File f: filenames)
-        {
+        for(File f: filenames) {
             String name = f.getName();
             //System.out.println(""+f.getName());
             if (name.contains("Production_Crops_Livestock_E_Flags")) {
@@ -95,7 +94,7 @@ public class Exercise1 implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if(name.contains("AreaCoordinates")) {
+            } else if (name.contains("AreaCoordinates")) {
                 try {
                     File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_AREACOORDINATES);
@@ -103,7 +102,7 @@ public class Exercise1 implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if(name.contains("ItemCodes_shuffled")) {
+            } else if (name.contains("ItemCodes_shuffled")) {
                 try {
                     File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
@@ -112,7 +111,12 @@ public class Exercise1 implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if(name.contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small")) {
+            }
+        }
+        for(File f: filenames)
+        {
+            String name = f.getName();
+            if(name.contains("Production_Crops_Livestock_World_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
                     //"Production_Crops_Livestock_World_shuffle_small"

@@ -15,7 +15,7 @@ public class Value implements Comparable<Value>{
         this.flag = flag;
     }
 
-
+    
     public Optional<Float> getValue() {
         return Optional.ofNullable(value);
     }

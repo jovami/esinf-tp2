@@ -15,6 +15,13 @@ public class Value {
         this.flag = flag;
     }
 
+    public static float compare(Value second, Value second1) {
+        Float.parseFloat(String.valueOf(second));
+        Float.parseFloat(String.valueOf(second1));
+        return (Float.parseFloat(String.valueOf(second)) <  Float.parseFloat(String.valueOf(second1))) ? -1 :
+                ((second == second1) ? 0 : 1);
+    }
+
     public Optional<Float> getValue() {
         return Optional.ofNullable(value);
     }

@@ -280,6 +280,20 @@ public class BST<E extends Comparable<E>>
             return smallestElement(node.getLeft());
     }
 
+
+    public E biggestElement() {
+        return biggestElement(root);
+    }
+
+    protected E biggestElement(Node<E> node) {
+        if(node == null)
+            return null;
+        if(node.getRight() == null)
+            return node.getElement();
+        else
+            return biggestElement(node.getRight());
+    }
+
     /**
      * Returns an iterable collection of elements of the tree, reported in in-order.
      * @return iterable collection of the tree's elements reported in in-order

@@ -2,7 +2,13 @@ package jovami.exercises;
 
 import jovami.App;
 import jovami.model.Area;
+import jovami.model.Element;
+import jovami.model.Item;
+import jovami.model.Year;
 import jovami.trees.KDTree;
+
+import java.util.List;
+import java.util.Optional;
 
 
 public class Exercise4 implements Runnable {
@@ -19,19 +25,22 @@ public class Exercise4 implements Runnable {
     @Override
     public void run() {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
-        final String itemCPC = "01315", elementCode = "5510", year = "2018";
-        getAreas(itemCPC, elementCode, year);
+        final String itemCode = "569", elementCode = "5510", year = "2018";
+        getAreas(itemCode, elementCode, year);
 
+        List lista = (List) kdTree.inOrder();
         Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
     }
 
-    public void getAreas(String itemCPC, String elementCode, String yearCode){
-        app.getAreaTree().getTree().inOrder().forEach(area -> {
-            if (area.getItemByItemCode(itemCPC) != null){
-                if (area.getItemByItemCode(itemCPC).getElementByElementCode(elementCode) != null){
-                    if(area.getItemByItemCode(itemCPC).getElementByElementCode(elementCode).getYearByYearCode(yearCode) != null){
+    public void getAreas(String itemCode, String elementCode, String yearCode){
+        app.getAreaTree().getTree().forEach(area -> {
+            Optional<Item> item = area.getItemByItemCode(itemCode);
+            if(item.isPresent()) {
+                Optional<Element> element = item.get().getElementByElementCode(elementCode);
+                if(element.isPresent()){
+                    Optional<Year> year = element.get().getYearByYearCode(yearCode);
+                    if (year.isPresent())
                         kdTree.insert(area, area.getCoords().getLatitude(), area.getCoords().getLongitude());
-                    }
                 }
             }
         });

@@ -33,19 +33,16 @@ public class Exercise4 implements Runnable {
         final String itemCode = "156", elementCode = "5419", year = "1965";
         getAreas(itemCode, elementCode, year);
 
-        List lista = (List) kdTree.inOrder();
-        Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
+        kdTree.nearestNeighbor(x, y);
     }
 
-    public void getAreas(String itemCode, String elementCode, String yearCode){
-        app.getAreaTree().getTree().forEach(area -> {
-            Optional<Item> item = area.getItemByItemCode(itemCode);
-            if(item.isPresent()) {
-                Optional<Element> element = item.get().getElementByElementCode(elementCode);
-                if(element.isPresent()){
-                    Optional<Year> year = element.get().getYearByYearCode(yearCode);
-                    if (year.isPresent())
+    public void getAreas(String itemCPC, String elementCode, String yearCode){
+        app.getAreaTree().getTree().inOrder().forEach(area -> {
+            if (area.getItemByItemCode(itemCPC) != null){
+                if (area.getItemByItemCode(itemCPC).getElementByElementCode(elementCode) != null){
+                    if(area.getItemByItemCode(itemCPC).getElementByElementCode(elementCode).getYearByYearCode(yearCode) != null){
                         kdTree.insert(area, area.getCoords().getLatitude(), area.getCoords().getLongitude());
+                    }
                 }
             }
         });

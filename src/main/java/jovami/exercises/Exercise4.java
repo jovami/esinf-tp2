@@ -1,25 +1,25 @@
 package jovami.exercises;
 
 import jovami.App;
+
 import jovami.model.Area;
 import jovami.model.Element;
 import jovami.model.Item;
 import jovami.model.Year;
+
 import jovami.trees.KDTree;
 
-import java.util.List;
 import java.util.Optional;
-
 
 public class Exercise4 implements Runnable {
 
     private final App app;
-    private final KDTree kdTree ;
+    private final KDTree<Area> kdTree ;
 
 
     public Exercise4() {
         app = App.getInstance();
-        this.kdTree = new KDTree();
+        this.kdTree = new KDTree<>();
     }
 
     @Override
@@ -28,7 +28,6 @@ public class Exercise4 implements Runnable {
         final String itemCode = "156", elementCode = "5419", year = "1965";
         getAreas(itemCode, elementCode, year);
 
-        List lista = (List) kdTree.inOrder();
         Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
     }
 
@@ -44,5 +43,15 @@ public class Exercise4 implements Runnable {
                 }
             }
         });
+    }
+
+    public void kdTest(){
+        int[] arrayteste= new int[]{1,2,3,4,5,6,7,8,9};
+        int[] coordsx= new int[]{2,5,10,-3,6,8,20,35,8};
+        int[] coordsy= new int[]{2,5,10,-3,6,8,20,35,8};
+        KDTree<Integer> teste = new KDTree();
+        for (int i = 0; i < arrayteste.length; i++) {
+            teste.insert(arrayteste[i], coordsx[i], coordsy[i]);
+        }
     }
 }

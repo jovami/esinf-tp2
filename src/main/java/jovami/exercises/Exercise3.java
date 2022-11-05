@@ -25,13 +25,8 @@ public class Exercise3 implements Runnable {
 
     public Exercise3() {
         app = App.getInstance();
-<<<<<<< master
         areaTree = app.getAreaTree();
         itemTree = app.getItemTree();
-=======
-        areaTree = new AreaTree();
-        itemTree = new ItemTree();
->>>>>>> feat(ex3): empty verification
 
     }
 
@@ -68,7 +63,6 @@ public class Exercise3 implements Runnable {
 
             addTopNValuesToList(topNumArea);
 
-<<<<<<< master
 
     }
 

@@ -12,6 +12,10 @@ public class Coordinate extends Point2D {
         this.longitude = longitude;
     }
 
+    public Coordinate(Coordinate other) {
+        this(other.latitude, other.longitude);
+    }
+
     public double getLatitude() {
         return latitude;
     }

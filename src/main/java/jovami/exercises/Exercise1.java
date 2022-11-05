@@ -112,10 +112,11 @@ public class Exercise1 implements Runnable {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if(name.contains("Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small")) {
+            } else if(name.contains("Production_Crops_Livestock_World_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
-
+                    //"Production_Crops_Livestock_World_shuffle_small"
+                    //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
                   try {
                     File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
@@ -260,12 +261,12 @@ public class Exercise1 implements Runnable {
             {
                 app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
                 app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);
-            }
 
-            Item item = new Item(itemCode, itemCPC, itemDescription);
 
-            if(app.getItemTree().exists(item))
-            {
+                Item item = new Item(itemCode, itemCPC, itemDescription);
+
+                if(app.getItemTree().exists(item))
+                {
 
                     Area areaTemp = app.getAreaTree().getAreaByAreaCode(areaCode);
 
@@ -283,7 +284,8 @@ public class Exercise1 implements Runnable {
                     Value val = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
                     areaTemp.getItemByItemCode(itemCode)
                         .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);
-            }
+                }
+            }          
     }
 
 
@@ -309,7 +311,7 @@ public class Exercise1 implements Runnable {
     {
         System.out.println("---SIGA TESTAR SIGA TESTAR SIGA TESTAR---");
 
-        Area pt = new Area("174","'620","Portugal",39.399872,-8.224454,"PT");
+        /*Area pt = new Area("174","'620","Portugal",39.399872,-8.224454,"PT");
         Year yea1 = new Year("1981",1981);
         Year yea2 = new Year("1990",1990);
 
@@ -324,8 +326,16 @@ public class Exercise1 implements Runnable {
                 count ++;
             }
         }
-        System.out.println("count="+ count);
+        System.out.println("count="+ count);*/
 
+         for(Area ar: app.getAreaTree().getTree().inOrder())
+        {
+
+            System.out.println("AreaCode= " + ar.getAreaCode() + " CodeM49=" + ar.getCodeM49()
+                                + " AreaName= " + ar.getAreaName() + " Latitude= " + ar.getCoords().getLatitude()
+                                + " Longitude= " + ar.getCoords().getLongitude() + " Country= " +
+                                ar.getCountry());
+        }
 
         /*for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
         {

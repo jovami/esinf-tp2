@@ -64,49 +64,58 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         if (node == null)
             return new Node<>(element, null, null);
 
-        if (node.getElement().equals(element)) {
+        int result = element.compareTo(node.getElement());
+
+        if (result == 0) {
             node.setElement(element);
         } else {
-            if (element.compareTo(node.getElement()) < 0) {
+            if (result < 0)
                 node.setLeft(insert(element, node.getLeft()));
-            } else if (element.compareTo(node.getElement()) > 0) {
+            else
                 node.setRight(insert(element, node.getRight()));
-            }
             node = balanceNode(node);
         }
+
         return node;
     }
 
     @Override
     public void remove(E element) {
-        root = remove(element, root());
+        this.root = remove(element, this.root);
     }
 
-    private Node<E> remove(E element, BST.Node<E> node) {
+    private Node<E> remove(E element, Node<E> node) {
         if (node == null)
             return null;
-        if (node.getElement().equals(element)) {
-            if (node.getLeft() == null && node.getRight() == null)
-                return null;
-            if (node.getLeft().getElement().equals(element))
-                return node.getRight();
-            if (node.getRight() == null)
-                return node.getLeft();
-            E smallElem = smallestElement(node.getRight());
-            node.setElement(smallElem);
-            node.setRight(remove(smallElem, node.getRight()));
-            node = balanceNode(node);
-        } else if (node.getElement().compareTo(element) > 0) {
-            node.setLeft(remove(element, node.getLeft()));
-            node = balanceNode(node);
-        } else {
-            node.setRight(remove(element, node.getRight()));
-            node = balanceNode(node);
+
+        // -1 if element < node.getElement(), 0 if ==, 1 if >
+        int result = Integer.signum(element.compareTo(node.getElement()));
+
+        switch (result) {
+            case -1 -> node.setLeft(remove(element, node.getLeft()));
+
+            case +1 -> node.setRight(remove(element, node.getRight()));
+
+            default -> {
+                if (node.isLeaf())
+                    return null;
+                if (node.getLeft() == null)
+                    return node.getRight();
+                if (node.getRight() == null)
+                    return node.getLeft();
+
+                E smallElem = smallestElement(node.getRight());
+                node.setElement(smallElem);
+                node.setRight(remove(smallElem, node.getRight()));
+            }
         }
+
+        node = balanceNode(node);
+
         return node;
     }
 
-
+    @Override
     public boolean equals(Object otherObj) {
         if (this == otherObj)
             return true;
@@ -119,7 +128,7 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         return equals(root, second.root);
     }
 
-    public boolean equals(Node<E> root1, Node<E> root2) {
+    protected boolean equals(Node<E> root1, Node<E> root2) {
         if (root1 == null && root2 == null) {
             return true;
         } else if (root1 != null && root2 != null) {

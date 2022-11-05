@@ -337,22 +337,6 @@ public class Exercise1 implements Runnable {
                                 ar.getCountry());
         }*/
 
-        /*for(Item item: app.getAreaTree().getAreaByAreaCode(pt.getAreaCode()).getTreeItem().inOrder())
-        {
-            for(Element elem : item.getTreeElement().inOrder())
-            {
-                for(Year ye : elem.getTreeYear().inOrder())
-                {
-                    if(ye.getYear() >= yea1.getYear() && ye.getYear() <= yea2.getYear())
-                    {
-                         for(Value val : ye.getTreeValue().inOrder())
-                         {
-                            //System.out.println("" + item.toString());
-                            //System.out.println("" + elem.toString());
-                         }
-                    }
-                }
-            }
-        }*/
+       
     }
 }

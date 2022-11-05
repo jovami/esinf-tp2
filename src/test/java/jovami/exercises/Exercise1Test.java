@@ -3,6 +3,7 @@ package jovami.exercises;
 import jovami.App;
 import jovami.MainTest;
 import jovami.model.Area;
+import jovami.model.Item;
 import jovami.model.reader.CSVHeader;
 import jovami.model.reader.CSVReader;
 import jovami.trees.AVL;
@@ -27,16 +28,11 @@ class Exercise1Test {
     }
 
     @Test
-    void run() {
-        exercise1.run();
-    }
+    void run() {exercise1.run();}
 
     @Test
-    void readAllFiles() {
+    void readAllFiles() {exercise1.readAllFiles();}
 
-        exercise1.readAllFiles();
-
-    }
 
     @Test
     void listFilesForFolder() {
@@ -60,6 +56,7 @@ class Exercise1Test {
         assertTrue(filenames.containsAll(tempFilenames),"List filenames not contains all files present in tempFilenames");
         
     }
+
 
     @Test
     void saveInfoAreaCoordinates() throws Exception {
@@ -129,11 +126,63 @@ class Exercise1Test {
 
     }
 
+
     @Test
-    void saveInfoItemCodes() {
+    void saveInfoItemCodes() throws Exception {
+        final File folder = new File("src/main/ficheiroscsv");
+        exercise1.listFilesForFolder(folder);
+        List<File> filenames = exercise1.filenames;
+        CSVReader csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
+
+        List<String[]> list = new ArrayList<>();
+
+        for (File file : filenames) {
+            if(file.getName().contains("ItemCodes_shuffled"))
+            {
+                File dir = exercise1.fileDirReader(file.getName());   
+                list = csvReader.readCSV(dir);
+            }
+        }
+
+        exercise1.saveInfoItemCodes(list);
+
+
+        List<String[]> temp = new ArrayList<>();
+        for(String[] ls: list)
+        {
+            String[] t = new String[3];
+                               
+            t[0] = ls[0];
+            t[1] = ls[1];
+            t[2] = ls[2];
+            
+            temp.add(t);           
+        }
+
+
+        AVL<Item> tree = App.getInstance().getItemTree().getTree();
+        List<String[]> tempx = new ArrayList<>();
+        for(Item item: tree.inOrder())
+        {
+            String[] t = new String[4];
+                               
+            t[0] = item.getItemCode();
+            t[1] = item.getItemCPC();
+            t[2] = item.getItemDescription();      
+            tempx.add(t);
+        }
+
+
+        for(String[] ls : temp)
+        {
+            if(tempx.contains(ls))
+                assertTrue(true);               
+        }
+
+
     }
 
-
+    
     @Test
     void saveInfoShuffle() {
     }

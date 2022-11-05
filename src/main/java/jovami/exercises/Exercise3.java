@@ -35,8 +35,8 @@ public class Exercise3 implements Runnable {
     @Override
     public void run() {
 
-        String itemCode = "260";
-        String elementCode = "5312";
+        String itemCode = "393";
+        String elementCode = "5510";
         int topNumArea = 3;
 
        getTopNPairs(itemCode,elementCode,topNumArea);
@@ -47,11 +47,11 @@ public class Exercise3 implements Runnable {
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
       //  try{
             areaTree.getTree().forEach(area -> {
-                Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
+                Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
                     i.get().getTreeElement();
                     itemTree.getTree().forEach(item -> {
-                        Optional<Element> e = item.getTreeElement().find(item.getElementByElementCode(elementCode));
+                        Optional<Element> e = item.getTreeElement().find(new Element(elementCode,null));
                         if (e.isPresent()){
                             Year year =  e.get().getTreeYear().biggestElement();
                             addToList(area, year.getValue());

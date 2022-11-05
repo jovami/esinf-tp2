@@ -25,7 +25,7 @@ public class Exercise4 implements Runnable {
     @Override
     public void run() {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
-        final String itemCode = "569", elementCode = "5510", year = "2018";
+        final String itemCode = "156", elementCode = "5419", year = "1965";
         getAreas(itemCode, elementCode, year);
 
         List lista = (List) kdTree.inOrder();

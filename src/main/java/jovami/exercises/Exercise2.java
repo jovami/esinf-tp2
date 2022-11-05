@@ -1,14 +1,14 @@
 package jovami.exercises;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 import jovami.App;
 import jovami.model.Area;
-import jovami.model.Element;
-import jovami.model.Item;
-import jovami.util.Pair;
 import jovami.util.Triplet;
+import jovami.util.Utils;
 
 public class Exercise2 implements Runnable {
 
@@ -16,7 +16,6 @@ public class Exercise2 implements Runnable {
 
     public Exercise2() {
         app = App.getInstance();
-
     }
 
     @Override
@@ -27,9 +26,12 @@ public class Exercise2 implements Runnable {
     // methods to find the area by each property
 
 
+    /****************************************************************************/
+
+
     // driver method
-    private Map<Triplet<int[], Item, Element>, Float>
-    nameTBD(final Area area, final int yearMin, final int yearMax)
+    private List<Triplet<String, String, Float>>
+    getAreaAverages(final Area area, final int yearMin, final int yearMax)
     {
         // checks
         if (yearMin > yearMax) {
@@ -39,30 +41,26 @@ public class Exercise2 implements Runnable {
         }
 
         final int n = yearMax - yearMin + 1;
-
-        final int[] interval = new int[] { yearMin, yearMax };
-
-        final HashMap<Triplet<int[], Item, Element>, Float> avgMap;
-
-        { // reduce scope for this part
-            // TODO: find a nice value for this
-            final int capacity = 1 << 6;
-            avgMap = new HashMap<>(capacity);
-        }
+        final var avgMap = new ArrayList<Triplet<String, String, Float>>();
 
         // driver code
         area.getTreeItem().forEach(item -> {
             item.getTreeElement().forEach(element -> {
                 /* HACK: java doesn't allow updating variables inside lambdas
-                         so we use a double[1] to work around it */
+                         so we use a float[1] to work around it */
                 float hack[] = new float[1];
 
                 element.getTreeYear().forEach(year -> {
                     int y = year.getYear();
-                    if (y >= yearMin && y <= yearMax)
-                        hack[0] += year.getValue(); // FIX: Have each Year store a Value, not an AVL<Value>
+                    Optional<Float> valOpt = year.getValue().getValue();
+                    if (valOpt.isPresent() && y >= yearMin && y <= yearMax)
+                        hack[0] += valOpt.get();
                 });
-                avgMap.put(new Triplet<>(interval, item, element), hack[0] / n);
+
+                avgMap.add(new Triplet<>(item.getItemDescription(),
+                                         element.getElementType(),
+                                         hack[0] / n)
+                );
             });
         });
 

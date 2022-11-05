@@ -2,7 +2,9 @@ package jovami.trees;
 
 import java.awt.geom.Point2D;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * KDTree
@@ -154,10 +156,80 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
     }
 
     @Override
-    public List<E> rangeSearch(double x1, double y1, double x2, double y2) {
-        return null;
+    public List<E> rangeSearch(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, Boolean cmpX) {
+        
+        List<E> result = new LinkedList<>();// ou Iterable
+        searchArea(node, coordInicial,coordFinal, cmpX,result::add);
+        return result;
     }
 
+
+    private void searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, Boolean cmpX,Consumer<? super E> action ) {
+
+        if (node==null){ //Se o node não tiver um valor n faz nada
+            return;
+        }
+
+
+        if(cmpX){//se tivermos num nivel em que temos de comparar o x
+
+            if(node.coords.x<coordInicial.x ){//se n estiver dentro da area
+                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    //procura de um valor maior que x inicial
+            }else{ // se estiver dentro da area
+
+                if (node.coords.x<=coordFinal.x){//verificar se nao ultrapassou a coord final
+                    //enquanto estiver dentro da area, quero verificar todos os valores para a direita e para a esquerda
+                    searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    
+                    searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);    
+                    action.accept(node.getElement());
+                }else{
+                    return;
+                    //se tiver limpo a area entre x inicial e x final, n fazer nada?
+                    //rangeSearch (node.getRight(),coordInicial, coordFinal, !cmpX);
+                }
+            }
+
+        }else{ 
+
+            if(node.coords.y<coordInicial.y ){//se n estiver dentro da area
+                searchArea(node.getRight(),coordInicial, coordFinal, !cmpX,action);    //procura de um valor maior que x inicial
+
+            }else{ // se estiver dentro da area
+
+                if (node.coords.y<=coordFinal.y){//verificar se nao ultrapassou a coord final
+                    searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    
+                    searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);    
+                    
+                    action.accept(node.getElement());
+                    
+                }else{
+                    return;
+                    //se tiver fora da area entre y inicial e  final, n fazer nada?
+                    //rangeSearch (node.getRight(),coordInicial, coordFinal, !cmpX);
+                }
+                
+            }
+        }
+    }
+
+
+
+/*
+        List<E> rangeSearch(KDNode<E> node, boolean divX) {
+            if (node == null)
+                return result;
+
+            if (radius >= d)
+                result.add(node.object);
+            if
+            double delta = divX ? x - node.coords.x : y - node.coords.y;
+            double delta2 = delta * delta;
+            Node<E> node1 = delta < 0 ? node.left : node.right;
+            Node<E> node2 = delta < 0 ? node.right : node.left;
+            rangeSearch(node1, !divX);
+            if (delta2 < radius) {
+                rangeSearch(node2, !divX);
+            }*/
     @Override
     public List<E> kNearestNeighbors(double x, double y, int n) {
         throw new UnsupportedOperationException("Not implemented!");

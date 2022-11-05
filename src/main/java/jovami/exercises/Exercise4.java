@@ -3,10 +3,6 @@ package jovami.exercises;
 import jovami.App;
 import jovami.model.Area;
 import jovami.trees.KDTree;
-import jovami.util.Triplet;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Exercise4 implements Runnable {
@@ -26,7 +22,7 @@ public class Exercise4 implements Runnable {
         final String itemCPC = "01315", elementCode = "5510", year = "2018";
         getAreas(itemCPC, elementCode, year);
 
-        kdTree.nearestNeighbor(x, y);
+        Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
     }
 
     public void getAreas(String itemCPC, String elementCode, String yearCode){

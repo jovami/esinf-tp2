@@ -31,8 +31,13 @@ public class Exercise2 implements Runnable {
                 yearMax
         );
 
-        for (final var element : list)
-            System.out.println(element);
+        for (final var element : list) {
+            System.out.printf("Item: \"%s\", Element: \"%s\" ==> Average: %.2f\n",
+                              element.first(),
+                              element.second(),
+                              element.third()
+            );
+        }
     }
 
     // methods to find the area by each property

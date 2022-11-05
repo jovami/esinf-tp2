@@ -39,9 +39,14 @@ public class Exercise2 implements Runnable {
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {
-        final Area a = app.getAreaTree().getAreaByAreaCode(areaCode);
-        final var list = getAreaAverages(a, yearMin, yearMax);
-        Utils.mergeSort(list, Comparator.comparing(Triplet::third, Comparator.reverseOrder()));
+        final Area a = app.getAreaTree().getAreaByAreaCode(areaCode);           // O(logn)
+        final var list = getAreaAverages(a, yearMin, yearMax);                  // O(n^3)   (As seen below)
+        Utils.mergeSort(list,                                                   // O(nlogn) (According to official documentation)
+                        Comparator.comparing(Triplet::third,
+                                             Comparator.reverseOrder())
+        );
+
+        // Worst-case time complexity: O(n^3)
         return list;
     }
 
@@ -64,24 +69,25 @@ public class Exercise2 implements Runnable {
         final var averages = new ArrayList<Triplet<String, String, Float>>();
 
         // driver code
-        area.getTreeItem().forEach(item -> {
-            item.getTreeElement().forEach(element -> {
-                final DoubleAdder sum = new DoubleAdder();
+        area.getTreeItem().forEach(item -> {                                    // O(n * inside)
+            item.getTreeElement().forEach(element -> {                          // O(n * inside)
+                final DoubleAdder sum = new DoubleAdder();                      // O(1)
 
-                element.getTreeYear().forEach(year -> {
-                    final int y = year.getYear();
-                    final Optional<Float> valOpt = year.getValue().getValue();
-                    if (valOpt.isPresent() && y >= yearMin && y <= yearMax)
-                        sum.add(valOpt.get());
+                element.getTreeYear().forEach(year -> {                         // O(n * inside)
+                    final int y = year.getYear();                               // O(1)
+                    final Optional<Float> valOpt = year.getValue().getValue();  // O(1)
+                    if (valOpt.isPresent() && y >= yearMin && y <= yearMax)     // O(1)
+                        sum.add(valOpt.get());                                  // O(1)
                 });
 
-                averages.add(new Triplet<>(item.getItemDescription(),
+                averages.add(new Triplet<>(item.getItemDescription(),           // O(1)
                                          element.getElementType(),
                                          sum.floatValue() / n)
                 );
             });
         });
 
+        // Worst-case time complexity: O(n * n * n) => O(n^3)
         return averages;
     }
 }

@@ -3,7 +3,6 @@ package jovami.exercises;
 import jovami.App;
 import jovami.model.Area;
 import jovami.trees.KDTree;
-import jovami.util.Triplet;
 
 import jovami.model.Area;
 import jovami.model.Element;

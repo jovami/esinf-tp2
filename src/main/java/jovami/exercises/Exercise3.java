@@ -47,12 +47,16 @@ public class Exercise3 implements Runnable {
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
       //  try{
             areaTree.getTree().forEach(area -> {
-                Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
+                Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
                     i.get().getTreeElement();
                     itemTree.getTree().forEach(item -> {
+<<<<<<< master
                         Optional<Element> e = item.getTreeElement().find(item.getElementByElementCode(elementCode));
 >>>>>>> feat(ex3): empty verification
+=======
+                        Optional<Element> e = item.getTreeElement().find(new Element(elementCode,null));
+>>>>>>> feat(ex3): item complete
                         if (e.isPresent()){
                             Year year =  e.get().getTreeYear().biggestElement();
                             addToList(area, year.getValue());

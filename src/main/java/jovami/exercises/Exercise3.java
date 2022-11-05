@@ -26,13 +26,8 @@ public class Exercise3 implements Runnable {
 
     public Exercise3() {
         app = App.getInstance();
-<<<<<<< master
         areaTree = app.getAreaTree();
         itemTree = app.getItemTree();
-=======
-        areaTree = new AreaTree();
-        itemTree = new ItemTree();
->>>>>>> feat(ex3): empty verification
 
 
     }
@@ -50,16 +45,7 @@ public class Exercise3 implements Runnable {
     }
 
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
-<<<<<<< master
       //  try{
-            areaTree.getTree().forEach(area -> {
-                Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
-                if (i.isPresent()) {
-                    i.get().getTreeElement();
-                    itemTree.getTree().forEach(item -> {
-                        Optional<Element> e = item.getTreeElement().find(new Element(elementCode,null));
-=======
-        try{
             areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(itemTree.getItemByItemCode(itemCode));
                 if (i.isPresent()) {
@@ -78,16 +64,10 @@ public class Exercise3 implements Runnable {
 
             addTopNValuesToList(topNumArea);
 
-<<<<<<< master
 
        // }catch (IndexOutOfBoundsException exception){
          //   System.out.println("Area Tree is Empty");
         //}
-=======
-        }catch (IndexOutOfBoundsException exception){
-            System.out.println("Area Tree is Empty");
-        }
->>>>>>> feat(ex3): empty verification
 
 
 

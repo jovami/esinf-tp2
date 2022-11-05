@@ -19,7 +19,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         private KDNode<E> left;       // a reference to the left child (if any)
         private KDNode<E> right;      // a reference to the right child (if any)
 
-
         /**
          * Instantiates a new Kd node.
          *
@@ -69,16 +68,27 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
             this.right = rightChild;
         }
     }
+    //----------- end of nested Node class -----------
 
-    private KDNode<E> root;
+    protected KDNode<E> root;   //root
 
+    /* Constructs an empty KDtree. */
     public KDTree(){
         root = null;
     }
 
+    //----------- Comparators -----------
     private final Comparator<KDNode<E>> cmpX = Comparator.comparingDouble(p -> p.coords.x);
 
     private final Comparator<KDNode<E>> cmpY = Comparator.comparingDouble(p -> p.coords.y);
+
+    /*
+     * Verifies if the tree is empty
+     * @return true if the tree is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return this.root == null;
+    }
 
     /**
      * Insert.

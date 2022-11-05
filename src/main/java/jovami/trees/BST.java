@@ -76,7 +76,6 @@ public class BST<E extends Comparable<E>>
         }
     }
     //----------- end of nested Node class -----------
-
     protected Node<E> root = null;     // root of the tree
 
     /* Constructs an empty binary search tree. */

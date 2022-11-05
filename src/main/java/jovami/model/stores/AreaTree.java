@@ -1,5 +1,8 @@
 package jovami.model.stores;
 
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
+
 import jovami.model.Area;
 import jovami.trees.AVL;
 
@@ -12,61 +15,44 @@ public class AreaTree {
         this.tree = new AVL<>();
     }
 
-    public AVL<Area> getTree(){return tree;}
+    public AVL<Area> getTree() {
+        return this.tree;
+    }
 
-    public boolean addArea(Area area)
-    {
-
+    public void addArea(Area area) {
          this.tree.insert(area);
-         return true;
     }
 
-    public Area getAreaByAreaCode(String areaCode)
-    {
+    public Optional<Area> getAreaByAreaCode(String areaCode) {
+        AtomicReference<Area> ref = new AtomicReference<>();
 
-        for(Area area: tree.inOrder())
-        {
-            if(area.getAreaCode().compareToIgnoreCase("") != 0 )
-                if (area.getAreaCode().compareToIgnoreCase(areaCode) == 0)
-                    return area;
+        this.tree.forEach(area -> {
+            // FIXME: change areaCode to integer
+            String code = area.getAreaCode();
+            if (code != null && code.equals(areaCode))
+                ref.setPlain(area);
+        });
 
-        }
-
-        return null;
+        return Optional.ofNullable(ref.getPlain());
     }
 
 
-    public Area getAreaByAreaName(String areaName)
-    {
-        for(Area area: tree.inOrder())
-        {
-            if(area.getAreaName().compareToIgnoreCase(areaName) == 0)
-                return area;
-        }
+    public Optional<Area> getAreaByAreaName(String areaName) {
+        Area tmp = new Area(null, null, areaName, 0, 0, null);
 
-        return null;
+        return this.getAreaByArea(tmp);
     }
 
-    public Area getAreaByArea(Area area)
-    {
-        for(Area a: tree.inOrder())
-        {
-            if(area.compareTo(a) == 0)
-                return area;
-        }
-
-        return null;
+    public Optional<Area> getAreaByArea(Area area) {
+        return this.tree.find(area);
     }
 
     /**
-     * checks if area is already leaf in the tree
+     * checks if area is already in the tree
      * @param area
      * @return boolean
      */
-    public boolean exists(Area area)
-    {
-        return tree.find(area).isPresent();        
+    public boolean exists(Area area) {
+        return tree.find(area).isPresent();
     }
-
-
 }

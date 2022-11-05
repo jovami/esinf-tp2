@@ -28,7 +28,6 @@ public class Exercise3 implements Runnable {
         areaTree = app.getAreaTree();
         itemTree = app.getItemTree();
 
-
     }
 
     @Override
@@ -49,19 +48,22 @@ public class Exercise3 implements Runnable {
     }
 
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
+
             areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
-                    Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode,null));
-                    if (e.isPresent()){
-                        Year year= e.get().getTreeYear().biggestElement();
-                        addToList(area,year.getValue());
+                    Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode, null));
+                    if (e.isPresent()) {
+                        Year year = e.get().getTreeYear().biggestElement();
+                        addToList(area, year.getValue());
                     }
                 }
             });
             sortListDescending(listBiggestValues);
 
             addTopNValuesToList(topNumArea);
+
+
     }
 
     private void addTopNValuesToList(int topNumArea) {

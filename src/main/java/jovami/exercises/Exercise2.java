@@ -3,6 +3,7 @@ package jovami.exercises;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.concurrent.atomic.DoubleAdder;
 
@@ -44,7 +45,12 @@ public class Exercise2 implements Runnable {
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {
+        // TODO: change method to return Optional<Area>
         final Area a = app.getAreaTree().getAreaByAreaCode(areaCode);           // O(logn)
+
+        if (a == null)
+            throw new NoSuchElementException("The requested area does not exist");
+
         final var list = getAreaAverages(a, yearMin, yearMax);                  // O(n^3)   (As seen below)
         Utils.mergeSort(list,                                                   // O(nlogn) (According to official documentation)
                         Comparator.comparing(Triplet::third,

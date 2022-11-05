@@ -3,19 +3,20 @@ package jovami.model;
 import jovami.trees.AVL;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class Element implements Comparable<Element> {
 
     private String elementCode;
     private String elementType;
-    private final AVL<Year> treeYear ;
+    private final AVL<Year> treeYear;
 
 
     public Element(String elementCode, String elementType) {
         this.elementCode = elementCode;
         this.elementType = elementType;
 
-        this.treeYear =  new AVL<>();
+        this.treeYear = new AVL<>();
     }
 
 
@@ -35,32 +36,29 @@ public class Element implements Comparable<Element> {
         return treeYear;
     }
 
-    public boolean addYear(Year year)
-    {
+    public void addYear(Year year) {
         this.treeYear.insert(year);
-        return true;
     }
 
-    public Year getYearByYearCode(String yearCode)
-    {
-        for(Year yr: treeYear.inOrder())
-        {
-            if(yr.getYearCode().compareToIgnoreCase(yearCode) == 0)
-                return yr;
+    public Optional<Year> getYearByYearCode(String yearCode) {
+        Optional<Year> ret;
+        try {
+            ret = this.getYearByYear(Integer.parseInt(yearCode));
+        } catch (NumberFormatException e) {
+            ret = Optional.empty();
         }
 
-        return null;
+        return ret;
     }
 
-    public Year getYearByYear(Year year)
-    {
-        for(Year yr : treeYear.inOrder())
-        {
-            if(yr.getYear() == year.getYear())
-                return year;
-        }
+    public Optional<Year> getYearByYear(int year) {
+        Year tmp = new Year(null, year);
+        return this.getYearByYear(tmp);
+    }
 
-        return null;
+    public Optional<Year> getYearByYear(Year year)
+    {
+        return this.treeYear.find(year);
     }
 
     @Override
@@ -68,7 +66,9 @@ public class Element implements Comparable<Element> {
         if (this == o) return true;
         if (!(o instanceof Element)) return false;
         Element element = (Element) o;
-        return elementCode.equals(element.elementCode) && elementType.equals(element.elementType) && treeYear.equals(element.treeYear);
+        return elementCode.equals(element.elementCode) &&
+            elementType.equals(element.elementType) &&
+            treeYear.equals(element.treeYear);
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.DoubleAdder;
 
 import jovami.App;
 import jovami.model.Area;
@@ -20,9 +21,9 @@ public class Exercise2 implements Runnable {
 
     @Override
     public void run() {
-        String areaCode = "174"; // FIXME: change to int
+        final String areaCode = "174"; // FIXME: change to int
         final int yearMin = 1996, yearMax = 2005;
-        var list = getAreaAverages(areaCode, yearMin, yearMax);
+        final var list = getAreaAverages(areaCode, yearMin, yearMax);
 
         System.out.printf(
                 "Value averages for each Item and Element in the years %d..%d\n",
@@ -30,7 +31,7 @@ public class Exercise2 implements Runnable {
                 yearMax
         );
 
-        for (var element : list)
+        for (final var element : list)
             System.out.println(element);
     }
 
@@ -38,8 +39,8 @@ public class Exercise2 implements Runnable {
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {
-        Area a = app.getAreaTree().getAreaByAreaCode(areaCode);
-        var list = getAreaAverages(a, yearMin, yearMax);
+        final Area a = app.getAreaTree().getAreaByAreaCode(areaCode);
+        final var list = getAreaAverages(a, yearMin, yearMax);
         Utils.mergeSort(list, Comparator.comparing(Triplet::third, Comparator.reverseOrder()));
         return list;
     }
@@ -60,29 +61,27 @@ public class Exercise2 implements Runnable {
         }
 
         final int n = yearMax - yearMin + 1;
-        final var avgMap = new ArrayList<Triplet<String, String, Float>>();
+        final var averages = new ArrayList<Triplet<String, String, Float>>();
 
         // driver code
         area.getTreeItem().forEach(item -> {
             item.getTreeElement().forEach(element -> {
-                /* HACK: java doesn't allow updating variables inside lambdas
-                         so we use a float[1] to work around it */
-                float hack[] = new float[1];
+                final DoubleAdder sum = new DoubleAdder();
 
                 element.getTreeYear().forEach(year -> {
-                    int y = year.getYear();
-                    Optional<Float> valOpt = year.getValue().getValue();
+                    final int y = year.getYear();
+                    final Optional<Float> valOpt = year.getValue().getValue();
                     if (valOpt.isPresent() && y >= yearMin && y <= yearMax)
-                        hack[0] += valOpt.get();
+                        sum.add(valOpt.get());
                 });
 
-                avgMap.add(new Triplet<>(item.getItemDescription(),
+                averages.add(new Triplet<>(item.getItemDescription(),
                                          element.getElementType(),
-                                         hack[0] / n)
+                                         sum.floatValue() / n)
                 );
             });
         });
 
-        return avgMap;
+        return averages;
     }
 }

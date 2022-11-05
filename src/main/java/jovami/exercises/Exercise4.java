@@ -16,6 +16,7 @@ import jovami.trees.KDTree;
 
 import java.util.Optional;
 
+
 public class Exercise4 implements Runnable {
 
     private final App app;
@@ -33,7 +34,7 @@ public class Exercise4 implements Runnable {
         final String itemCode = "156", elementCode = "5419", year = "1965";
         getAreas(itemCode, elementCode, year);
 
-        kdTree.nearestNeighbor(x, y);
+        Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
     }
 
     public void getAreas(String itemCPC, String elementCode, String yearCode){

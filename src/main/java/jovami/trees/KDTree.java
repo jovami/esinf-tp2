@@ -125,7 +125,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
                 currentNode.setRight(insert(currentNode.getRight(), node, !divX));
         }
 
-        return node;
+        return currentNode;
     }
 
     @Override

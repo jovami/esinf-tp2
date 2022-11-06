@@ -2,7 +2,9 @@ package jovami.trees;
 
 import java.awt.geom.Point2D;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * KDTree
@@ -153,11 +155,53 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return closestNode.getElement();
     }
 
+    /**
+     * This method receives:
+     * @param x1    x inicial
+     * @param y1    y inicial
+     * @param x2    x final
+     * @param y2    x final
+     * @return List<E> with all the elements that were in between the area created by inicial and final coordinates
+     */
     @Override
     public List<E> rangeSearch(double x1, double y1, double x2, double y2) {
-        return null;
+        KDNode<E> node = this.root;
+
+        Point2D.Double coordInicial= new Point2D.Double(x1,y1);
+        Point2D.Double coordFinal= new Point2D.Double(x2,y2);
+
+        List<E> result = new LinkedList<>();
+
+        searchArea(node, coordInicial,coordFinal, true,result::add);
+
+        return result;
     }
 
+
+    private void searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) {
+
+        if (node==null){ //Se o node não tiver um valor n faz nada
+            return;
+        }
+
+        double compareInicial= (cmpX ? node.coords.x - coordInicial.x : node.coords.y - coordInicial.y); // >=0 -> inside area
+        double compareFinal= (cmpX ? node.coords.x - coordFinal.x : node.coords.y - coordFinal.y);  // <=0 -> outside area
+
+        if(compareInicial >= 0){//if node.coords is above inicial coords
+
+            if (compareFinal <= 0){// node.coords is below final coords
+                // while between the area, we want to check all the possible nodes
+                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    
+                searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);    
+                action.accept(node.getElement());
+            }
+
+        }else{ // when node.coord are bellow inicial coords, we only want to check greater values
+            searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+        }
+
+    }
+    
     @Override
     public List<E> kNearestNeighbors(double x, double y, int n) {
         throw new UnsupportedOperationException("Not implemented!");

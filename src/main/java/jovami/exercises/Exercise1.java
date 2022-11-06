@@ -146,7 +146,7 @@ public class Exercise1 implements Runnable {
         }
     }
 
-    private void saveInfoFlags(List<String[]> list) {
+    public void saveInfoFlags(List<String[]> list) {
         char code;
         String name;
 

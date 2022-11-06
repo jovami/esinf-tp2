@@ -6,17 +6,10 @@ import jovami.model.Area;
 import jovami.model.Element;
 import jovami.model.Item;
 import jovami.model.Year;
-import jovami.trees.KDTree;
-
-import jovami.model.Area;
-import jovami.model.Element;
-import jovami.model.Item;
-import jovami.model.Year;
 
 import jovami.trees.KDTree;
 
 import java.util.Optional;
-
 
 public class Exercise4 implements Runnable {
 

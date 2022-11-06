@@ -187,7 +187,7 @@ public class Exercise1 implements Runnable {
             areaName = info[ColunasAreaCoordinates.AREANOME.getColuna()];
 
 
-             saveAreaCoordinates(areaName, latitude, longitude, country);
+            saveAreaCoordinates(areaName, latitude, longitude, country);
 
         }
 

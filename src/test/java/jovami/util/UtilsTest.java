@@ -11,11 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class UtilsTest {
 
-    public UtilsTest() {
-    }
-
     @Test
-    public void testAVLSort() {
+    void testAVLSort() {
         List<String> lStrIni = Arrays.asList("rui","joao","carlos","filipe","berta","ze","cunha");
         List<String> lStrRes = Arrays.asList("berta","carlos","cunha","filipe","joao","rui","ze");
 

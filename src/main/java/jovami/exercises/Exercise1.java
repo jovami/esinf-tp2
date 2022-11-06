@@ -198,6 +198,7 @@ public class Exercise1 implements Runnable {
     private void saveAreaCoordinates(String areaName, double latitude, double longitude, String country) {
         Area area = new Area("","",areaName,latitude,  longitude,  country);
         app.getAreaTree().addArea(area);
+        app.getKDAreaTree().addNode(area, latitude, longitude);
     }
 
 

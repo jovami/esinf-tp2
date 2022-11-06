@@ -3,7 +3,7 @@ package jovami.model;
 import java.util.Objects;
 import java.util.Optional;
 
-public class Value {
+public class Value implements Comparable<Value>{
 
     private Float value;
     private String unit;
@@ -15,12 +15,6 @@ public class Value {
         this.flag = flag;
     }
 
-    public static float compare(Value second, Value second1) {
-        Float.parseFloat(String.valueOf(second));
-        Float.parseFloat(String.valueOf(second1));
-        return (Float.parseFloat(String.valueOf(second)) <  Float.parseFloat(String.valueOf(second1))) ? -1 :
-                ((second == second1) ? 0 : 1);
-    }
 
     public Optional<Float> getValue() {
         return Optional.ofNullable(value);
@@ -56,5 +50,10 @@ public class Value {
                 ", unit='" + unit + '\'' +
                 ", flag=" + flag +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Value o) {
+        return this.value.compareTo(o.value);
     }
 }

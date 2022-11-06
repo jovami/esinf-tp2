@@ -10,10 +10,13 @@ public class Year implements Comparable<Year> {
     // NOTE: Optional<Value> may be better
     private Value value;
 
-    public Year(String yearCode, int year) {
+    public Year(String yearCode, int year, Value v) {
         this.yearCode = yearCode;
         this.year = year;
         this.value = null;
+    }
+    public Year(String yearCode, int year) {
+        this(yearCode, year, null);
     }
 
     public int getYear() {

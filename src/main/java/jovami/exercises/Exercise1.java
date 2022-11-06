@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class Exercise1 implements Runnable {
 
@@ -258,38 +259,27 @@ public class Exercise1 implements Runnable {
     {
         var flagStore = app.flagStore();
 
-            //UPDATE VALUES OF areaCode e codeM49 in area
-            Area temp = new Area (areaCode, codeM49, areaName , 0,0,"");
+        Optional<Area> tmp = app.getAreaTree().getAreaByAreaName(areaName);
 
-            if(app.getAreaTree().exists(temp))
-            {
-                app.getAreaTree().getAreaByAreaName(areaName).setAreaCode(areaCode);
-                app.getAreaTree().getAreaByAreaName(areaName).setCodeM49(codeM49);
-
-
-                Item item = new Item(itemCode, itemCPC, itemDescription);
-
-                if(app.getItemTree().exists(item))
-                {
-
-                    Area areaTemp = app.getAreaTree().getAreaByAreaCode(areaCode);
-
-                    areaTemp.addItem(item);
+        // UPDATE VALUES OF areaCode e codeM49 in area
+        if (tmp.isPresent()) {
+            Area area = tmp.get();
+            area.setAreaCode(areaCode);
+            area.setCodeM49(codeM49);
 
 
-                    Element element = new Element(elementCode,elementType);
+            Item item = new Item(itemCode, itemCPC, itemDescription);
 
-                    areaTemp.getItemByItemCode(itemCode).addElement(element);
+            if(app.getItemTree().exists(item)) {
+                Value v = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
+                Year y = new Year(yearCode, year, v);
+                Element e = new Element(elementCode, elementType);
 
-                    Year yea = new Year(yearCode,year);
-                    areaTemp.getItemByItemCode(itemCode)
-                        .getElementByElementCode(elementCode).addYear(yea);
-
-                    Value val = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
-                    areaTemp.getItemByItemCode(itemCode)
-                        .getElementByElementCode(elementCode).getYearByYear(yea).addValue(val);
-                }
-            }          
+                e.addYear(y);
+                item.addElement(e);
+                area.addItem(item);
+            }
+        }
     }
 
 
@@ -320,17 +310,22 @@ public class Exercise1 implements Runnable {
         Year yea2 = new Year("1990",1990);
 
         int count = 0;
-        for(Item item: app.getAreaTree().getAreaByAreaCode("174").getTreeItem().inOrder())
-        {
-            System.out.println(""+item.toString());
-            for(Element elem: item.getTreeElement().inOrder())
-            {
-                //System.out.println(""+ elem.toString());
-                //System.out.println(item.toString() + "  " + elem.toString());
-                count ++;
+
+        var tmp = app.getAreaTree().getAreaByAreaCode("174");
+
+        if (tmp.isPresent()) {
+            var aTmp = tmp.get();
+
+            for(Item item: aTmp.getTreeItem().inOrder()) {
+                System.out.println(""+item.toString());
+                for(Element elem: item.getTreeElement().inOrder()) {
+                    //System.out.println(""+ elem.toString());
+                    //System.out.println(item.toString() + "  " + elem.toString());
+                    count ++;
+                }
             }
+            System.out.println("count="+ count);
         }
-        System.out.println("count="+ count);
 
          /*for(Area ar: app.getAreaTree().getTree().inOrder())
         {
@@ -341,6 +336,6 @@ public class Exercise1 implements Runnable {
                                 ar.getCountry());
         }*/
 
-       
+
     }
 }

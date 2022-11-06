@@ -1,5 +1,7 @@
 package jovami.model.stores;
 
+import java.util.Optional;
+
 import jovami.model.Item;
 import jovami.trees.AVL;
 
@@ -7,46 +9,30 @@ public class ItemTree {
 
     private final AVL<Item> tree;
 
-    public ItemTree(){this.tree = new AVL<>();}
+    public ItemTree() {
+        this.tree = new AVL<>();
+    }
 
-    public AVL<Item> getTree(){return tree;}
+    public AVL<Item> getTree() {
+        return tree;
+    }
 
-    public boolean addItem(Item item)
-    {
+    public void addItem(Item item) {
         this.tree.insert(item);
-        return true;
     }
 
-    
-    public Item getItemByItemCode(String itemCode)
-    {
-        for(Item item: tree.inOrder())
-        {
-            if(item.getItemCode().compareToIgnoreCase(itemCode) == 0)
-                return item;
-            else 
-                return null;
-        }
-        
-        return null;
+
+    public Optional<Item> getItemByItemCode(String itemCode) {
+        Item tmp = new Item(itemCode, null, null);
+
+        return this.getItemByItem(tmp);
     }
 
-    public Item getItemByItem(Item item)
-    {
-
-        for(Item it: tree.inOrder())
-        {
-
-            if(item.compareTo(it) == 0)
-                return item;
-        }
-
-        return null;
+    public Optional<Item> getItemByItem(Item item) {
+        return this.tree.find(item);
     }
 
-    public boolean exists(Item item)
-    {
-      return tree.find(item).isPresent(); 
+    public boolean exists(Item item) {
+        return tree.find(item).isPresent();
     }
-
 }

@@ -270,17 +270,27 @@ public class Exercise1 implements Runnable {
             area.setCodeM49(codeM49);
 
 
-            Item item = new Item(itemCode, itemCPC, itemDescription);
+            var item = new Item(itemCode, itemCPC, itemDescription);
+            var yea = new Year(yearCode, year, new Value(unit, value, flagStore.get(flag).orElseThrow()));
+            var elem = new Element(elementCode, elementType);
 
-            if(app.getItemTree().exists(item)) {
-                Value v = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
-                Year y = new Year(yearCode, year, v);
-                Element e = new Element(elementCode, elementType);
-
-                e.addYear(y);
-                item.addElement(e);
+            Optional<Item> iOpt = area.getItembyItem(item);
+            if (iOpt.isEmpty())
                 area.addItem(item);
-            }
+            else
+                item = iOpt.get();
+
+            Optional<Element> eOpt = item.getElementByElement(elem);
+            if (eOpt.isEmpty())
+                item.addElement(elem);
+            else
+                elem = eOpt.get();
+
+            Optional<Year> yOpt = elem.getYearByYear(yea);
+            if (yOpt.isEmpty())
+                elem.addYear(yea);
+            else
+                yea = yOpt.get();
         }
     }
 

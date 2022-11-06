@@ -286,11 +286,8 @@ public class Exercise1 implements Runnable {
             else
                 elem = eOpt.get();
 
-            Optional<Year> yOpt = elem.getYearByYear(yea);
-            if (yOpt.isEmpty())
+            if (elem.getYearByYear(yea).isEmpty())
                 elem.addYear(yea);
-            else
-                yea = yOpt.get();
         }
     }
 

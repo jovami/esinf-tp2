@@ -101,9 +101,10 @@ public class Area implements Comparable<Area> {
                 "areaCode='" + areaCode + '\'' +
                 ", codeM49='" + codeM49 + '\'' +
                 ", areaName='" + areaName + '\'' +
-                ", coords=" + coords +
+                ", longitude= " + coords.getLongitude() +
+                ", latitude= " + coords.getLatitude() +
                 ", country='" + country + '\'' +
-                ", treeItem=" + treeItem +
+                ", treeItem=\n" + treeItem +
                 '}';
     }
 

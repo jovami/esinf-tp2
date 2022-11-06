@@ -14,6 +14,9 @@ import jovami.util.Utils;
 
 public class Exercise2 implements Runnable {
 
+    public final Comparator<Triplet<String, String, Float>> cmp =
+        Comparator.comparing(Triplet::third, Comparator.reverseOrder());
+
     private final App app;
 
     public Exercise2() {
@@ -107,10 +110,13 @@ public class Exercise2 implements Runnable {
                         sum.add(valOpt.get());                                  // O(1)
                 });
 
-                averages.add(new Triplet<>(item.getItemDescription(),           // O(1)
-                                         element.getElementType(),
-                                         sum.floatValue() / n)
-                );
+                Float f = sum.floatValue();                                     // O(1)
+                if (f.compareTo(0.0F) > 0)                                      // O(1)
+                    averages.add(                                               // O(1)
+                        new Triplet<>(item.getItemDescription(),
+                                      element.getElementType(),
+                                      f / n)
+                    );
             });
         });
 

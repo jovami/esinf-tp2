@@ -14,7 +14,7 @@ import java.util.*;
 public class Exercise3 implements Runnable {
 
     private final Comparator<Pair<Area, Value>> comparator =
-            (o1, o2) -> (int) Value.compare(o2.second(), o1.second());
+            Comparator.comparing(Pair::second, Comparator.reverseOrder());
 
     ArrayList<Pair<Area,Value>> listBiggestValues = new ArrayList<>();
 
@@ -40,7 +40,11 @@ public class Exercise3 implements Runnable {
         int topNumArea = 3;
 
        getTopNPairs(itemCode,elementCode,topNumArea);
-       printTopNValues(listTopN);
+        for (Pair<Area, Value> areaValuePair : listTopN) {
+            System.out.printf("area: %s, Value: %.4f\n", areaValuePair.first().getAreaName(),
+                    areaValuePair.second().getValue().orElse(0.0f));
+        }
+        System.out.println();
 
     }
 
@@ -49,12 +53,12 @@ public class Exercise3 implements Runnable {
             areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
-                    i.get().getTreeElement();
-                    itemTree.getTree().forEach(item -> {
-<<<<<<< master
-                        Optional<Element> e = item.getTreeElement().find(item.getElementByElementCode(elementCode));
->>>>>>> feat(ex3): empty verification
-=======
+                    Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode,null));
+                    if (e.isPresent()){
+                        Year year= e.get().getTreeYear().biggestElement();
+                        addToList(area,year.getValue());
+                    }
+                            /*.forEach(item -> {
                         Optional<Element> e = item.getTreeElement().find(new Element(elementCode,null));
 >>>>>>> feat(ex3): item complete
                         if (e.isPresent()){
@@ -62,6 +66,8 @@ public class Exercise3 implements Runnable {
                             addToList(area, year.getValue());
                         }
                     });
+
+                             */
                 }
             });
             sortListDescending(listBiggestValues);

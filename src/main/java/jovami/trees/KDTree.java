@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * @param <E> the type parameter
  */
 public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterface<E> {
-
+//TODO extends bst??
     public static class KDNode<E>{
         protected Point2D.Double coords;
         private E element;          // an element stored at this node
@@ -100,7 +100,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
      * @param divX        the div x
      * @return the kd node
      */
-    public KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX){
+    private KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX){
         if (currentNode == null)
             return node;
 

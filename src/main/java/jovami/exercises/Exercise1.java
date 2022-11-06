@@ -161,7 +161,8 @@ public class Exercise1 implements Runnable {
     }
 
     public void saveInfoAreaCoordinates(List<String[]> list) {
-        String areaCode, codeM49, areaName, country;
+        // String areaCode, codeM49;
+        String areaName, country;
         double latitude, longitude;
 
         for(String[] info: list)
@@ -227,7 +228,8 @@ public class Exercise1 implements Runnable {
 
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
-        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType,yearCode, unit, flag;
+        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType,yearCode, unit;
+        char flag;
         int year;
         float value;
 
@@ -247,7 +249,7 @@ public class Exercise1 implements Runnable {
             unit = info[ColunasShuffle.UNIT.getColuna()];
             value = Float.parseFloat(info[ColunasShuffle.VALUE.getColuna()]);
 
-            flag = info[ColunasShuffle.FLAGTYPE.getColuna()];
+            flag = info[ColunasShuffle.FLAGTYPE.getColuna()].charAt(0);
 
             saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
         }
@@ -255,7 +257,7 @@ public class Exercise1 implements Runnable {
 
 
     private void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription,
-                                String elementCode, String elementType, String yearCode, int year, String unit, float value, String flag)
+                             String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag)
     {
         var flagStore = app.flagStore();
 
@@ -268,17 +270,24 @@ public class Exercise1 implements Runnable {
             area.setCodeM49(codeM49);
 
 
-            Item item = new Item(itemCode, itemCPC, itemDescription);
+            var item = new Item(itemCode, itemCPC, itemDescription);
+            var yea = new Year(yearCode, year, new Value(unit, value, flagStore.get(flag).orElseThrow()));
+            var elem = new Element(elementCode, elementType);
 
-            if(app.getItemTree().exists(item)) {
-                Value v = new Value(unit, value, flagStore.get(flag.charAt(0)).orElseThrow());
-                Year y = new Year(yearCode, year, v);
-                Element e = new Element(elementCode, elementType);
-
-                e.addYear(y);
-                item.addElement(e);
+            Optional<Item> iOpt = area.getItembyItem(item);
+            if (iOpt.isEmpty())
                 area.addItem(item);
-            }
+            else
+                item = iOpt.get();
+
+            Optional<Element> eOpt = item.getElementByElement(elem);
+            if (eOpt.isEmpty())
+                item.addElement(elem);
+            else
+                elem = eOpt.get();
+
+            if (elem.getYearByYear(yea).isEmpty())
+                elem.addYear(yea);
         }
     }
 

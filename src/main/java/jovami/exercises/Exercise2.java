@@ -24,7 +24,14 @@ public class Exercise2 implements Runnable {
     public void run() {
         final String areaCode = "174"; // FIXME: change to int
         final int yearMin = 1996, yearMax = 2005;
+
         final var list = getAreaAverages(areaCode, yearMin, yearMax);
+
+        // O(n * log n), as per the SDK19 documentation
+        Utils.mergeSort(list,
+                        Comparator.comparing(Triplet::third,
+                                             Comparator.reverseOrder())
+        );
 
         System.out.printf(
                 "Value averages for each Item and Element in the years %d..%d\n",
@@ -42,24 +49,33 @@ public class Exercise2 implements Runnable {
     }
 
     // methods to find the area by each property
+
+    // FIXME: change areaCode to be an integer
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {
-        // TODO: change method to return Optional<Area>
-        final Area a = app.getAreaTree().getAreaByAreaCode(areaCode);           // O(logn)
+        // O(n)
+        final Optional<Area> opt = app.getAreaTree().getAreaByAreaCode(areaCode);
 
-        if (a == null)
+        if (opt.isEmpty())
             throw new NoSuchElementException("The requested area does not exist");
 
-        final var list = getAreaAverages(a, yearMin, yearMax);                  // O(n^3)   (As seen below)
-        Utils.mergeSort(list,                                                   // O(nlogn) (According to official documentation)
-                        Comparator.comparing(Triplet::third,
-                                             Comparator.reverseOrder())
-        );
-
-        // Worst-case time complexity: O(n^3)
-        return list;
+        // O(n^3)   (As seen below)
+        return getAreaAverages(opt.get(), yearMin, yearMax); // Worst-case time complexity: O(n^3)
     }
+
+    /* public List<Triplet<String, String, Float>>
+    getAreaAverages(final String areaName, final int yearMin, final int yearMax)
+    {
+        // O(log n)
+        final Optional<Area> opt = app.getAreaTree().getAreaByAreaName(areaName);
+
+        if (opt.isEmpty())
+            throw new NoSuchElementException("The requested area does not exist");
+
+        // O(n^3)   (As seen below)
+        return getAreaAverages(opt.get(), yearMin, yearMax); // Worst-case time complexity: O(n^3)
+    } */
 
 
     /****************************************************************************/

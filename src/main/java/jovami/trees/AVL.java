@@ -1,11 +1,12 @@
 package jovami.trees;
 
+import java.util.Comparator;
+
 /**
  * @param <E>
  * @author DEI-ESINF
  */
-public class AVL<E extends Comparable<E>> extends BST<E> {
-
+public class AVL<E> extends BST<E> {
 
     private int balanceFactor(Node<E> node) {
         return height(node.getRight())-height(node.getLeft());
@@ -55,6 +56,14 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         return node;
     }
 
+    public AVL() {
+        super();
+    }
+
+    public AVL(Comparator<? super E> cmp) {
+        super(cmp);
+    }
+
     @Override
     public void insert(E element) {
         this.root = insert(element, this.root);
@@ -64,7 +73,7 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         if (node == null)
             return new Node<>(element, null, null);
 
-        int result = element.compareTo(node.getElement());
+        int result = cmp.compare(element, node.getElement());
 
         if (result == 0) {
             node.setElement(element);
@@ -89,13 +98,11 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
             return null;
 
         // -1 if element < node.getElement(), 0 if ==, 1 if >
-        int result = Integer.signum(element.compareTo(node.getElement()));
+        int result = Integer.signum(cmp.compare(element, node.getElement()));
 
         switch (result) {
             case -1 -> node.setLeft(remove(element, node.getLeft()));
-
             case +1 -> node.setRight(remove(element, node.getRight()));
-
             default -> {
                 if (node.isLeaf())
                     return null;
@@ -132,7 +139,7 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
         if (root1 == null && root2 == null) {
             return true;
         } else if (root1 != null && root2 != null) {
-            if (root1.getElement().compareTo(root2.getElement()) == 0) {
+            if (cmp.compare(root1.getElement(), root2.getElement()) == 0) {
                 return equals(root1.getLeft(), root2.getLeft())
                         && equals(root1.getRight(), root2.getRight());
             } else {
@@ -142,5 +149,4 @@ public class AVL<E extends Comparable<E>> extends BST<E> {
             return false;
         }
     }
-
 }

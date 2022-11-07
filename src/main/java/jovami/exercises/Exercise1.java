@@ -4,6 +4,7 @@ import jovami.App;
 import jovami.model.*;
 import jovami.model.reader.CSVHeader;
 import jovami.model.reader.CSVReader;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -13,12 +14,14 @@ import java.util.Optional;
 
 public class Exercise1 implements Runnable {
 
-    List<File> filenames = new LinkedList<File>();
+    List<File> filenames = new LinkedList<>();
     private final App app;
     private CSVReader csvReader;
 
 
-    public Exercise1() {app = App.getInstance();}
+    public Exercise1() {
+        app = App.getInstance();
+    }
 
 
     @Override
@@ -34,9 +37,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasAreaCoordinates(int i) {this.i = i;}
+        ColunasAreaCoordinates(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
     }
 
 
@@ -46,9 +53,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasItemCodes(int i) {this.i = i;}
+        ColunasItemCodes(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
     }
 
 
@@ -59,9 +70,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasFlags(int i) {this.i = i;}
+        ColunasFlags(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
 
     }
 
@@ -72,9 +87,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasShuffle(int i) {this.i = i;}
+        ColunasShuffle(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
 
 
     }
@@ -84,7 +103,7 @@ public class Exercise1 implements Runnable {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
-        for(File f: filenames) {
+        for (File f : filenames) {
             String name = f.getName();
             //System.out.println(""+f.getName());
             if (name.contains("Production_Crops_Livestock_E_Flags")) {
@@ -114,15 +133,14 @@ public class Exercise1 implements Runnable {
                 }
             }
         }
-        for(File f: filenames)
-        {
+        for (File f : filenames) {
             String name = f.getName();
-            if(name.contains("Production_Crops_Livestock_World_shuffle_small")) {
+            if (name.contains("Production_Crops_Livestock_World_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
-                    //"Production_Crops_Livestock_World_shuffle_small"
-                    //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
-                  try {
+                //"Production_Crops_Livestock_World_shuffle_small"
+                //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
+                try {
                     File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
@@ -140,7 +158,7 @@ public class Exercise1 implements Runnable {
             if (fileEntry.isDirectory()) {
                 listFilesForFolder(fileEntry);
             } else {
-                if(fileEntry.getName().contains(".csv"))
+                if (fileEntry.getName().contains(".csv"))
                     filenames.add(fileEntry);
             }
         }
@@ -155,7 +173,7 @@ public class Exercise1 implements Runnable {
         for (String[] info : list) {
             code = info[ColunasFlags.FLAGCODE.getColuna()].charAt(0);
             name = info[ColunasFlags.DESCRIPTION.getColuna()];
-             store.add(code, name);
+            store.add(code, name);
 
         }
     }
@@ -165,22 +183,20 @@ public class Exercise1 implements Runnable {
         String areaName, country;
         double latitude, longitude;
 
-        for(String[] info: list)
-        {
+        for (String[] info : list) {
             country = info[ColunasAreaCoordinates.COUNTRY.getColuna()];
 
             //linha 98 do ficheiro "AreaCoordinates ,na coluna longitude tem dois numeros"
-            if(info[ColunasAreaCoordinates.LATITUDE.getColuna()].matches(".*\\s.*") )
+            if (info[ColunasAreaCoordinates.LATITUDE.getColuna()].matches(".*\\s.*"))
                 latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()].
-                            substring(0, info[ColunasAreaCoordinates.LATITUDE.getColuna()].indexOf(' ')));
+                        substring(0, info[ColunasAreaCoordinates.LATITUDE.getColuna()].indexOf(' ')));
 
-            if(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].matches(".*\\s.*"))
-            {
+            if (info[ColunasAreaCoordinates.LONGITUDE.getColuna()].matches(".*\\s.*")) {
                 longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].
-                            substring(0, info[ColunasAreaCoordinates.LONGITUDE.getColuna()].indexOf(' ')));
+                        substring(0, info[ColunasAreaCoordinates.LONGITUDE.getColuna()].indexOf(' ')));
 
                 latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);
-            }else{
+            } else {
                 latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);
                 longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()]);
             }
@@ -196,18 +212,16 @@ public class Exercise1 implements Runnable {
 
 
     private void saveAreaCoordinates(String areaName, double latitude, double longitude, String country) {
-        Area area = new Area("","",areaName,latitude,  longitude,  country);
+        Area area = new Area("", "", areaName, latitude, longitude, country);
         app.getAreaTree().addArea(area);
         app.getKDAreaTree().addNode(area, latitude, longitude);
     }
 
 
-    public void saveInfoItemCodes(List<String[]> list)
-    {
+    public void saveInfoItemCodes(List<String[]> list) {
         String itemCode, itemCPC, itemDescription;
 
-        for(String[] info: list)
-        {
+        for (String[] info : list) {
             itemCode = info[ColunasItemCodes.ITEMCODE.getColuna()];
             itemCPC = info[ColunasItemCodes.ITEMCPC.getColuna()];
             itemDescription = info[ColunasItemCodes.ITEMDESCRIPTION.getColuna()];
@@ -218,30 +232,27 @@ public class Exercise1 implements Runnable {
     }
 
 
-    private void saveItemCodes(String itemCode, String itemCPC, String itemDescription)
-    {
+    private void saveItemCodes(String itemCode, String itemCPC, String itemDescription) {
         Item item = new Item(itemCode, itemCPC, itemDescription);
 
         app.getItemTree().addItem(item);
     }
 
 
-
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
-        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType,yearCode, unit;
+        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, unit;
         char flag;
         int year;
         float value;
 
 
-        for(String[] info: list)
-        {
+        for (String[] info : list) {
             areaCode = info[ColunasShuffle.AREACODE.getColuna()];
-            codeM49  = info[ColunasShuffle.CODEM49.getColuna()];
+            codeM49 = info[ColunasShuffle.CODEM49.getColuna()];
             areaName = info[ColunasShuffle.AREANAME.getColuna()];
             itemCode = info[ColunasShuffle.ITEMCODE.getColuna()];
-            itemCPC  = info[ColunasShuffle.ITEMCPC.getColuna()];
+            itemCPC = info[ColunasShuffle.ITEMCPC.getColuna()];
             itemDescription = info[ColunasShuffle.ITEMDESCRIPTION.getColuna()];
             elementCode = info[ColunasShuffle.ELEMENTCODE.getColuna()];
             elementType = info[ColunasShuffle.ELEMENTTYPE.getColuna()];
@@ -259,9 +270,16 @@ public class Exercise1 implements Runnable {
 
 
     private void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription,
-                             String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag)
-    {
+                             String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag) {
         var flagStore = app.flagStore();
+
+        switch (areaName) {
+            case "China, Hong Kong SAR" -> areaName = "Hong Kong";
+            case "China, Taiwan Province of" -> areaName = "Taiwan";
+            //case "China, mainland" -> areaName = "China";
+            case "China, Macao SAR" -> areaName = "Macau";
+            //case "Belgium-Luxembourg" -> areaName = "Luxembourg";
+        }
 
         Optional<Area> tmp = app.getAreaTree().getAreaByAreaName(areaName);
 
@@ -290,7 +308,8 @@ public class Exercise1 implements Runnable {
 
             if (elem.getYearByYear(yea).isEmpty())
                 elem.addYear(yea);
-        }
+        }else
+            System.out.println(areaName);
     }
 
 

@@ -10,7 +10,7 @@ public class ItemTree {
     private final AVL<Item> tree;
 
     public ItemTree() {
-        this.tree = new AVL<>();
+        this.tree = new AVL<>(Item.cmpCode);
     }
 
     public AVL<Item> getTree() {

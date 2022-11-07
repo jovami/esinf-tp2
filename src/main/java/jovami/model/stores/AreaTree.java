@@ -1,7 +1,6 @@
 package jovami.model.stores;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 import jovami.model.Area;
 import jovami.trees.AVL;

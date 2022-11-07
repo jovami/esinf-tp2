@@ -9,7 +9,6 @@ public class AreaKDTree {
     public AreaKDTree(){
         this.areaKdTree = new KDTree<>();
     }
-    
     public void addNode(Area area, double latitude, double longitude){
         this.areaKdTree.insert(area, latitude, longitude);
     }
@@ -17,6 +16,5 @@ public class AreaKDTree {
     public KDTree<Area> getKDtree(){
         return this.areaKdTree;
     }
-
 
 }

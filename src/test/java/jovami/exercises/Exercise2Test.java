@@ -20,6 +20,10 @@ import jovami.util.Utils;
  */
 public class Exercise2Test {
 
+    /* Filter needed data
+     * awk -F"\",\"" 'NR > 1 && $3 ~ "Belgium"' Production_Crops_Livestock_World_shuffle_small.csv > belgium.csv
+     */
+
     App app;
     Exercise2 ex2;
 
@@ -88,6 +92,7 @@ public class Exercise2Test {
         final int min = 2000;
         final int max = 2001;
 
+        /* awk -F"\",\"" 'NR > 1 && $10 >= 2000 && $10 <= 2001 { print $4, $7 }' belgium.csv | sort -u | uniq | wc -l */
         final int expectedLines = 29;
 
         var unsorted = ex2.getAreaAverages(code, min, max);
@@ -104,6 +109,17 @@ public class Exercise2Test {
         final int min = 2000;
         final int max = 2001;
 
+
+        /*
+            awk -F"\",\"" 'NR > 1 && $10 >= 2000 && $10 <= 2001 { print $12 }' belgium.csv |
+                sort -u | while read num; do
+                    if echo "${num}" | grep -Eq '^500(.0+)?$'; then
+                        echo "${num}F,"
+                    else
+                        lua -e "print(${num} / 2 .. 'F,')"
+                    fi
+                done | sort -ruV
+        */
         final Float expectedAvgs[] = new Float[] {
             5640100.0F,
             1518880.0F,

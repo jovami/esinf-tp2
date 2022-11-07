@@ -45,15 +45,15 @@ public class Area implements Comparable<Area> {
     }
 
     public String getAreaCode() {
-        return areaCode;
+        return this.areaCode;
     }
 
     public String getCodeM49() {
-        return codeM49;
+        return this.codeM49;
     }
 
     public String getAreaName() {
-        return areaName;
+        return this.areaName;
     }
 
     public Coordinate getCoords() {
@@ -61,18 +61,18 @@ public class Area implements Comparable<Area> {
     }
 
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
     //----------------------------------------
     //-------------AVL<Item>------------------
 
     public AVL<Item> getTreeCode() {
-        return treeCode;
+        return this.treeCode;
     }
 
     public AVL<Item> getTreeDesc() {
-        return treeDesc;
+        return this.treeDesc;
     }
 
     public void addItem(Item item) {
@@ -106,12 +106,13 @@ public class Area implements Comparable<Area> {
             && areaName.equals(area.areaName)
             && coords.equals(area.coords)
             && country.equals(area.country)
-            && treeCode.equals(area.treeCode);
+            && treeCode.equals(area.treeCode)
+            && treeDesc.equals(area.treeDesc);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(areaCode, codeM49, areaName, coords, country, treeCode);
+        return Objects.hash(areaCode, codeM49, areaName, coords, country, treeCode, treeDesc);
     }
 
     @Override
@@ -123,11 +124,11 @@ public class Area implements Comparable<Area> {
                 ", longitude= " + coords.getLongitude() +
                 ", latitude= " + coords.getLatitude() +
                 ", country='" + country + '\'' +
-                ", treeItem=\n" + treeCode +
+                ", treeCode=\n" + treeCode +
+                ", treeDesc=\n" + treeDesc +
                 '}';
     }
 
-    //TO:DO
     @Override
     public int compareTo(Area o) {
         return this.areaName.compareTo(o.areaName);

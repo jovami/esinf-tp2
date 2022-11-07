@@ -30,26 +30,26 @@ public class Item implements Comparable<Item> {
     }
 
     public String getItemCode() {
-        return itemCode;
+        return this.itemCode;
     }
 
     public String getItemCPC() {
-        return itemCPC;
+        return this.itemCPC;
     }
 
     public String getItemDescription() {
-        return itemDescription;
+        return this.itemDescription;
     }
 
 
     //----------------------------------------
     //-------------AVL<Element>---------------
     public AVL<Element> getTreeCode() {
-        return treeCode;
+        return this.treeCode;
     }
 
     public AVL<Element> getTreeType() {
-        return treeType;
+        return this.treeType;
     }
 
     public void addElement(Element element) {
@@ -80,12 +80,13 @@ public class Item implements Comparable<Item> {
         return itemCode.equals(item.itemCode)
             && itemCPC.equals(item.itemCPC)
             && itemDescription.equals(item.itemDescription)
-            && treeCode.equals(item.treeCode);
+            && treeCode.equals(item.treeCode)
+            && treeType.equals(item.treeType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemCode, itemCPC, itemDescription, treeCode);
+        return Objects.hash(itemCode, itemCPC, itemDescription, treeCode, treeType);
     }
 
     @Override
@@ -94,7 +95,8 @@ public class Item implements Comparable<Item> {
                 "itemCode='" + itemCode + '\'' +
                 ", itemCPC='" + itemCPC + '\'' +
                 ", itemDescription='" + itemDescription + '\'' +
-                ", treeElement=" + treeCode +
+                ", treeCode=" + treeCode +
+                ", treeType=" + treeType +
                 '}';
     }
 

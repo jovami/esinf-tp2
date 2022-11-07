@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import jovami.model.Area;
+
 /**
  * KDTree
  *
@@ -115,7 +117,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
                 currentNode.setRight(insert(currentNode.getRight(), node, !divX));
         }
 
-        return node;
+        return currentNode;
     }
 
     @Override
@@ -188,7 +190,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         double compareFinal= (cmpX ? node.coords.x - coordFinal.x : node.coords.y - coordFinal.y);  // <=0 -> outside area
 
         if(compareInicial >= 0){//if node.coords is above inicial coords
-
             if (compareFinal <= 0){// node.coords is below final coords
                 // while between the area, we want to check all the possible nodes
                 searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    

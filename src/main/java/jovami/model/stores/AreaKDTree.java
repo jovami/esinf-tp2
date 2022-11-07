@@ -10,12 +10,13 @@ public class AreaKDTree {
         this.areaKdTree = new KDTree<>();
     }
     
-    public void addNode(Area area, double x, double y){
-        System.out.println(area.toString()+"\n");
-        this.areaKdTree.insert(area, x, y);
+    public void addNode(Area area, double latitude, double longitude){
+        this.areaKdTree.insert(area, latitude, longitude);
     }
 
-
+    public KDTree<Area> getKDtree(){
+        return this.areaKdTree;
+    }
 
 
 }

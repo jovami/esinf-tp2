@@ -97,7 +97,6 @@ public class Exercise2Test {
     }
 
     @Test
-    @Disabled // TODO: add averages
     void testSortByAverage() {
         Optional<Area> belgium = app.getAreaTree().getAreaByAreaName("Belgium");
         assertTrue(belgium.isPresent());
@@ -107,6 +106,35 @@ public class Exercise2Test {
         final int max = 2001;
 
         final Float expectedAvgs[] = new Float[] {
+            5640100.0F,
+            1518880.0F,
+            511500.0F,
+            282679.5F,
+            206589.5F,
+            142625.0F,
+            80000.0F,
+            46650.0F,
+            45595.2F,
+            43500.0F,
+            31100.0F,
+            30200.0F,
+            22500.0F,
+            15833.5F,
+            14500.0F,
+            11473.5F,
+            4600.0F,
+            3361.5F,
+            1650.0F,
+            1633.0F,
+            500.0F,
+            150.0F,
+            125.0F,
+            97.5F,
+            38.5F,
+            36.19F,
+            24.5F,
+            18.5F,
+            5.0F,
         };
 
         var list = ex2.getAreaAverages(code, min, max);

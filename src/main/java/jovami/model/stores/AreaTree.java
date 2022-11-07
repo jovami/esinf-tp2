@@ -1,7 +1,6 @@
 package jovami.model.stores;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 import jovami.model.Area;
 import jovami.trees.AVL;
@@ -9,42 +8,42 @@ import jovami.trees.AVL;
 
 public class AreaTree {
 
-    private final AVL<Area> tree ;
+    private final AVL<Area> nameTree;
+    private final AVL<Area> codeTree;
 
     public AreaTree(){
-        this.tree = new AVL<>();
+        this.nameTree = new AVL<>(Area.cmpName);
+        this.codeTree = new AVL<>(Area.cmpCode);
     }
 
-    public AVL<Area> getTree() {
-        return this.tree;
+    public AVL<Area> getNameTree() {
+        return this.nameTree;
+    }
+
+    public AVL<Area> getCodeTree() {
+        return this.codeTree;
     }
 
     public void addArea(Area area) {
-         this.tree.insert(area);
+        this.nameTree.insert(area);
+    }
+
+    public void fillCodeTree() {
+        this.nameTree.forEach(codeTree::insert);
     }
 
     public Optional<Area> getAreaByAreaCode(String areaCode) {
-        AtomicReference<Area> ref = new AtomicReference<>();
-
-        this.tree.forEach(area -> {
-            // FIXME: change areaCode to integer
-            String code = area.getAreaCode();
-            if (code != null && code.equals(areaCode))
-                ref.setPlain(area);
-        });
-
-        return Optional.ofNullable(ref.getPlain());
+        Area tmp = new Area(areaCode, null, null, 0, 0, null);
+        return this.codeTree.find(tmp);
     }
-
 
     public Optional<Area> getAreaByAreaName(String areaName) {
         Area tmp = new Area(null, null, areaName, 0, 0, null);
-
         return this.getAreaByArea(tmp);
     }
 
     public Optional<Area> getAreaByArea(Area area) {
-        return this.tree.find(area);
+        return this.nameTree.find(area);
     }
 
     /**
@@ -53,6 +52,7 @@ public class AreaTree {
      * @return boolean
      */
     public boolean exists(Area area) {
-        return tree.find(area).isPresent();
+        return nameTree.find(area).isPresent()
+            || codeTree.find(area).isPresent();
     }
 }

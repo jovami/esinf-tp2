@@ -36,7 +36,7 @@ class Exercise1Test {
 
     @Test
     void listFilesForFolder() {
-        
+
         final File folder = new File("src/main/ficheiroscsv");
         exercise1.listFilesForFolder(folder);
 
@@ -44,7 +44,7 @@ class Exercise1Test {
         List<File> filenames = exercise1.filenames;
 
         //TEST TO COMPARE
-        List<File> tempFilenames = new LinkedList<>();       
+        List<File> tempFilenames = new LinkedList<>();
         final File folderx = new File("src/main/ficheiroscsv");
 
         for (final File fileEntry : folderx.listFiles()) {
@@ -54,13 +54,13 @@ class Exercise1Test {
 
 
         assertTrue(filenames.containsAll(tempFilenames),"List filenames not contains all files present in tempFilenames");
-        
+
     }
 
 
     @Test
     void saveInfoAreaCoordinates() throws Exception {
-        
+
         final File folder = new File("src/main/ficheiroscsv");
         exercise1.listFilesForFolder(folder);
         List<File> filenames = exercise1.filenames;
@@ -71,18 +71,18 @@ class Exercise1Test {
         for (File file : filenames) {
             if(file.getName().contains("AreaCoordinates"))
             {
-                File dir = exercise1.fileDirReader(file.getName());   
+                File dir = exercise1.fileDirReader(file.getName());
                 list = csvReader.readCSV(dir);
             }
         }
-        
+
         exercise1.saveInfoAreaCoordinates(list);
-       
+
         List<String[]> temp = new ArrayList<>();
         for(String[] ls: list)
         {
             String[] t = new String[4];
-                               
+
             t[0] = ls[0];
 
             if(ls[1].matches(".*\\s.*") )
@@ -96,32 +96,32 @@ class Exercise1Test {
                 t[1] = ls[1];
                 t[2] = ls[2];
             }
-                
-            t[3] = ls[3];
-            
-            temp.add(t);
-            
-        }
-        
 
-        AVL<Area> tree = App.getInstance().getAreaTree().getTree();
+            t[3] = ls[3];
+
+            temp.add(t);
+
+        }
+
+
+        AVL<Area> tree = App.getInstance().getAreaTree().getNameTree();
         List<String[]> tempx = new ArrayList<>();
         for(Area area: tree.inOrder())
         {
             String[] t = new String[4];
-                               
+
             t[0] = area.getCountry();
             t[1] = Double.toString(area.getCoords().getLatitude());
             t[2] = Double.toString(area.getCoords().getLongitude());
             t[3] = area.getAreaName();
-            
+
             tempx.add(t);
         }
 
         for(String[] ls : temp)
         {
             if(tempx.contains(ls))
-                assertTrue(true);               
+                assertTrue(true);
         }
 
     }
@@ -139,7 +139,7 @@ class Exercise1Test {
         for (File file : filenames) {
             if(file.getName().contains("ItemCodes_shuffled"))
             {
-                File dir = exercise1.fileDirReader(file.getName());   
+                File dir = exercise1.fileDirReader(file.getName());
                 list = csvReader.readCSV(dir);
             }
         }
@@ -151,12 +151,12 @@ class Exercise1Test {
         for(String[] ls: list)
         {
             String[] t = new String[3];
-                               
+
             t[0] = ls[0];
             t[1] = ls[1];
             t[2] = ls[2];
-            
-            temp.add(t);           
+
+            temp.add(t);
         }
 
 
@@ -165,10 +165,10 @@ class Exercise1Test {
         for(Item item: tree.inOrder())
         {
             String[] t = new String[4];
-                               
+
             t[0] = item.getItemCode();
             t[1] = item.getItemCPC();
-            t[2] = item.getItemDescription();      
+            t[2] = item.getItemDescription();
             tempx.add(t);
         }
 
@@ -176,13 +176,13 @@ class Exercise1Test {
         for(String[] ls : temp)
         {
             if(tempx.contains(ls))
-                assertTrue(true);               
+                assertTrue(true);
         }
 
 
     }
 
-    
+
     @Test
     void saveInfoShuffle() {
     }

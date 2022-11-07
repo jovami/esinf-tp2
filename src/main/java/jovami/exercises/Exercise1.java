@@ -254,6 +254,7 @@ public class Exercise1 implements Runnable {
 
             saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
         }
+        app.getAreaTree().fillCodeTree();
     }
 
 
@@ -326,9 +327,9 @@ public class Exercise1 implements Runnable {
         if (tmp.isPresent()) {
             var aTmp = tmp.get();
 
-            for(Item item: aTmp.getTreeItem().inOrder()) {
+            for(Item item: aTmp.getTreeCode().inOrder()) {
                 System.out.println(""+item.toString());
-                for(Element elem: item.getTreeElement().inOrder()) {
+                for(Element elem: item.getTreeCode().inOrder()) {
                     //System.out.println(""+ elem.toString());
                     //System.out.println(item.toString() + "  " + elem.toString());
                     count ++;

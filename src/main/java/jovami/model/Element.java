@@ -2,6 +2,7 @@ package jovami.model;
 
 import jovami.trees.AVL;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -9,8 +10,14 @@ public class Element implements Comparable<Element> {
 
     private String elementCode;
     private String elementType;
+
     private final AVL<Year> treeYear;
 
+    public static final Comparator<? super Element> cmpCode =
+        Comparator.comparing(Element::getElementCode);
+
+    public static final Comparator<? super Element> cmpType =
+        Comparator.comparing(Element::getElementType);
 
     public Element(String elementCode, String elementType) {
         this.elementCode = elementCode;
@@ -19,13 +26,12 @@ public class Element implements Comparable<Element> {
         this.treeYear = new AVL<>();
     }
 
-
     public String getElementCode() {
-        return elementCode;
+        return this.elementCode;
     }
 
     public String getElementType() {
-        return elementType;
+        return this.elementType;
     }
 
 
@@ -33,7 +39,7 @@ public class Element implements Comparable<Element> {
     //-------------AVL<Year>------------------
 
     public AVL<Year> getTreeYear() {
-        return treeYear;
+        return this.treeYear;
     }
 
     public void addYear(Year year) {

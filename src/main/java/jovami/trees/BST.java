@@ -94,6 +94,7 @@ public class BST<E extends Comparable<E>>
      * Verifies if the tree is empty
      * @return true if the tree is empty, false otherwise
      */
+    @Override
     public boolean isEmpty() {
         return this.root == null;
     }
@@ -163,6 +164,7 @@ public class BST<E extends Comparable<E>>
     /*
      * Inserts an element in the tree.
      */
+    @Override
     public void insert(E element) {
         root = insert(element,root());
     }
@@ -184,6 +186,7 @@ public class BST<E extends Comparable<E>>
     /**
      * Removes an element from the tree maintaining its consistency as a Binary Search Tree.
      */
+    @Override
     public void remove(E element) {
         this.root = remove(element, root());
     }
@@ -220,6 +223,7 @@ public class BST<E extends Comparable<E>>
      * Returns the number of nodes in the tree.
      * @return number of nodes in the tree
      */
+    @Override
     public int size() {
         return size(this.root);
     }
@@ -238,6 +242,7 @@ public class BST<E extends Comparable<E>>
      * Returns the height of the tree
      * @return height
      */
+    @Override
     public int height() {
         return height(this.root);
     }
@@ -261,6 +266,7 @@ public class BST<E extends Comparable<E>>
      * Returns the smallest element within the tree.
      * @return the smallest element within the tree
      */
+    @Override
     public E smallestElement() {
         return smallestElement(root);
     }
@@ -278,6 +284,7 @@ public class BST<E extends Comparable<E>>
      * Returns an iterable collection of elements of the tree, reported in in-order.
      * @return iterable collection of the tree's elements reported in in-order
      */
+    @Override
     public Iterable<E> inOrder() {
         List<E> snapshot = new ArrayList<>();
         inOrderForEach(snapshot::add);
@@ -313,6 +320,7 @@ public class BST<E extends Comparable<E>>
      * Returns an iterable collection of elements of the tree, reported in pre-order.
      * @return iterable collection of the tree's elements reported in pre-order
      */
+    @Override
     public Iterable<E> preOrder() {
         List<E> snapshot = new ArrayList<>();
         preOrderForEach(snapshot::add);
@@ -348,6 +356,7 @@ public class BST<E extends Comparable<E>>
      * Returns an iterable collection of elements of the tree, reported in post-order.
      * @return iterable collection of the tree's elements reported in post-order
      */
+    @Override
     public Iterable<E> posOrder() {
         List<E> snapshot = new ArrayList<>();
         posOrderForEach(snapshot::add);

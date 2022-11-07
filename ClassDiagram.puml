@@ -1,0 +1,401 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+skinparam padding 2
+skinparam ranksep 100
+skinparam classFontSize 18
+
+class Main
+{
+    +{static}main(String[] args)
+}
+
+class App
+{
+    -AreaTree areaTree
+    -ItemTree itemTree
+    -FlagStore flagStore
+    -AreaKDTree areaKDTree
+
+    +getAreaTree()
+    +getKDAreaTree()
+    +getItemTree()
+    +FlagStore flagStore()
+    -{static}App singleton = null
+    +{static}getInstance()
+}
+
+class Area
+{
+    -String areaCode
+    -String codeM49
+    -String areaName
+    -Coordinate coords
+    -String country
+    -final AVL<Item> treeItem
+
+    +setAreaCode(String areaCode)
+    +setCode(String codeM49)
+    +getAreaCode()
+    +getCodeM49() 
+    +getAreaName() 
+    +getCoords()
+    +getCountry()
+    +getTreeItem()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItembyItem(Item item)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Area o)
+}
+
+class Coordinate
+{
+    -double latitude
+    -double longitude
+
+    +getLatitude()
+    +getLongitude()
+    +getX()
+    +getY()
+    +setLocation(double x, double y)
+}
+
+class Element
+{
+    -String elementCode
+    -String elementType
+    -final AVL<Year> treeYear
+
+    +getElementCode()
+    +getElementType()
+    +getTreeYear()
+    +addYear(Year year)
+    +getYearByYearCode(String yearCode)
+    +getYearByYear(int year)
+    +getYearByYear(Year year)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Element o)
+}
+
+class Flag
+{
+    -final Pair<Character, String> pair
+
+    +code()
+    +name()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+}
+
+class Item
+{
+    -String itemCode
+    -String itemCPC
+    -String itemDescription
+    -final AVL<Element> treeElement
+
+    +getItemCode()
+    +getItemCPC()
+    +getItemDescription()
+    +getTreeElement()
+    +addElement(Element element)
+    +getElementByElementCode(String elementCode)
+    +getElementByElement(Element element)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Item o)
+}
+
+class Value
+{
+    -Float value
+    -String unit
+    -Flag flag
+
+    +getValue() 
+    +getUnit() 
+    +getFlag()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+}
+
+class Year
+{
+    -String yearCode
+    -int year
+
+    +getYear() 
+    +getYearCode() 
+    +getValue() 
+    +addValue(Value value)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Item o) 
+}
+
+enum CSVHeader
+{
+    -final int columns
+    -final String delimiter
+    +getColumnCount()
+    +getDelimiter()
+}
+
+class CSVReader
+{
+    -final CSVHeader header
+    -final int EXPECTED_COLUMNS
+    -final String DEFAULT_DELIMITER;
+    -{static}final char BOM = '\ufeff'
+    +readCSV(File dir)
+    -isHeader(String line)
+    -maybeSkipBom(Reader reader)
+    -checkQuotationMark(Reader reader)
+}
+
+class AreaKDTree
+{
+    -final KDTree<Area> areaKdTree
+
+    +addNode(Area area, double x, double y)
+}
+
+class AreaTree 
+{
+    -final AVL<Area> tree 
+
+    +getTree()
+    +addArea(Area area)
+    +getAreaByAreaCode(String areaCode)
+    +getAreaByAreaName(String areaName)
+    +getAreaByArea(Area area)
+    +exists(Area area)   
+}
+
+class FlagStore
+{
+    -final LinkedHashMap<Character, Flag> flags
+
+    +get(char code)
+    +add(char code, String name)
+    +forceAdd(char code, String name)
+    +iterator()
+    +toString()
+}
+
+class ItemTree
+{
+    -final AVL<Item> tree
+
+    +getTree()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItemByItem(Item item)
+    +exists(Item item)
+}
+
+class AVL
+{
+    -balanceFactor(Node<E> node)
+    -rightRotation(Node<E> node)
+    -leftRotation(Node<E> node)
+    -twoRotations(Node<E> node)
+    -balanceNode(Node<E> node)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +equals(Object otherObj)
+    #equals(Node<E> root1, Node<E> root2)
+}
+
+class BST
+{
+    #Node<E> root = null
+
+    #root()
+    +isEmpty()
+    +find(E element)
+    +find(E element, Comparator<? super E> cmp)
+    #find(Node<E> node, E element, Comparator<? super E> cmp)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +size()
+    -size(Node<E> node)
+    +height()
+    #height(Node<E> node)
+    +smallestElement()
+    #smallestElement(Node<E> node)
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    -inOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +preOrder()
+    +preOrderForEach(Consumer<? super E> action)
+    +preOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +posOrder()
+    +posOrderForEach(Consumer<? super E> action)
+    +nodesByLevel()
+    -processBstByLevel(Node<E> node, Map<Integer,List<E>> result, int level)
+    +toString()
+    -toStringRec(Node<E> root, int level, StringBuilder sb)
+    +iterator()
+    +forEach(Consumer<? super E> action)
+}
+
+class Node
+{
+    -E element        
+    -Node<E> left
+    -Node<E> right
+
+     +hasElement()
+     +hasLeft()
+     +hasRight()
+     +getElement() 
+     +getLeft() 
+     +getRight()
+     +setElement(E e)
+     +setLeft(Node<E> leftChild)
+     +setRight(Node<E> rightChild)
+     +isLeaf()
+}
+
+interface BSTInterface
+{
+    +isEmpty()
+    +insert(E element)
+    +remove(E element)
+
+    +size()
+    +height()
+
+    +smallestElement()
+    +inOrder()
+    +preOrder()
+    +posOrder()
+    +nodesByLevel()
+}
+
+interface KDInterface
+{
+    +insert(E e, double x, double y)
+
+    +nearestNeighbor(double x, double y)
+
+    +kNearestNeighbors(double x, double y, int n)
+
+    +rangeSearch(double x1, double y1, double x2, double y2)
+}
+
+class KDTree
+{
+    #KDNode<E> root
+    -final Comparator<KDNode<E>> cmpX
+    -final Comparator<KDNode<E>> cmpY
+    +isEmpty()
+    +height()
+    #height(KDNode<E> node)
+    +size()
+    #size(KDNode<E> node)
+    +insert(E e, double x, double y)
+    -KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX)
+    +nearestNeighbor(double x, double y)
+    #nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX)
+    +rangeSearch(double x1, double y1, double x2, double y2)
+    -searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) 
+    +kNearestNeighbors(double x, double y, int n)
+}
+
+class KDNode
+{
+    #Point2D.Double coords
+    -E element
+    -KDNode<E> left
+    -KDNode<E> right
+
+    +hasElement()
+    +hasLeft()
+    +hasRight()
+    +getElement() 
+    +getLeft() 
+    +getRight()
+    +setElement(E e)
+    +setLeft(KDNode<E> leftChild)
+    +setRight(KDNode<E> rightChild)
+}
+
+class Utils
+{
+    +{static} avlSort(List<E> unsorted)
+}
+
+abstract class Point2D
+{
+}
+
+
+Main ..> App
+Main ..> Utils
+Main ..> CSVReader
+CSVReader --> CSVHeader
+
+
+App --> AreaTree
+App --> ItemTree
+App --> FlagStore
+App --> AreaKDTree
+
+AreaTree "1" -- "*" Area
+AreaTree ..> AVL
+
+Area "1" -- "*" Item
+Area ..> AVL
+
+Item "1" -- "*" Element
+Item ..> AVL
+
+Element "1" -- "*" Year
+Element ..> AVL
+
+Year "1" -- "1" Value 
+
+Value "1" -- "1" Flag
+
+FlagStore "1" -- "*" Flag
+
+ItemTree "1" -- "*" Item
+ItemTree ..> AVL
+
+AreaKDTree "1" -- "*" Area
+AreaKDTree ..> KDTree
+
+AVL --|> BST
+BST ..|> BSTInterface
+KDInterface --|> BSTInterface
+KDTree --|> BST
+KDTree ..|> KDInterface
+
+
+BST *-- Node
+KDTree *-- KDNode
+
+Area ..> Coordinate
+
+KDNode ..> Point2D
+
+Coordinate --|> Point2D
+
+
+@enduml

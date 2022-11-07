@@ -3,10 +3,8 @@ package jovami.exercises;
 import jovami.App;
 import jovami.model.*;
 import jovami.model.stores.AreaTree;
-import jovami.model.stores.ItemTree;
 
 import jovami.util.Pair;
-import jovami.util.Triplet;
 
 import java.util.*;
 
@@ -19,16 +17,12 @@ public class Exercise3 implements Runnable {
     ArrayList<Pair<Area,Value>> listBiggestValues = new ArrayList<>();
 
     ArrayList<Pair<Area,Value>> listTopN = new ArrayList<>();
-    private final App app;
     private final AreaTree areaTree;
-    private final ItemTree itemTree;
 
 
     public Exercise3() {
-        app = App.getInstance();
+        App app = App.getInstance();
         areaTree = app.getAreaTree();
-        itemTree = app.getItemTree();
-
     }
 
     @Override
@@ -36,21 +30,26 @@ public class Exercise3 implements Runnable {
 
         String itemCode = "393";
         String elementCode = "5510";
-        int topNumArea = 3;
+        int topNumArea = 10;
 
        getTopNPairs(itemCode,elementCode,topNumArea);
 
         for (Pair<Area, Value> areaValuePair : listTopN) {
-            System.out.printf("area: %s, Value: %.4f\n", areaValuePair.first().getAreaName(),
-                    areaValuePair.second().getValue().orElse(0.0f));
+            System.out.printf("Area: %-25s, Value: %.4f %s\n", areaValuePair.first().getAreaName(),
+                    areaValuePair.second().getValue().orElse(0.0f), areaValuePair.second().getUnit());
         }
         System.out.println();
 
     }
 
+    /**
+     * @param itemCode
+     * @param elementCode
+     * @param topNumArea
+     */
     private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
 
-            areaTree.getTree().forEach(area -> {
+        areaTree.getTree().forEach(area -> {
                 Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
                 if (i.isPresent()) {
                     Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode, null));
@@ -67,22 +66,31 @@ public class Exercise3 implements Runnable {
 
     }
 
+    /**
+     * @param topNumArea
+     */
     private void addTopNValuesToList(int topNumArea) {
         for (int i = 0; i < topNumArea; i++) {
             listTopN.add(listBiggestValues.get(i));
         }
     }
 
+    /**
+     * @param list
+     */
     private void sortListDescending(List<Pair<Area, Value>> list) {
         list.sort(comparator);
     }
 
 
+    /**
+     * @param area
+     * @param value
+     */
     private void addToList(Area area, Value value){
         listBiggestValues.add(new Pair<>(area, value));
 
     }
-
 
 
 }

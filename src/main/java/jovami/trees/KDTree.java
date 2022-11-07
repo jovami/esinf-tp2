@@ -221,30 +221,41 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
 
 
     private void searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) {
+        boolean outside=false;
 
-        if (node==null){ //Se o node não tiver um valor n faz nada
+        if (node==null){
             return;
         }
 
         double compareInicial= (cmpX ? node.coords.x - coordInicial.x : node.coords.y - coordInicial.y); // >=0 -> inside area
         double compareFinal= (cmpX ? node.coords.x - coordFinal.x : node.coords.y - coordFinal.y);  // <=0 -> outside area
 
-        if(compareInicial >= 0){//if node.coords is above inicial coords
-            if (compareFinal <= 0){// node.coords is below final coords
-                // while between the area, we want to check all the possible nodes
-                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
-                searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
-                action.accept(node.getElement());
-            }
-
-        }else{ // when node.coord are bellow inicial coords, we only want to check greater values
+ 
+        if (compareInicial < 0){   //node.coords is below inicial coords
             searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+            outside=true;
         }
+        if (compareFinal > 0){      // node.coords is above final coords
+            outside=true;
+            searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
+        }
+        if(outside==false){
+            // while between the area, we want to check all the possible nodes
+            searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+            searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
 
+            if(isInside(node.coords, coordInicial, coordFinal))
+                action.accept(node.getElement());
+         
+        }
     }
 
     @Override
     public List<E> kNearestNeighbors(double x, double y, int n) {
         throw new UnsupportedOperationException("Not implemented!");
+    }
+
+    private boolean isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal){
+        return ((nodeCoords.x >= coordInicial.x && nodeCoords.x <= coordFinal.x) && (nodeCoords.y >=coordInicial.y && nodeCoords.y <= coordFinal.y) ) ;
     }
 }

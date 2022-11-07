@@ -13,7 +13,7 @@ public class Year implements Comparable<Year> {
     public Year(String yearCode, int year, Value v) {
         this.yearCode = yearCode;
         this.year = year;
-        this.value = null;
+        this.value = v;
     }
     public Year(String yearCode, int year) {
         this(yearCode, year, null);

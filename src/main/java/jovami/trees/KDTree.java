@@ -21,7 +21,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         private KDNode<E> left;       // a reference to the left child (if any)
         private KDNode<E> right;      // a reference to the right child (if any)
 
-
         /**
          * Instantiates a new Kd node.
          *
@@ -71,16 +70,57 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
             this.right = rightChild;
         }
     }
+    //----------- end of nested Node class -----------
 
-    private KDNode<E> root;
+    protected KDNode<E> root;   //root
 
-    public KDTree(){
+    /* Constructs an empty KDtree. */
+    public KDTree() {
         root = null;
     }
 
+    //----------- Comparators -----------
     private final Comparator<KDNode<E>> cmpX = Comparator.comparingDouble(p -> p.coords.x);
 
     private final Comparator<KDNode<E>> cmpY = Comparator.comparingDouble(p -> p.coords.y);
+
+    /*
+     * Verifies if the tree is empty
+     * @return true if the tree is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return this.root == null;
+    }
+
+    @Override
+    public int height() {
+        return height(this.root);
+    }
+
+    protected int height(KDNode<E> node) {
+        if (node == null)
+            return -1;
+
+        int left = height(node.getLeft());
+        int right = height(node.getRight());
+
+        return 1 + Math.max(left, right);
+    }
+
+    @Override
+    public int size() {
+        return size(this.root);
+    }
+
+    protected int size(KDNode<E> node) {
+        if (node == null)
+            return 0;
+
+        int left = size(node.getLeft());
+        int right = size(node.getRight());
+
+        return 1 + left + right;
+    }
 
     /**
      * Insert.
@@ -192,8 +232,8 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         if(compareInicial >= 0){//if node.coords is above inicial coords
             if (compareFinal <= 0){// node.coords is below final coords
                 // while between the area, we want to check all the possible nodes
-                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);    
-                searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);    
+                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+                searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
                 action.accept(node.getElement());
             }
 
@@ -202,7 +242,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         }
 
     }
-    
+
     @Override
     public List<E> kNearestNeighbors(double x, double y, int n) {
         throw new UnsupportedOperationException("Not implemented!");

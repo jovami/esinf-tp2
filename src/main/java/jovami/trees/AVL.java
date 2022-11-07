@@ -56,10 +56,19 @@ public class AVL<E> extends BST<E> {
         return node;
     }
 
+    /** Constructs an empty self-balancing binary search tree using the natural ordering of its elements.
+     * Elements inserted in this tree must implement the {@code Comparable} interface, otherwise
+     * a {@code ClassCastException} will be thrown when calling this constructor.
+     * @throws {@code ClassCastException} if E does not implement Comparable<? super E>
+     */
     public AVL() {
         super();
     }
 
+    /** Constructs an empty self-balancing binary search tree, ordered according to the given comparator.
+     * @param cmp    The comparator that will be used to order the tree
+     * @throws NullPointerException if the provided comparator was null
+     */
     public AVL(Comparator<? super E> cmp) {
         super(cmp);
     }

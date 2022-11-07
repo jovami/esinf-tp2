@@ -78,16 +78,23 @@ public class BST<E> implements BSTInterface<E>, Iterable<E> {
 
     protected Comparator<? super E> cmp;
 
-    /* Constructs an empty binary search tree. */
+    /** Constructs an empty binary search tree using the natural ordering of its elements.
+     * Elements inserted in this tree must implement the {@code Comparable} interface, otherwise
+     * a {@code ClassCastException} will be thrown when calling this constructor.
+     * @throws {@code ClassCastException} if E does not implement Comparable<? super E>
+     */
     public BST() {
         this ((e1, e2) -> {
             @SuppressWarnings("unchecked")
             Comparable<? super E> e = (Comparable<? super E>) e1;
             return e.compareTo(e2);
         });
-        // this(E instanceof Comparable<E> ? (e1, e2) -> e1.compareTo(e2) : null);
     }
 
+    /** Constructs an empty binary search tree, ordered according to the given comparator.
+     * @param cmp    The comparator that will be used to order the tree
+     * @throws NullPointerException if the provided comparator was null
+     */
     public BST(Comparator<? super E> cmp) {
         Objects.requireNonNull(cmp);
         this.root = null;

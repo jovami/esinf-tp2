@@ -2,7 +2,7 @@ package jovami.exercises;
 
 public class Exercise3DataSet {
 
-    static final String flagsFile[] = new String[]{
+    static final String[] flagsFile = new String[]{
             "A,Official figure",
             "E,Estimated value",
             "I,Imputed value",
@@ -34,8 +34,8 @@ public class Exercise3DataSet {
             "\"98\",\"'191\", \"Croatia\", \"393\", \"'01213\", \"Cauliflowers and broccoli\", \"5312\", \"Area harvested\", \"2003\", \"2003\", \"ha\", \"85.000000\", \"A\"",
             "\"60\", \"'222\", \"El Salvador\", \"782\", \"'01922.02\", \"Kenaf, and other textile bast fibres, raw or retted\", \"5510\", \"Production\", \"2000\", \"2000\", \"tonnes\", \"2800.000000\", \"A\"",
             "\"102\", \"'364\", \"Iran (Islamic Republic of)\", \"234\", \"'01379.90\", \"Other nuts(excluding wild edible nuts and groundnuts), in shell, n.e.c.\", \"5510\", \"Production\", \"1965\", \"1965\", \"tonnes\", \"250.000000\", \"E\"",
-            "\"195\", \"'686\", \"Senegal\", \"249\", \"'01460\", \"Coconuts, in shell\", \"5312\", \"Area harvested\", \"1999\", \"1999\", \"ha\", \"1346.000000", "I"",
-            "\"248\", \"'890\", \"Yugoslav SFR\", \"544\", \"'01354\", \"Strawberries\", \"5510\", \"Production\", \"1986\", \"1986\", \"tonnes\", \"27441.000000", "T"",
+            "\"195\", \"'686\", \"Senegal\", \"249\", \"'01460\", \"Coconuts, in shell\", \"5312\", \"Area harvested\", \"1999\", \"1999\", \"ha\", \"1346.000000\", \"I\"",
+            "\"248\", \"'890\", \"Yugoslav SFR\", \"544\", \"'01354\", \"Strawberries\", \"5510\", \"Production\", \"1986\", \"1986\", \"tonnes\", \"27441.000000\", \"T\"",
             "\"138\", \"'484\", \"Mexico\", \"373\", \"'01215\", \"Spinach\", \"5419\", \"Yield\", \"1998\", \"1998\", \"hg / ha\", \"117291.000000\", \"E\"",
             "\"21\", \"'076\", \"Brazil\", \"661\", \"'01640\", \"Cocoa beans\", \"5419\", \"Yield\", \"2009\", \"2009\", \"hg / ha\", \"3435.000000\", \"E\"",
             "\"110\", \"'392\", \"Japan\", \"149\", \"'01599.10\", \"Edible roots and tubers with high starch or inulin content, n.e.c., fresh\", \"5419\", \"Yield\", \"1979\", \"1979\", \"hg / ha\", \"162417.000000\", \"E\"",

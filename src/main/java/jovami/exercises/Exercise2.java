@@ -15,7 +15,7 @@ import jovami.util.Utils;
 public class Exercise2 implements Runnable {
 
     // Descending order of value
-    public final Comparator<Triplet<String, String, Float>> cmp =
+    protected final Comparator<Triplet<String, String, Float>> cmp =
         Comparator.comparing(Triplet::third, Comparator.reverseOrder());
 
     private final App app;

@@ -4,6 +4,7 @@ import static jovami.MainTest.*;
 import static jovami.exercises.Exercise2DataSet.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -153,11 +154,24 @@ public class Exercise2Test {
         };
 
         var list = ex2.getAreaAverages(code, min, max);
-        Utils.mergeSort(list, ex2.cmp);
+        var copy = new ArrayList<>(list);
 
-        Float actualAvgs[] = list.stream().map(Triplet::third).toArray(Float[]::new);
+        {   // with mergeSort()
+            Utils.mergeSort(list, ex2.cmp);
 
-        assertEquals(expectedAvgs.length, actualAvgs.length);
-        assertArrayEquals(expectedAvgs, actualAvgs);
+            Float actualAvgs[] = list.stream().map(Triplet::third).toArray(Float[]::new);
+
+            assertEquals(expectedAvgs.length, actualAvgs.length);
+            assertArrayEquals(expectedAvgs, actualAvgs);
+        }
+
+        {   // with avlSort()
+            var res = Utils.avlSort(copy, ex2.cmp);
+
+            Float actualAvgs[] = res.stream().map(Triplet::third).toArray(Float[]::new);
+
+            assertEquals(expectedAvgs.length, actualAvgs.length);
+            assertArrayEquals(expectedAvgs, actualAvgs);
+        }
     }
 }

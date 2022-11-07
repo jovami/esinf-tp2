@@ -14,6 +14,7 @@ import jovami.util.Utils;
 
 public class Exercise2 implements Runnable {
 
+    // Descending order of value
     public final Comparator<Triplet<String, String, Float>> cmp =
         Comparator.comparing(Triplet::third, Comparator.reverseOrder());
 
@@ -57,7 +58,7 @@ public class Exercise2 implements Runnable {
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {
-        // O(n)
+        // O(log n)
         final Optional<Area> opt = app.getAreaTree().getAreaByAreaCode(areaCode);
 
         if (opt.isEmpty())
@@ -99,8 +100,8 @@ public class Exercise2 implements Runnable {
         final var averages = new ArrayList<Triplet<String, String, Float>>();
 
         // driver code
-        area.getTreeItem().forEach(item -> {                                    // O(n * inside)
-            item.getTreeElement().forEach(element -> {                          // O(n * inside)
+        area.getTreeCode().forEach(item -> {                                    // O(n * inside)
+            item.getTreeCode().forEach(element -> {                             // O(n * inside)
                 final DoubleAdder sum = new DoubleAdder();                      // O(1)
 
                 element.getTreeYear().forEach(year -> {                         // O(n * inside)

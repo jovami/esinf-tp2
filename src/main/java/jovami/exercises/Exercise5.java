@@ -41,7 +41,7 @@ public class Exercise5 implements Runnable {
         if(!itemDesired.isPresent()){
             return;
         }
-        double sumTotal=getRangeSum(elementCode, yearCode, latitudeInicial, latitudeFinal, longitudeInicial, longitudeFinal, itemDesired);
+        double sumTotal=getRangeSum(elementCode, yearCode, latitudeInicial, latitudeFinal, longitudeInicial, longitudeFinal, itemDesired.get());
         
 
         System.out.printf("Item Code: %s\nElement Code: %s\nYear Code:%s\n",itemCode,elementCode,yearCode );
@@ -51,8 +51,8 @@ public class Exercise5 implements Runnable {
         
     }
 
-    private double getRangeSum(String elementCode, String yearCode, double latitudeInicial, double latitudeFinal,
-            double longitudeInicial, double longitudeFinal, Optional<Item> itemDesired) {
+    protected double getRangeSum(String elementCode, String yearCode, double latitudeInicial, double latitudeFinal,
+            double longitudeInicial, double longitudeFinal, Item itemDesired) {
 
         DoubleAdder sum = new DoubleAdder();
         
@@ -71,7 +71,7 @@ public class Exercise5 implements Runnable {
 
         areaTree.getKDtree().rangeSearch(latitudeInicial, longitudeInicial, latitudeFinal, longitudeFinal)
             .forEach(area->{
-                Optional<Item> item= area.getTreeItem().find(itemDesired.get());
+                Optional<Item> item= area.getTreeItem().find(itemDesired);
                 if(!item.isPresent()){
                     return;
                 }

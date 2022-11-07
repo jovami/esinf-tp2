@@ -14,7 +14,6 @@ public class Exercise5 implements Runnable {
     private final App app;
     private AreaKDTree areaTree;
     private ItemTree itemStore;
-    private static float sum;
 
     public Exercise5() {
         app = App.getInstance();
@@ -29,11 +28,11 @@ public class Exercise5 implements Runnable {
         String elementCode = "5510";
         String yearCode = "1961";
         
-        double latitudeInicial = -150;
-        double latitudeFinal = 180;
+        double latitudeInicial = 150;
+        double latitudeFinal = -180;
 
-        double longitudeInicial = -180;
-        double longitudeFinal = 180;
+        double longitudeInicial = 180;
+        double longitudeFinal = -180;
 
         Optional<Item> itemDesired = itemStore.getItemByItemCode(itemCode);
         
@@ -53,6 +52,19 @@ public class Exercise5 implements Runnable {
         var wrap = new Object(){
                 float sumTotal=0;
         };
+
+
+        if(longitudeFinal<longitudeInicial){
+            double backup = longitudeFinal;
+            longitudeFinal = longitudeInicial;
+            longitudeInicial = backup;
+        }
+        if(latitudeFinal<latitudeInicial){
+            double backup = latitudeFinal;
+            latitudeFinal = latitudeInicial;
+            latitudeInicial = backup;
+        }
+
 
         areaTree.getKDtree().rangeSearch(latitudeInicial, longitudeInicial, latitudeFinal, longitudeFinal)
             .forEach(area->{
@@ -78,6 +90,6 @@ public class Exercise5 implements Runnable {
                 }
         });
 
-        return sum;
+        return wrap.sumTotal;
     }
 }

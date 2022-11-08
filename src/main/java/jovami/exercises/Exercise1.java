@@ -4,6 +4,7 @@ import jovami.App;
 import jovami.model.*;
 import jovami.model.reader.CSVHeader;
 import jovami.model.reader.CSVReader;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -13,12 +14,14 @@ import java.util.Optional;
 
 public class Exercise1 implements Runnable {
 
-    List<File> filenames = new LinkedList<File>();
+    List<File> filenames = new LinkedList<>();
     private final App app;
     private CSVReader csvReader;
 
 
-    public Exercise1() {app = App.getInstance();}
+    public Exercise1() {
+        app = App.getInstance();
+    }
 
 
     @Override
@@ -34,9 +37,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasAreaCoordinates(int i) {this.i = i;}
+        ColunasAreaCoordinates(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
     }
 
 
@@ -46,9 +53,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasItemCodes(int i) {this.i = i;}
+        ColunasItemCodes(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
     }
 
 
@@ -59,9 +70,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasFlags(int i) {this.i = i;}
+        ColunasFlags(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
 
     }
 
@@ -72,9 +87,13 @@ public class Exercise1 implements Runnable {
 
         private final int i;
 
-        ColunasShuffle(int i) {this.i = i;}
+        ColunasShuffle(int i) {
+            this.i = i;
+        }
 
-        private int getColuna() {return i;}
+        private int getColuna() {
+            return i;
+        }
 
 
     }
@@ -84,7 +103,7 @@ public class Exercise1 implements Runnable {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
-        for(File f: filenames) {
+        for (File f : filenames) {
             String name = f.getName();
             //System.out.println(""+f.getName());
             if (name.contains("Production_Crops_Livestock_E_Flags")) {
@@ -114,15 +133,14 @@ public class Exercise1 implements Runnable {
                 }
             }
         }
-        for(File f: filenames)
-        {
+        for (File f : filenames) {
             String name = f.getName();
-            if(name.contains("Production_Crops_Livestock_World_shuffle_small")) {
+            if (name.contains("Production_Crops_Livestock_World_shuffle_small")) {
                 /*else if(f.getName().contains("shuffle_large") || f.getName().contains("shuffle_medium")
                     || f.getName().contains("shuffle_small")) */
-                    //"Production_Crops_Livestock_World_shuffle_small"
-                    //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
-                  try {
+                //"Production_Crops_Livestock_World_shuffle_small"
+                //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
+                try {
                     File dir = fileDirReader(name);
                     this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
@@ -140,7 +158,7 @@ public class Exercise1 implements Runnable {
             if (fileEntry.isDirectory()) {
                 listFilesForFolder(fileEntry);
             } else {
-                if(fileEntry.getName().contains(".csv"))
+                if (fileEntry.getName().contains(".csv"))
                     filenames.add(fileEntry);
             }
         }
@@ -150,7 +168,9 @@ public class Exercise1 implements Runnable {
         char code;
         String name;
 
+
         var store = app.flagStore();                                            //O(1)
+        
 
         for (String[] info : list) {                                            //O(n * inside)
             code = info[ColunasFlags.FLAGCODE.getColuna()].charAt(0);    //O(1)  
@@ -164,6 +184,7 @@ public class Exercise1 implements Runnable {
         // String areaCode, codeM49;
         String areaName, country;
         double latitude, longitude;
+
 
         for(String[] info: list)                                                                                                   //O(n * inside)
         {
@@ -183,6 +204,7 @@ public class Exercise1 implements Runnable {
             }else{
                 latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);                                 //O(1)
                 longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()]);                               //O(1)
+
             }
 
             areaName = info[ColunasAreaCoordinates.AREANOME.getColuna()];                                                         //O(1)
@@ -196,15 +218,15 @@ public class Exercise1 implements Runnable {
 
 
     private void saveAreaCoordinates(String areaName, double latitude, double longitude, String country) {
-        Area area = new Area("","",areaName,latitude,  longitude,  country);
+        Area area = new Area("", "", areaName, latitude, longitude, country);
         app.getAreaTree().addArea(area);
         app.getKDAreaTree().addNode(area, latitude, longitude);
     }
 
 
-    public void saveInfoItemCodes(List<String[]> list)
-    {
+    public void saveInfoItemCodes(List<String[]> list) {
         String itemCode, itemCPC, itemDescription;
+
 
         for(String[] info: list)                                                                                        //O(n * inside)
         {
@@ -212,27 +234,27 @@ public class Exercise1 implements Runnable {
             itemCPC = info[ColunasItemCodes.ITEMCPC.getColuna()];                                                       //O(1)       
             itemDescription = info[ColunasItemCodes.ITEMDESCRIPTION.getColuna()];                                       //O(1)
 
+
             saveItemCodes(itemCode, itemCPC, itemDescription);                                                          //O(1)        
                                                                                                             //Worst-case time complexity: O(n)
         }
     }
 
 
-    private void saveItemCodes(String itemCode, String itemCPC, String itemDescription)
-    {
+    private void saveItemCodes(String itemCode, String itemCPC, String itemDescription) {
         Item item = new Item(itemCode, itemCPC, itemDescription);
 
         app.getItemTree().addItem(item);
     }
 
 
-
     public void saveInfoShuffle(List<String[]> list) {
         //"Area Code,Area Code (M49),Area,Item Code,Item Code (CPC),Item,Element Code,Element,Year Code,Year,Unit,Value,Flag";
-        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType,yearCode, unit;
+        String areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, unit;
         char flag;
         int year;
         float value;
+
 
 
         for(String[] info: list)                                                                            //O(n * inside)
@@ -253,6 +275,7 @@ public class Exercise1 implements Runnable {
             flag = info[ColunasShuffle.FLAGTYPE.getColuna()].charAt(0);                               //O(1)
 
             saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag); //O(n * log n) ?????
+
         }
         app.getAreaTree().fillCodeTree();                                                                   //O(n)
 
@@ -261,9 +284,16 @@ public class Exercise1 implements Runnable {
 
 
     private void saveShuffle(String areaCode, String codeM49, String areaName, String itemCode, String itemCPC, String itemDescription,
-                             String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag)
-    {
+                             String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag) {
         var flagStore = app.flagStore();
+
+        switch (areaName) {
+            case "China, Hong Kong SAR" -> areaName = "Hong Kong";
+            case "China, Taiwan Province of" -> areaName = "Taiwan";
+            //case "China, mainland" -> areaName = "China";
+            case "China, Macao SAR" -> areaName = "Macau";
+            //case "Belgium-Luxembourg" -> areaName = "Luxembourg";
+        }
 
         Optional<Area> tmp = app.getAreaTree().getAreaByAreaName(areaName);
 

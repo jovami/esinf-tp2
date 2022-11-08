@@ -45,13 +45,7 @@ public class Exercise3Test {
         String elementCode = "5510";
 
 
-
         ex3.getListLastYearValues(itemCode, elementCode);            //adds data to listBiggestValues
-
-        for (int i = 0; i < ex3.listBiggestValues.size(); i++) {
-            System.out.println(ex3.listBiggestValues.get(i).first().getAreaName());
-            System.out.println(ex3.listBiggestValues.get(i).second().getValue().orElse(0.0f));
-        }
 
 
         ArrayList<Pair<String, Float>> expected = new ArrayList<>();
@@ -62,16 +56,19 @@ public class Exercise3Test {
         expected.add(new Pair<>("Belgium", 112706.000000F));
         expected.add(new Pair<>("France", 531844.000000F));
         expected.add(new Pair<>("Germany", 149164.000000F));
-        expected.add(new Pair<>("Croatia", 85.000000F));
 
 
         for (Pair<Area, Value> areaValuePair : ex3.listBiggestValues) {
-             String name = areaValuePair.first().getAreaName();
-             Float value =areaValuePair.second().getValue().orElse(0.0f);
-             test.add(new Pair<>(name,value));
+            String name = areaValuePair.first().getAreaName();
+            Float value = areaValuePair.second().getValue().orElse(0.0f);
+            test.add(new Pair<>(name, value));
         }
 
-        assertEquals(expected, test);
+        assertEquals(expected.size(), test.size());
+        for (int i = 0; i < test.size(); i++) {
+            assertEquals(expected.get(i), test.get(i));
+        }
+
 
     }
 

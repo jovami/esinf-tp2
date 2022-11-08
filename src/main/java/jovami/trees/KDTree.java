@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * @param <E> the type parameter
  */
 public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterface<E> {
-//TODO extends bst??
+    //TODO extends bst??
     public static class KDNode<E>{
         protected Point2D.Double coords;
         private E element;          // an element stored at this node
@@ -160,7 +160,8 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
 
     @Override
     public E nearestNeighbor(double x, double y) {
-        return nearestNeighbor(root, x, y, root, true);
+        KDNode<E>node = nearestNeighbor(root, x, y, root, true);
+        return node.getElement();
     }
 
     /**
@@ -173,14 +174,14 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
      * @param divX        the div x
      * @return the e
      */
-    protected E nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX) {
+    protected KDNode<E> nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX) {
         if (node == null)
-            return null;
+            return closestNode;
 
         double d = Point2D.distanceSq(node.coords.x, node.coords.y, x, y);
         double closestDist = Point2D.distanceSq(closestNode.coords.x, closestNode.coords.y, x, y);
 
-        if (closestDist > d)
+        if (d < closestDist)
             closestNode = node;
 
         double delta = divX ? x - node.coords.x : y - node.coords.y;
@@ -189,10 +190,12 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         KDNode<E> node1 = delta < 0 ? node.getLeft() : node.getRight();
         KDNode<E> node2 = delta < 0 ? node.getRight() : node.getLeft();
 
-        nearestNeighbor(node1, x, y, closestNode, !divX);
+        closestNode = nearestNeighbor(node1, x, y, closestNode, !divX);
+
+
         if (delta2 < closestDist)
-            nearestNeighbor(node2, x, y, closestNode, !divX);
-        return closestNode.getElement();
+            closestNode = nearestNeighbor(node2, x, y, closestNode, !divX);
+        return closestNode;
     }
 
     /**

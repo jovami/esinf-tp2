@@ -308,8 +308,7 @@ public class Exercise1 implements Runnable {
 
             if (elem.getYearByYear(yea).isEmpty())
                 elem.addYear(yea);
-        }else
-            System.out.println(areaName);
+        }
     }
 
 

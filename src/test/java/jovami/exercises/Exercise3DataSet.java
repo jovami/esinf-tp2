@@ -26,8 +26,25 @@ public class Exercise3DataSet {
             "JP,36.204824,138.252924,Japan",
 
     };
+
+    static final String itemFile[] = new String[]{
+
+            "393","'01213","Cauliflowers and broccoli",
+            "782","'01922.02","Kenaf, and other textile bast fibres, raw or retted",
+            "234","'01379.90","Other nuts (excluding wild edible nuts and groundnuts), in shell, n.e.c.",
+            "249","'01460","Coconuts, in shell",
+            "544","'01354","Strawberries",
+            "373","'01215","Spinach",
+            "661","'01640","Cocoa beans",
+            "149","'01599.10","Edible roots and tubers with high starch or inulin content, n.e.c., fresh"
+
+    };
+
+
     static final String shuffleFile[] = new String[]{
             "\"4\", \"'012\", \"Algeria\", \"393\", \"'01213\", \"Cauliflowers and broccoli\", \"5510\", \"Production\", \"1992\", \"1992\", \"tonnes\", \"38110.000000\", \"A\"",
+            "\"4\",\"'012\",\"Algeria\",\"393\",\"'01213\",\"Cauliflowers and broccoli\",\"5419\",\"Yield\",\"1988","1988\",\"hg/ha\",\"90330.000000\",\"E\"",
+            "\"4\",\"'012\",\"Algeria\",\"393\",\"'01213\",\"Cauliflowers and broccoli\",\"5510\",\"Production\",\"1978\",\"1978\",\"tonnes\",\"10000.000000\",\"E\"",
             "\"255\", \"'056\", \"Belgium\", \"393\", \"'01213\", \"Cauliflowers and broccoli\", \"5510\", \"Production\", \"2016\", \"2016\", \"tonnes\", \"112706.000000\", \"A\"",
             "\"68\", \"'250\", \"France\", \"393\", \"'01213\", \"Cauliflowers and broccoli\", \"5510\", \"Production\", \"1994\", \"1994\", \"tonnes\", \"531844.000000\", \"A\"",
             "\"79\", \"'276\", \"Germany\", \"393\", \"'01213\", \"Cauliflowers and broccoli\", \"5510\", \"Production\", \"2014\", \"2014\", \"tonnes\", \"149164.000000\", \"A\"",

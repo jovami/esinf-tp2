@@ -6,15 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import jovami.model.Area;
-
 /**
  * KDTree
  *
  * @param <E> the type parameter
  */
-public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterface<E> {
-    //TODO extends bst??
+public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
+
     public static class KDNode<E>{
         protected Point2D.Double coords;
         private E element;          // an element stored at this node
@@ -92,7 +90,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return this.root == null;
     }
 
-    @Override
     public int height() {
         return height(this.root);
     }
@@ -107,7 +104,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return 1 + Math.max(left, right);
     }
 
-    @Override
     public int size() {
         return size(this.root);
     }
@@ -263,11 +259,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
                 action.accept(node.getElement());
          
         }
-    }
-
-    @Override
-    public List<E> kNearestNeighbors(double x, double y, int n) {
-        throw new UnsupportedOperationException("Not implemented!");
     }
 
     private boolean isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal){

@@ -1,7 +1,6 @@
 package jovami.exercises;
 
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.DoubleAdder;
 
 import jovami.App;
@@ -44,10 +43,10 @@ public class Exercise5 implements Runnable {
         double sumTotal=getRangeSum(elementCode, yearCode, latitudeInicial, latitudeFinal, longitudeInicial, longitudeFinal, itemDesired.get());
 
 
-        System.out.printf("Item Code: %s\nElement Code: %s\nYear Code:%s\n",itemCode,elementCode,yearCode );
-        System.out.printf("Latitude inicial: %f\nLatitude final: %f\n---------------\nLongitude inicial: %f\nLongitude final: %f\n\n",
+        System.out.printf("Item Code: %s\nElement Code: %s\nYear Code: %s\n",itemCode,elementCode,yearCode );
+        System.out.printf("\nCoordenadas:\nLatitude inicial: %.2f\nLatitude final: %.2f\n---------------\nLongitude inicial: %.2f\nLongitude final: %.2f\n\n",
             latitudeInicial,latitudeFinal,longitudeInicial,longitudeFinal);
-        System.out.println("Soma total de valores dentro da area forncecida :"+sumTotal);
+        System.out.println("Soma total de valores dentro da area forncecida: "+sumTotal);
 
     }
 
@@ -55,19 +54,6 @@ public class Exercise5 implements Runnable {
             double longitudeInicial, double longitudeFinal, Item itemDesired) {
 
         DoubleAdder sum = new DoubleAdder();
-
-
-        if(longitudeFinal<longitudeInicial){
-            double backup = longitudeFinal;
-            longitudeFinal = longitudeInicial;
-            longitudeInicial = backup;
-        }
-        if(latitudeFinal<latitudeInicial){
-            double backup = latitudeFinal;
-            latitudeFinal = latitudeInicial;
-            latitudeInicial = backup;
-        }
-
 
         areaTree.getKDtree().rangeSearch(latitudeInicial, longitudeInicial, latitudeFinal, longitudeFinal)
             .forEach(area->{

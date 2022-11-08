@@ -1,5 +1,17 @@
 package jovami.exercises;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import jovami.App;
 import jovami.MainTest;
 import jovami.model.Area;
@@ -9,16 +21,6 @@ import jovami.model.Year;
 import jovami.model.reader.CSVHeader;
 import jovami.model.reader.CSVReader;
 import jovami.trees.AVL;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class Exercise1Test {
 

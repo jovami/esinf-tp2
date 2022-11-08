@@ -80,7 +80,6 @@ public class Area implements Comparable<Area> {
         this.treeDesc.insert(item);
     }
 
-    // FIXME: change itemCode to int
     public Optional<Item> getItemByItemCode(String itemCode) {
         Item tmp = new Item(itemCode, null, null);
         return this.getItembyItem(tmp);

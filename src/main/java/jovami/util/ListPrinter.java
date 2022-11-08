@@ -2,7 +2,6 @@ package jovami.util;
 
 import java.io.PrintStream;
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * ListPrinter

@@ -1,20 +1,21 @@
 package jovami.exercises;
 
-import java.util.stream.IntStream;
+import static jovami.MainTest.loadCoords;
+import static jovami.MainTest.loadFlags;
+import static jovami.MainTest.loadItemCodes;
+import static jovami.MainTest.loadShuffle;
+import static jovami.MainTest.resetSingleton;
+import static jovami.exercises.Exercise5TestDataSet.coordsFile;
+import static jovami.exercises.Exercise5TestDataSet.flagsFile;
+import static jovami.exercises.Exercise5TestDataSet.itemFile;
+import static jovami.exercises.Exercise5TestDataSet.shuffleFile;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-import static jovami.MainTest.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import jovami.App;
-import jovami.model.Area;
-import jovami.model.Element;
 import jovami.model.Item;
-import jovami.trees.KDTree;
-import static jovami.exercises.Exercise5TestDataSet.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Exercise5Test {
     App app;

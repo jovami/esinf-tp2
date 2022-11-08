@@ -30,7 +30,7 @@ public class Exercise3 implements Runnable {
 
         String itemCode = "393";
         String elementCode = "5510";
-        int topNumArea = 10;
+        int topNumArea = 6;
 
         getListLastYearValues(itemCode, elementCode);
 
@@ -39,10 +39,9 @@ public class Exercise3 implements Runnable {
 
 
         for (Pair<Area, Value> areaValuePair : listTopN) {
-            System.out.printf("Area: %-25s, Value: %.4f %s\n", areaValuePair.first().getAreaName(),
+            System.out.printf("Area: %-25s -> Value: %.4f %s\n", areaValuePair.first().getAreaName(),
                     areaValuePair.second().getValue().orElse(0.0f), areaValuePair.second().getUnit());
         }
-        System.out.println();
 
     }
 

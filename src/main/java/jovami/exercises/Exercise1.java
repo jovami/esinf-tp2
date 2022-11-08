@@ -274,12 +274,13 @@ public class Exercise1 implements Runnable {
 
             flag = info[ColunasShuffle.FLAGTYPE.getColuna()].charAt(0);                               //O(1)
 
-            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag); //O(n * log n) ?????
-
+            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
+            //O (nLog n)
+            
         }
         app.getAreaTree().fillCodeTree();                                                                   //O(n)
 
-                                                                                // Worst-case time complexity: O(n * n * n * log n) => O(n^3 log n)  ??????
+        // Worst-case time complexity: O((n * n )* n * log n) => O(n^3 log n)
     }
 
 
@@ -287,6 +288,8 @@ public class Exercise1 implements Runnable {
                              String elementCode, String elementType, String yearCode, int year, String unit, float value, char flag) {
         var flagStore = app.flagStore();
 
+
+        //Given files had some innacuraccy
         switch (areaName) {
             case "China, Hong Kong SAR" -> areaName = "Hong Kong";
             case "China, Taiwan Province of" -> areaName = "Taiwan";
@@ -321,8 +324,9 @@ public class Exercise1 implements Runnable {
                 elem = eOpt.get();                                                                              //O(log n)
 
             if (elem.getYearByYear(yea).isEmpty())                                                              //O(log n)
-                elem.addYear(yea);                                                                              //O(1)
+                elem.addYear(yea);                     
         }                                                                                  // Worst-case time complexity: O(n * log n)           
+        
     }
 
 

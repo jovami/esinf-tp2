@@ -60,7 +60,7 @@ class Exercise1Test {
 
     }
 
-
+/*
     @Test
     void saveInfoAreaCoordinates() throws Exception {
 
@@ -136,9 +136,10 @@ class Exercise1Test {
                 }
         }
 
-        //assertEquals(count, countx);
+        assertEquals(count, countx);
 
     }
+    */
 
 
     @Test

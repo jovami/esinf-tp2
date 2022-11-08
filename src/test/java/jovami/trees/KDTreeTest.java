@@ -2,6 +2,8 @@ package jovami.trees;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +17,6 @@ public class KDTreeTest {
     int[] values = new int[] { 10, -12, +20, 440, 77, 25, 44 };
     int[] coordx = new int[] { -1, +44, -12,   0, 10, -5, +3 };
     int[] coordy = new int[] { +2,  +4,  -2,  -7, 11, -9, +8 };
-
     KDTree<Integer> tree;
 
     @BeforeEach
@@ -62,4 +63,70 @@ public class KDTreeTest {
                     assertEquals(finalSize, tree.size(), "KDTree's size shouldn't have changed!");
                 });
     }
+
+
+    @Test
+    void rangeSearch() {
+
+        List<Integer> expected = new ArrayList<>();
+        expected.add(10);
+        expected.add(25);
+        expected.add(440);
+        expected.add(44);
+
+        double x1 = -5;
+        double x2 = 5;
+
+        double y1 = -10;
+        double y2 = 8;
+
+        
+        List<Integer> list = tree.rangeSearch(x1, y1, x2, y2);  
+        for (Integer i : expected) {
+            System.out.println("i:"+i);
+            assertTrue(list.contains(i.intValue()));
+            
+        }
+    }
+
+    @Test
+    void rangeSearchNullValues() {
+
+
+        double x1 = 0;
+        double x2 = 0;
+
+        double y1 = 0;
+        double y2 = 0;
+
+        
+        List<Integer> list = tree.rangeSearch(x1, y1, x2, y2);  
+        assertTrue(list.isEmpty());
+    } 
+    
+    
+    @Test
+    void rangeSearchChangedCoords() {
+
+        List<Integer> expected = new ArrayList<>();
+        expected.add(10);
+        expected.add(440);
+        expected.add(44);
+        expected.add(25);
+
+        double x1 = 5;
+        double x2 = -6;
+
+        double y1 = 8;
+        double y2 = -10;
+
+        
+        List<Integer> list = tree.rangeSearch(x1, y1, x2, y2);  
+        for (Integer i : expected) {
+            System.out.println("i:"+i);
+            assertTrue(list.contains(i.intValue()));
+            
+        }
+    }
+    
 }

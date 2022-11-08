@@ -371,10 +371,16 @@ abstract class Point2D
 {
 }
 
+class Triplet
+{
+    +toString()
+}
+
 
 Main ..> App
 Main ..> Utils
 Main ..> CSVReader
+Main ..> Triplet
 CSVReader --> CSVHeader
 
 

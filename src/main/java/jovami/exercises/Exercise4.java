@@ -32,7 +32,7 @@ public class Exercise4 implements Runnable {
     }
 
     public void getAreas(String itemCode, String elementCode, String yearCode){
-        app.getAreaTree().getTree().forEach(area -> {
+        app.getAreaTree().getNameTree().forEach(area -> {
             Optional<Item> item = area.getItemByItemCode(itemCode);
             if(item.isPresent()) {
                 Optional<Element> element = item.get().getElementByElementCode(elementCode);

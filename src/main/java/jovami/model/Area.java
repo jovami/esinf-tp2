@@ -2,6 +2,7 @@ package jovami.model;
 
 import jovami.trees.AVL;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -12,8 +13,15 @@ public class Area implements Comparable<Area> {
     private String areaName;
     private Coordinate coords;
     private String country;
-    private final AVL<Item> treeItem;
 
+    private final AVL<Item> treeCode;
+    private final AVL<Item> treeDesc;
+
+    public static final Comparator<? super Area> cmpName =
+        Comparator.comparing(Area::getAreaName);
+
+    public static final Comparator<? super Area> cmpCode =
+        Comparator.comparing(Area::getAreaCode);
 
     public Area(String areaCode, String codeM49, String areaName,
                 double latitude, double longitude, String country)
@@ -23,7 +31,9 @@ public class Area implements Comparable<Area> {
         this.areaName = areaName;
         this.coords = new Coordinate(latitude,longitude);
         this.country = country;
-        this.treeItem = new AVL<>();
+
+        this.treeCode = new AVL<>(Item.cmpCode);
+        this.treeDesc = new AVL<>(Item.cmpDesc);
     }
 
     public void setAreaCode(String areaCode) {
@@ -35,15 +45,15 @@ public class Area implements Comparable<Area> {
     }
 
     public String getAreaCode() {
-        return areaCode;
+        return this.areaCode;
     }
 
     public String getCodeM49() {
-        return codeM49;
+        return this.codeM49;
     }
 
     public String getAreaName() {
-        return areaName;
+        return this.areaName;
     }
 
     public Coordinate getCoords() {
@@ -51,29 +61,38 @@ public class Area implements Comparable<Area> {
     }
 
     public String getCountry() {
-        return country;
+        return this.country;
     }
 
     //----------------------------------------
     //-------------AVL<Item>------------------
 
-    public AVL<Item> getTreeItem() {
-        return treeItem;
+    public AVL<Item> getTreeCode() {
+        return this.treeCode;
+    }
+
+    public AVL<Item> getTreeDesc() {
+        return this.treeDesc;
     }
 
     public void addItem(Item item) {
-        this.treeItem.insert(item);
+        this.treeCode.insert(item);
+        this.treeDesc.insert(item);
     }
 
     // FIXME: change itemCode to int
     public Optional<Item> getItemByItemCode(String itemCode) {
         Item tmp = new Item(itemCode, null, null);
-
         return this.getItembyItem(tmp);
     }
 
+    public Optional<Item> getItemByItemDescription(String desc) {
+        Item tmp = new Item(null, null, desc);
+        return this.treeDesc.find(tmp);
+    }
+
     public Optional<Item> getItembyItem(Item item) {
-        return this.treeItem.find(item);
+        return this.treeCode.find(item);
     }
 
 
@@ -87,12 +106,13 @@ public class Area implements Comparable<Area> {
             && areaName.equals(area.areaName)
             && coords.equals(area.coords)
             && country.equals(area.country)
-            && treeItem.equals(area.treeItem);
+            && treeCode.equals(area.treeCode)
+            && treeDesc.equals(area.treeDesc);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(areaCode, codeM49, areaName, coords, country, treeItem);
+        return Objects.hash(areaCode, codeM49, areaName, coords, country, treeCode, treeDesc);
     }
 
     @Override
@@ -104,11 +124,11 @@ public class Area implements Comparable<Area> {
                 ", longitude= " + coords.getLongitude() +
                 ", latitude= " + coords.getLatitude() +
                 ", country='" + country + '\'' +
-                ", treeItem=\n" + treeItem +
+                ", treeCode=\n" + treeCode +
+                ", treeDesc=\n" + treeDesc +
                 '}';
     }
 
-    //TO:DO
     @Override
     public int compareTo(Area o) {
         return this.areaName.compareTo(o.areaName);

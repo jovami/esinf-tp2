@@ -15,9 +15,7 @@ import java.util.function.Consumer;
  *
  * @author DEI-ESINF
  */
-public class BST<E extends Comparable<E>>
-    implements BSTInterface<E>, Iterable<E>
-{
+public class BST<E> implements BSTInterface<E>, Iterable<E> {
 
     /** Nested static class for a binary search tree node. */
     protected static class Node<E> {
@@ -78,9 +76,29 @@ public class BST<E extends Comparable<E>>
     //----------- end of nested Node class -----------
     protected Node<E> root = null;     // root of the tree
 
-    /* Constructs an empty binary search tree. */
+    protected Comparator<? super E> cmp;
+
+    /** Constructs an empty binary search tree using the natural ordering of its elements.
+     * Elements inserted in this tree must implement the {@code Comparable} interface, otherwise
+     * a {@code ClassCastException} will be thrown when calling this constructor.
+     * @throws {@code ClassCastException} if E does not implement Comparable<? super E>
+     */
     public BST() {
+        this ((e1, e2) -> {
+            @SuppressWarnings("unchecked")
+            Comparable<? super E> e = (Comparable<? super E>) e1;
+            return e.compareTo(e2);
+        });
+    }
+
+    /** Constructs an empty binary search tree, ordered according to the given comparator.
+     * @param cmp    The comparator that will be used to order the tree
+     * @throws NullPointerException if the provided comparator was null
+     */
+    public BST(Comparator<? super E> cmp) {
+        Objects.requireNonNull(cmp);
         this.root = null;
+        this.cmp = cmp;
     }
 
     /*
@@ -107,22 +125,10 @@ public class BST<E extends Comparable<E>>
      * @return an optional describing the result
      */
     public Optional<E> find(E element) {
-        return this.find(element, (e, nodeEl) -> e.compareTo(nodeEl));
-    }
-
-    /**
-     * Searches for the given element in the tree, returning an {@code Optional}
-     * describing the result of the search
-     *
-     * @param element   the element to search for
-     * @param cmp       the comparator to use to find the object
-     * @return an optional describing the result
-     */
-    public Optional<E> find(E element, Comparator<? super E> cmp) {
-        Objects.requireNonNull(cmp);
+        Objects.requireNonNull(element);
         E ret = null;
 
-        Node<E> node = this.find(this.root, element, cmp);
+        Node<E> node = this.find(this.root, element);
         if (node != null)
             ret = node.getElement();
 
@@ -141,7 +147,7 @@ public class BST<E extends Comparable<E>>
      * subclasses avoiding recoding.
      * So its access level is protected
      */
-    protected Node<E> find(Node<E> node, E element, Comparator<? super E> cmp) {
+    protected Node<E> find(Node<E> node, E element) {
         boolean found = false;
 
         if (element == null)
@@ -173,12 +179,13 @@ public class BST<E extends Comparable<E>>
         if(node == null)
             return new Node<E>(element,null,null);
 
-        if(node.getElement().compareTo(element) == 0)
-            node.setElement(element);
-        else if(node.getElement().compareTo(element) > 0)
-            node.setLeft(insert(element, node.getLeft()));
-        else
-            node.setRight(insert(element, node.getRight()));
+        int res = Integer.signum(cmp.compare(element, node.getElement()));
+
+        switch (res) {
+            case -1 -> node.setLeft(insert(element, node.getLeft()));
+            case +1 -> node.setRight(insert(element, node.getRight()));
+            default -> node.setElement(element);
+        }
 
         return node;
     }
@@ -192,29 +199,27 @@ public class BST<E extends Comparable<E>>
     }
 
     private Node<E> remove(E element, Node<E> node) {
-
         if (node == null) {
             return null;
         }
-        if (element.compareTo(node.getElement())==0) {
-            // node is the Node to be removed
-            if (node.isLeaf()) {
-                return null;
+        int res = Integer.signum(cmp.compare(element, node.getElement()));
+
+        switch (res) {
+            case -1 -> node.setLeft(remove(element, node.getLeft()));
+            case +1 -> node.setRight(remove(element, node.getRight()));
+            default -> {
+                if (node.isLeaf())
+                    return null;
+                else if (!node.hasLeft())   //has only right child
+                    return node.getRight();
+                else if (!node.hasRight())  //has only left child
+                    return node.getLeft();
+
+                E min = smallestElement(node.getRight());
+                node.setElement(min);
+                node.setRight(remove(min, node.getRight()));
             }
-            if (node.getLeft() == null) {   //has only right child
-                return node.getRight();
-            }
-            if (node.getRight() == null) {  //has only left child
-                return node.getLeft();
-            }
-            E min = smallestElement(node.getRight());
-            node.setElement(min);
-            node.setRight(remove(min, node.getRight()));
         }
-        else if (element.compareTo(node.getElement()) < 0)
-            node.setLeft( remove(element, node.getLeft()) );
-        else
-            node.setRight( remove(element, node.getRight()) );
 
         return node;
     }
@@ -278,6 +283,20 @@ public class BST<E extends Comparable<E>>
             return node.getElement();
         else
             return smallestElement(node.getLeft());
+    }
+
+
+    public E biggestElement() {
+        return biggestElement(root);
+    }
+
+    protected E biggestElement(Node<E> node) {
+        if(node == null)
+            return null;
+        if(node.getRight() == null)
+            return node.getElement();
+        else
+            return biggestElement(node.getRight());
     }
 
     /**

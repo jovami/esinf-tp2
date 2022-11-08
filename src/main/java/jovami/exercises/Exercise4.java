@@ -10,21 +10,18 @@ import java.util.Optional;
 public class Exercise4 implements Runnable {
 
     private final App app;
-    private final KDTree<Area> kdTree ;
 
 
     public Exercise4() {
         app = App.getInstance();
-        this.kdTree = new KDTree<>();
     }
 
     @Override
     public void run() {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
         final String itemCode = "569", elementCode = "5510", year = "2018";
-        getAreas(itemCode, elementCode, year);
 
-        Area nearestArea = kdTree.nearestNeighbor(x, y);
+        Area nearestArea = (Area) getAreas(itemCode, elementCode, year).nearestNeighbor(x, y);
 
         System.out.println("Inserted details:\n=======================" +
                 "\nLatitude -> " + x + "\nLongitude -> " + y +
@@ -41,7 +38,8 @@ public class Exercise4 implements Runnable {
         printNearestNeighborDetails(nearestArea);
     }
 
-    public void getAreas(String itemCode, String elementCode, String yearCode){
+    public KDTree getAreas(String itemCode, String elementCode, String yearCode){
+        KDTree kdTree = new KDTree<>();
         app.getAreaTree().getNameTree().forEach(area -> {
             Optional<Item> item = area.getItemByItemCode(itemCode);
             if(item.isPresent()) {
@@ -53,13 +51,14 @@ public class Exercise4 implements Runnable {
                 }
             }
         });
+        return kdTree;
     }
 
-    public void printNearestNeighborDetails(Area area){
+    private void printNearestNeighborDetails(Area area){
         System.out.println("Details:\n-----------------------");
-        for (Item item : area.getTreeItem().inOrder()){
+        for (Item item : area.getTreeCode().inOrder()){
             System.out.println("Item: " + item.getItemDescription() + " (" + item.getItemCode() + ")\n");
-            for (Element element : item.getTreeElement().inOrder()){
+            for (Element element : item.getTreeCode().inOrder()){
                 for (Year year : element.getTreeYear().inOrder()){
                     System.out.println("-> " + element.getElementType() + " (" + element.getElementCode() +")" + ", in " + year.getYear());
                 }

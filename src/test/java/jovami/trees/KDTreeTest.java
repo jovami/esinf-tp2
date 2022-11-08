@@ -22,17 +22,18 @@ public class KDTreeTest {
     void setUp() {
         tree = new KDTree<>();
         IntStream.range(0, values.length)
-                 .forEach(i -> tree.insert(values[i], coordx[i], coordy[i]));
+                .forEach(i -> tree.insert(values[i], coordx[i], coordy[i]));
     }
 
     @Test
     void testNearestNeighbor(){
         int testCoordX[] = new int[] {  -5, +44, -12,  -2,  7, -5,  0 };
         int testCoordY[] = new int[] { +10,  +4,  -8,  -5, 10, -8, +6 };
+        int closests[] = new int[] { +44,  -12,  20,  440, 77, 25, 44 };
 
         IntStream.range(0, values.length)
                 .forEach(i -> {
-                    assertEquals(values[i], tree.nearestNeighbor(testCoordX[i], testCoordY[i]), "KDTree has the wrong size!");
+                    assertEquals(closests[i], tree.nearestNeighbor(testCoordX[i], testCoordY[i]));
                 });
     }
 
@@ -43,10 +44,10 @@ public class KDTreeTest {
         assertEquals(0, tree.size());   // Empty tree => size 0
 
         IntStream.range(0, values.length)
-                 .forEach(i -> {
-                     tree.insert(values[i], coordx[i], coordy[i]);
-                     assertEquals(i+1, tree.size(), "KDTree has the wrong size!");
-                 });
+                .forEach(i -> {
+                    tree.insert(values[i], coordx[i], coordy[i]);
+                    assertEquals(i+1, tree.size(), "KDTree has the wrong size!");
+                });
     }
 
     @Test
@@ -56,9 +57,9 @@ public class KDTreeTest {
         final int finalSize = tree.size();
         // Repeated values => Size does not alter
         IntStream.range(0, values.length)
-            .forEach(i -> {
-                tree.insert(values[i], coordx[i], coordy[i]);
-                assertEquals(finalSize, tree.size(), "KDTree's size shouldn't have changed!");
-            });
+                .forEach(i -> {
+                    tree.insert(values[i], coordx[i], coordy[i]);
+                    assertEquals(finalSize, tree.size(), "KDTree's size shouldn't have changed!");
+                });
     }
 }

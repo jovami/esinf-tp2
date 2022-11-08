@@ -1,9 +1,7 @@
 package jovami.trees;
 
 import java.awt.geom.Point2D;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -243,6 +241,31 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
             searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
         }
 
+    }
+    @Override
+    public Iterable<E> inOrder() {
+        List<E> snapshot = new ArrayList<>();
+        inOrderForEach(snapshot::add);
+        return snapshot;
+    }
+
+    /**
+     * Performs an action over all elements of the tree, reported in-order.
+     * @param action the action to perform
+     * @throws NullPointerException if the specified action is null
+     */
+    public void inOrderForEach(Consumer<? super E> action) {
+        Objects.requireNonNull(action);
+        if (this.root != null)
+            inOrderSubtree(this.root, action);
+    }
+
+    public void inOrderSubtree(KDNode<E> node, Consumer<? super E> consumer) {
+        if (node == null)
+            return;
+        inOrderSubtree(node.getLeft(), consumer);
+        consumer.accept(node.getElement());
+        inOrderSubtree(node.getRight(), consumer);
     }
 
     @Override

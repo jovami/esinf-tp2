@@ -52,10 +52,10 @@ public class Exercise3 implements Runnable {
      */
     protected void getListLastYearValues(String itemCode, String elementCode) {
 
-        areaTree.getTree().forEach(area -> {
-            Optional<Item> i = area.getTreeItem().find(new Item(itemCode, null, null));
+        areaTree.getCodeTree().forEach(area -> {
+            Optional<Item> i = area.getItemByItemCode(itemCode);
             if (i.isPresent()) {
-                Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode, null));
+                Optional<Element> e = i.get().getElementByElementCode(elementCode);
                 if (e.isPresent()) {
                     Year year = e.get().getTreeYear().biggestElement();
                     addToList(area, year.getValue());

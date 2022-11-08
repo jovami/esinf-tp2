@@ -33,7 +33,12 @@ class Area
     -String areaName
     -Coordinate coords
     -String country
-    -final AVL<Item> treeItem
+
+    -final AVL<Item> treeCode
+    -final AVL<Item> treeDesc
+
+    +{static}final Comparator<? super Area> cmpName
+    +{static}final Comparator<? super Area> cmpCode
 
     +setAreaCode(String areaCode)
     +setCode(String codeM49)
@@ -42,9 +47,12 @@ class Area
     +getAreaName() 
     +getCoords()
     +getCountry()
-    +getTreeItem()
+
+    +getTreeCode()
+    +getTreeDesc()
     +addItem(Item item)
     +getItemByItemCode(String itemCode)
+    +getItemByItemDescription(String desc)
     +getItembyItem(Item item)
     +equals(Object o)
     +hashCode()
@@ -68,7 +76,11 @@ class Element
 {
     -String elementCode
     -String elementType
+
     -final AVL<Year> treeYear
+
+    +{static}final Comparator<? super Element> cmpCode
+    +{static}final Comparator<? super Element> cmpType
 
     +getElementCode()
     +getElementType()
@@ -99,14 +111,21 @@ class Item
     -String itemCode
     -String itemCPC
     -String itemDescription
-    -final AVL<Element> treeElement
+
+    -final AVL<Element> treeCode
+    -final AVL<Element> treeType
+
+    +{static}final Comparator<? super Item> cmpCode
+    +{static}final Comparator<? super Item> cmpDesc
 
     +getItemCode()
     +getItemCPC()
     +getItemDescription()
-    +getTreeElement()
+    +getTreeCode()
+    +getTreeType()
     +addElement(Element element)
     +getElementByElementCode(String elementCode)
+    +getElementByElementType(String elementType)
     +getElementByElement(Element element)
     +equals(Object o)
     +hashCode()
@@ -132,6 +151,7 @@ class Year
 {
     -String yearCode
     -int year
+    -Value value
 
     +getYear() 
     +getYearCode() 
@@ -140,7 +160,7 @@ class Year
     +equals(Object o)
     +hashCode()
     +toString()
-    +compareTo(Item o) 
+    +compareTo(Year other) 
 }
 
 enum CSVHeader
@@ -172,9 +192,12 @@ class AreaKDTree
 
 class AreaTree 
 {
-    -final AVL<Area> tree 
+    -final AVL<Area> nameTree
+    -final AVL<Area> codeTree 
 
-    +getTree()
+    +getNameTree()
+    +getCodeTree()
+    +fillCodeTree()
     +addArea(Area area)
     +getAreaByAreaCode(String areaCode)
     +getAreaByAreaName(String areaName)
@@ -222,6 +245,7 @@ class AVL
 class BST
 {
     #Node<E> root = null
+    #Comparator<? super E> cmp
 
     #root()
     +isEmpty()
@@ -246,6 +270,7 @@ class BST
     +preOrderSubtree(Node<E> node, Consumer<? super E> consumer)
     +posOrder()
     +posOrderForEach(Consumer<? super E> action)
+    -posOrderSubtree(Node<E> node, Consumer<? super E> consumer)
     +nodesByLevel()
     -processBstByLevel(Node<E> node, Map<Integer,List<E>> result, int level)
     +toString()
@@ -310,7 +335,7 @@ class KDTree
     +size()
     #size(KDNode<E> node)
     +insert(E e, double x, double y)
-    -KDNode<E> insert(KDNode<E> currentNode, KDNode<E> node, boolean divX)
+    -insert(KDNode<E> currentNode, KDNode<E> node, boolean divX)
     +nearestNeighbor(double x, double y)
     #nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX)
     +rangeSearch(double x1, double y1, double x2, double y2)
@@ -339,16 +364,23 @@ class KDNode
 class Utils
 {
     +{static} avlSort(List<E> unsorted)
+    +{static} avlSort(List<E> unsorted, Comparator<? super E> cmp)
 }
 
 abstract class Point2D
 {
 }
 
+class Triplet
+{
+    +toString()
+}
+
 
 Main ..> App
 Main ..> Utils
 Main ..> CSVReader
+Main ..> Triplet
 CSVReader --> CSVHeader
 
 

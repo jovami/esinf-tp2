@@ -150,13 +150,13 @@ public class Exercise1 implements Runnable {
         char code;
         String name;
 
-        var store = app.flagStore();
+        var store = app.flagStore();                                            //O(1)
 
-        for (String[] info : list) {
-            code = info[ColunasFlags.FLAGCODE.getColuna()].charAt(0);
-            name = info[ColunasFlags.DESCRIPTION.getColuna()];
-             store.add(code, name);
-
+        for (String[] info : list) {                                            //O(n * inside)
+            code = info[ColunasFlags.FLAGCODE.getColuna()].charAt(0);    //O(1)  
+            name = info[ColunasFlags.DESCRIPTION.getColuna()];                 //O(1)
+             store.add(code, name);                                            //O(1)
+                                                                    //Worst-case time complexity: O(n)    
         }
     }
 
@@ -165,32 +165,32 @@ public class Exercise1 implements Runnable {
         String areaName, country;
         double latitude, longitude;
 
-        for(String[] info: list)
+        for(String[] info: list)                                                                                                   //O(n * inside)
         {
-            country = info[ColunasAreaCoordinates.COUNTRY.getColuna()];
+            country = info[ColunasAreaCoordinates.COUNTRY.getColuna()];                                                            //O(1)                                                   
 
             //linha 98 do ficheiro "AreaCoordinates ,na coluna longitude tem dois numeros"
-            if(info[ColunasAreaCoordinates.LATITUDE.getColuna()].matches(".*\\s.*") )
-                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()].
+            if(info[ColunasAreaCoordinates.LATITUDE.getColuna()].matches(".*\\s.*") )                                        //O(1)
+                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()].                                   //O(1)  
                             substring(0, info[ColunasAreaCoordinates.LATITUDE.getColuna()].indexOf(' ')));
 
-            if(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].matches(".*\\s.*"))
+            if(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].matches(".*\\s.*"))                                       //O(1)
             {
-                longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].
+                longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].                                //O(1)
                             substring(0, info[ColunasAreaCoordinates.LONGITUDE.getColuna()].indexOf(' ')));
 
-                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);
+                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);                                 //O(1)                  
             }else{
-                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);
-                longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()]);
+                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()]);                                 //O(1)
+                longitude = Double.parseDouble(info[ColunasAreaCoordinates.LONGITUDE.getColuna()]);                               //O(1)
             }
 
-            areaName = info[ColunasAreaCoordinates.AREANOME.getColuna()];
+            areaName = info[ColunasAreaCoordinates.AREANOME.getColuna()];                                                         //O(1)
 
 
-            saveAreaCoordinates(areaName, latitude, longitude, country);
+            saveAreaCoordinates(areaName, latitude, longitude, country);                                                          //O(1)
 
-        }
+        }                                                                                                              //Worst-case time complexity: O(n)  
 
     }
 
@@ -206,14 +206,14 @@ public class Exercise1 implements Runnable {
     {
         String itemCode, itemCPC, itemDescription;
 
-        for(String[] info: list)
+        for(String[] info: list)                                                                                        //O(n * inside)
         {
-            itemCode = info[ColunasItemCodes.ITEMCODE.getColuna()];
-            itemCPC = info[ColunasItemCodes.ITEMCPC.getColuna()];
-            itemDescription = info[ColunasItemCodes.ITEMDESCRIPTION.getColuna()];
+            itemCode = info[ColunasItemCodes.ITEMCODE.getColuna()];                                                     //O(1)           
+            itemCPC = info[ColunasItemCodes.ITEMCPC.getColuna()];                                                       //O(1)       
+            itemDescription = info[ColunasItemCodes.ITEMDESCRIPTION.getColuna()];                                       //O(1)
 
-            saveItemCodes(itemCode, itemCPC, itemDescription);
-
+            saveItemCodes(itemCode, itemCPC, itemDescription);                                                          //O(1)        
+                                                                                                            //Worst-case time complexity: O(n)
         }
     }
 
@@ -235,26 +235,28 @@ public class Exercise1 implements Runnable {
         float value;
 
 
-        for(String[] info: list)
+        for(String[] info: list)                                                                            //O(n * inside)
         {
-            areaCode = info[ColunasShuffle.AREACODE.getColuna()];
-            codeM49  = info[ColunasShuffle.CODEM49.getColuna()];
-            areaName = info[ColunasShuffle.AREANAME.getColuna()];
-            itemCode = info[ColunasShuffle.ITEMCODE.getColuna()];
-            itemCPC  = info[ColunasShuffle.ITEMCPC.getColuna()];
-            itemDescription = info[ColunasShuffle.ITEMDESCRIPTION.getColuna()];
-            elementCode = info[ColunasShuffle.ELEMENTCODE.getColuna()];
-            elementType = info[ColunasShuffle.ELEMENTTYPE.getColuna()];
-            yearCode = info[ColunasShuffle.YEARCODE.getColuna()];
-            year = Integer.parseInt(info[ColunasShuffle.YEAR.getColuna()]);
-            unit = info[ColunasShuffle.UNIT.getColuna()];
-            value = Float.parseFloat(info[ColunasShuffle.VALUE.getColuna()]);
+            areaCode = info[ColunasShuffle.AREACODE.getColuna()];                                           //O(1)
+            codeM49  = info[ColunasShuffle.CODEM49.getColuna()];                                            //O(1)
+            areaName = info[ColunasShuffle.AREANAME.getColuna()];                                           //O(1)
+            itemCode = info[ColunasShuffle.ITEMCODE.getColuna()];                                           //O(1)
+            itemCPC  = info[ColunasShuffle.ITEMCPC.getColuna()];                                            //O(1)
+            itemDescription = info[ColunasShuffle.ITEMDESCRIPTION.getColuna()];                             //O(1)
+            elementCode = info[ColunasShuffle.ELEMENTCODE.getColuna()];                                     //O(1)
+            elementType = info[ColunasShuffle.ELEMENTTYPE.getColuna()];                                     //O(1)
+            yearCode = info[ColunasShuffle.YEARCODE.getColuna()];                                           //O(1)
+            year = Integer.parseInt(info[ColunasShuffle.YEAR.getColuna()]);                                 //O(1)
+            unit = info[ColunasShuffle.UNIT.getColuna()];                                                   //O(1)
+            value = Float.parseFloat(info[ColunasShuffle.VALUE.getColuna()]);                               //O(1)
 
-            flag = info[ColunasShuffle.FLAGTYPE.getColuna()].charAt(0);
+            flag = info[ColunasShuffle.FLAGTYPE.getColuna()].charAt(0);                               //O(1)
 
-            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag);
+            saveShuffle(areaCode, codeM49, areaName, itemCode, itemCPC, itemDescription, elementCode, elementType, yearCode, year, unit, value, flag); //O(n * log n) ?????
         }
-        app.getAreaTree().fillCodeTree();
+        app.getAreaTree().fillCodeTree();                                                                   //O(n)
+
+                                                                                // Worst-case time complexity: O(n * n * n * log n) => O(n^3 log n)  ??????
     }
 
 
@@ -266,31 +268,31 @@ public class Exercise1 implements Runnable {
         Optional<Area> tmp = app.getAreaTree().getAreaByAreaName(areaName);
 
         // UPDATE VALUES OF areaCode e codeM49 in area
-        if (tmp.isPresent()) {
-            Area area = tmp.get();
-            area.setAreaCode(areaCode);
-            area.setCodeM49(codeM49);
+        if (tmp.isPresent()) {                                                                                  //O(n)
+            Area area = tmp.get();                                                                              //O(log n)   
+            area.setAreaCode(areaCode);                                                                         //O(1) 
+            area.setCodeM49(codeM49);                                                                           //O(1)
 
 
-            var item = new Item(itemCode, itemCPC, itemDescription);
-            var yea = new Year(yearCode, year, new Value(unit, value, flagStore.get(flag).orElseThrow()));
-            var elem = new Element(elementCode, elementType);
+            var item = new Item(itemCode, itemCPC, itemDescription);                                            //O(1)   
+            var yea = new Year(yearCode, year, new Value(unit, value, flagStore.get(flag).orElseThrow()));      //O(log n)   
+            var elem = new Element(elementCode, elementType);                                                   //O(1)    
 
-            Optional<Item> iOpt = area.getItembyItem(item);
-            if (iOpt.isEmpty())
-                area.addItem(item);
+            Optional<Item> iOpt = area.getItembyItem(item);                                                     //O(log n)
+            if (iOpt.isEmpty())                                                                                 //O(1)     
+                area.addItem(item);                                                                             //O(1) 
             else
-                item = iOpt.get();
+                item = iOpt.get();                                                                              //O(log n) 
 
-            Optional<Element> eOpt = item.getElementByElement(elem);
-            if (eOpt.isEmpty())
-                item.addElement(elem);
+            Optional<Element> eOpt = item.getElementByElement(elem);                                            //O(log n)
+            if (eOpt.isEmpty())                                                                                 //O(1)
+                item.addElement(elem);                                                                          //O(1)    
             else
-                elem = eOpt.get();
+                elem = eOpt.get();                                                                              //O(log n)
 
-            if (elem.getYearByYear(yea).isEmpty())
-                elem.addYear(yea);
-        }
+            if (elem.getYearByYear(yea).isEmpty())                                                              //O(log n)
+                elem.addYear(yea);                                                                              //O(1)
+        }                                                                                  // Worst-case time complexity: O(n * log n)           
     }
 
 

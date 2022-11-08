@@ -2,13 +2,9 @@ package jovami.exercises;
 
 import jovami.App;
 
-import jovami.model.Area;
-import jovami.model.Element;
-import jovami.model.Item;
-import jovami.model.Year;
+import jovami.model.*;
 
 import jovami.trees.KDTree;
-
 import java.util.Optional;
 
 public class Exercise4 implements Runnable {
@@ -25,10 +21,24 @@ public class Exercise4 implements Runnable {
     @Override
     public void run() {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
-        final String itemCode = "156", elementCode = "5419", year = "1965";
+        final String itemCode = "569", elementCode = "5510", year = "2018";
         getAreas(itemCode, elementCode, year);
 
-        Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
+        Area nearestArea = kdTree.nearestNeighbor(x, y);
+
+        System.out.println("Inserted details:\n=======================" +
+                "\nLatitude -> " + x + "\nLongitude -> " + y +
+                "\nItem Code -> " + itemCode +
+                "\nElement Code -> " + elementCode +
+                "\nYear -> " + year + "\n");
+
+        System.out.println("Nearest area: " +
+                nearestArea.getAreaName()+
+                "\n======================="+
+                "\nLatitude -> " + nearestArea.getCoords().getLatitude() +
+                "\nLongitude -> " + nearestArea.getCoords().getLongitude() + "\n");
+
+        printNearestNeighborDetails(nearestArea);
     }
 
     public void getAreas(String itemCode, String elementCode, String yearCode){
@@ -45,13 +55,16 @@ public class Exercise4 implements Runnable {
         });
     }
 
-    public void kdTest(){
-        int[] arrayteste= new int[]{1,2,3,4,5,6,7,8,9};
-        int[] coordsx= new int[]{2,5,10,-3,6,8,20,35,8};
-        int[] coordsy= new int[]{2,5,10,-3,6,8,20,35,8};
-        KDTree<Integer> teste = new KDTree();
-        for (int i = 0; i < arrayteste.length; i++) {
-            teste.insert(arrayteste[i], coordsx[i], coordsy[i]);
+    public void printNearestNeighborDetails(Area area){
+        System.out.println("Details:\n-----------------------");
+        for (Item item : area.getTreeItem().inOrder()){
+            System.out.println("Item: " + item.getItemDescription() + " (" + item.getItemCode() + ")\n");
+            for (Element element : item.getTreeElement().inOrder()){
+                for (Year year : element.getTreeYear().inOrder()){
+                    System.out.println("-> " + element.getElementType() + " (" + element.getElementCode() +")" + ", in " + year.getYear());
+                }
+            }
+            System.out.println("-----------------------");
         }
     }
 }

@@ -25,7 +25,7 @@ public class Exercise1 implements Runnable {
     public void run() {
 
         readAllFiles();
-        test();
+        
     }
 
 
@@ -311,42 +311,4 @@ public class Exercise1 implements Runnable {
         throw new Exception("erro: o ficheiro nao existe");
     }
 
-
-    public void test()
-    {
-        System.out.println("---SIGA TESTAR SIGA TESTAR SIGA TESTAR---");
-
-        Area pt = new Area("174","'620","Portugal",39.399872,-8.224454,"PT");
-        Year yea1 = new Year("1981",1981);
-        Year yea2 = new Year("1990",1990);
-
-        int count = 0;
-
-        var tmp = app.getAreaTree().getAreaByAreaCode("174");
-
-        if (tmp.isPresent()) {
-            var aTmp = tmp.get();
-
-            for(Item item: aTmp.getTreeCode().inOrder()) {
-                System.out.println(""+item.toString());
-                for(Element elem: item.getTreeCode().inOrder()) {
-                    //System.out.println(""+ elem.toString());
-                    //System.out.println(item.toString() + "  " + elem.toString());
-                    count ++;
-                }
-            }
-            System.out.println("count="+ count);
-        }
-
-         /*for(Area ar: app.getAreaTree().getTree().inOrder())
-        {
-
-            System.out.println("AreaCode= " + ar.getAreaCode() + " CodeM49=" + ar.getCodeM49()
-                                + " AreaName= " + ar.getAreaName() + " Latitude= " + ar.getCoords().getLatitude()
-                                + " Longitude= " + ar.getCoords().getLongitude() + " Country= " +
-                                ar.getCountry());
-        }*/
-
-
-    }
 }

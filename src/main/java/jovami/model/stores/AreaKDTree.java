@@ -11,7 +11,7 @@ public class AreaKDTree {
     }
     
     public void addNode(Area area, double x, double y){
-        System.out.println(area.toString()+"\n");
+        //System.out.println(area.toString()+"\n");
         this.areaKdTree.insert(area, x, y);
     }
 

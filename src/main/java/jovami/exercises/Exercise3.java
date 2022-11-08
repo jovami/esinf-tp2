@@ -52,7 +52,7 @@ public class Exercise3 implements Runnable {
      */
     protected void getListLastYearValues(String itemCode, String elementCode) {
 
-        areaTree.getCodeTree().forEach(area -> {
+        areaTree.getNameTree().forEach(area -> {
             Optional<Item> i = area.getItemByItemCode(itemCode);
             if (i.isPresent()) {
                 Optional<Element> e = i.get().getElementByElementCode(elementCode);

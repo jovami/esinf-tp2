@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
  */
 public class KDTreeTest {
 
-    int values[] = new int[] { 10, -12, +20, 440, 77, 25, 44 };
-    int coordx[] = new int[] { -1, +44, -12,   0, 10, -5, +3 };
-    int coordy[] = new int[] { +2, +04,  -2,  -7, 11, -9, +8 };
+    int[] values = new int[] { 10, -12, +20, 440, 77, 25, 44 };
+    int[] coordx = new int[] { -1, +44, -12,   0, 10, -5, +3 };
+    int[] coordy = new int[] { +2,  +4,  -2,  -7, 11, -9, +8 };
 
     KDTree<Integer> tree;
 
@@ -23,6 +23,17 @@ public class KDTreeTest {
         tree = new KDTree<>();
         IntStream.range(0, values.length)
                  .forEach(i -> tree.insert(values[i], coordx[i], coordy[i]));
+    }
+
+    @Test
+    void testNearestNeighbor(){
+        int testCoordX[] = new int[] {  -5, +44, -12,  -2,  7, -5,  0 };
+        int testCoordY[] = new int[] { +10,  +4,  -8,  -5, 10, -8, +6 };
+
+        IntStream.range(0, values.length)
+                .forEach(i -> {
+                    assertEquals(values[i], tree.nearestNeighbor(testCoordX[i], testCoordY[i]), "KDTree has the wrong size!");
+                });
     }
 
     @Test

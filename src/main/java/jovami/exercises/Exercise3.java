@@ -11,13 +11,13 @@ import java.util.*;
 
 public class Exercise3 implements Runnable {
 
-    private final Comparator<Pair<Area, Value>> comparator =
+    protected final Comparator<Pair<Area, Value>> comparator =
             Comparator.comparing(Pair::second, Comparator.reverseOrder());
 
-    ArrayList<Pair<Area,Value>> listBiggestValues = new ArrayList<>();
+    ArrayList<Pair<Area, Value>> listBiggestValues = new ArrayList<>();
 
-    ArrayList<Pair<Area,Value>> listTopN = new ArrayList<>();
-    private final AreaTree areaTree;
+    ArrayList<Pair<Area, Value>> listTopN = new ArrayList<>();
+    protected final AreaTree areaTree;
 
 
     public Exercise3() {
@@ -32,7 +32,11 @@ public class Exercise3 implements Runnable {
         String elementCode = "5510";
         int topNumArea = 10;
 
-       getTopNPairs(itemCode,elementCode,topNumArea);
+        getListLastYearValues(itemCode, elementCode);
+
+        sortListDescending(listBiggestValues);
+        addTopNValuesToList(topNumArea);
+
 
         for (Pair<Area, Value> areaValuePair : listTopN) {
             System.out.printf("Area: %-25s, Value: %.4f %s\n", areaValuePair.first().getAreaName(),
@@ -45,31 +49,25 @@ public class Exercise3 implements Runnable {
     /**
      * @param itemCode
      * @param elementCode
-     * @param topNumArea
      */
-    private void getTopNPairs(String itemCode, String elementCode, int topNumArea) {
+    protected void getListLastYearValues(String itemCode, String elementCode) {
 
         areaTree.getTree().forEach(area -> {
-                Optional<Item> i = area.getTreeItem().find(new Item(itemCode,null, null));
-                if (i.isPresent()) {
-                    Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode, null));
-                    if (e.isPresent()) {
-                        Year year = e.get().getTreeYear().biggestElement();
-                        addToList(area, year.getValue());
-                    }
+            Optional<Item> i = area.getTreeItem().find(new Item(itemCode, null, null));
+            if (i.isPresent()) {
+                Optional<Element> e = i.get().getTreeElement().find(new Element(elementCode, null));
+                if (e.isPresent()) {
+                    Year year = e.get().getTreeYear().biggestElement();
+                    addToList(area, year.getValue());
                 }
-            });
-            sortListDescending(listBiggestValues);
-
-            addTopNValuesToList(topNumArea);
-
-
+            }
+        });
     }
 
     /**
      * @param topNumArea
      */
-    private void addTopNValuesToList(int topNumArea) {
+    protected void addTopNValuesToList(int topNumArea) {
         for (int i = 0; i < topNumArea; i++) {
             listTopN.add(listBiggestValues.get(i));
         }
@@ -78,7 +76,7 @@ public class Exercise3 implements Runnable {
     /**
      * @param list
      */
-    private void sortListDescending(List<Pair<Area, Value>> list) {
+    protected void sortListDescending(List<Pair<Area, Value>> list) {
         list.sort(comparator);
     }
 
@@ -87,7 +85,7 @@ public class Exercise3 implements Runnable {
      * @param area
      * @param value
      */
-    private void addToList(Area area, Value value){
+    protected void addToList(Area area, Value value) {
         listBiggestValues.add(new Pair<>(area, value));
 
     }

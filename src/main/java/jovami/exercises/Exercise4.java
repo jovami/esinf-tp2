@@ -66,7 +66,7 @@ public class Exercise4 implements Runnable {
             System.out.println("Item: " + item.getItemDescription() + " (" + item.getItemCode() + ")\n");
             for (Element element : item.getTreeCode().inOrder()){
                 for (Year year : element.getTreeYear().inOrder()){
-                    System.out.println("-> " + element.getElementType() + " (" + element.getElementCode() +")" + ", in " + year.getYear());
+                    System.out.println("-> " + element.getElementType() + " (" + element.getElementCode() +")" + ", in " + year.getYear()+", with "+ year.getValue().getValue().orElse(0.0f)+" "+year.getValue().getUnit());
                 }
             }
             System.out.println("-----------------------");

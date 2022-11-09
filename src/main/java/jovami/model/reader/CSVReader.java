@@ -28,7 +28,7 @@ public class CSVReader {
         this.DEFAULT_DELIMITER = header.getDelimiter();
     }
 
-    public List<String[]> readCSV(File dir) throws Exception {
+    public List<String[]> readCSV(File dir) {
         List<String[]> info = new ArrayList<>();
         String delimiter = DEFAULT_DELIMITER;
 
@@ -64,10 +64,7 @@ public class CSVReader {
             while ((line = br.readLine()) != null) {
                 
                 tmp = line.split(delimiter);
-                if (tmp.length != EXPECTED_COLUMNS) {
-                    continue;
-                    //throw new Exception(String.format("error: the csv file contains invalid data!\nOffending Line:\n\t%s", line));
-                } else {                    
+                if (tmp.length == EXPECTED_COLUMNS) {
                     // remove " at begining and " at end
                     if(quotationMarks) {
                         
@@ -95,8 +92,8 @@ public class CSVReader {
      * This method attempts to circumvent this issue by scanning the
      * first character of the stream being read and resetting the file
      * pointer to the beggining in case it isn't a BOM
-     * @param reader
-     * @throws IOException
+     * @param reader READER
+     * @throws IOException excep
      */
     private void maybeSkipBOM(Reader reader) throws IOException {
         reader.mark(1);

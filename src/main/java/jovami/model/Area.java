@@ -10,9 +10,9 @@ public class Area implements Comparable<Area> {
 
     private String areaCode;
     private String codeM49;
-    private String areaName;
-    private Coordinate coords;
-    private String country;
+    private final String areaName;
+    private final Coordinate coords;
+    private final String country;
 
     private final AVL<Item> treeCode;
     private final AVL<Item> treeDesc;
@@ -98,8 +98,7 @@ public class Area implements Comparable<Area> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Area)) return false;
-        Area area = (Area) o;
+        if (!(o instanceof Area area)) return false;
         return areaCode.equals(area.areaCode)
             && codeM49.equals(area.codeM49)
             && areaName.equals(area.areaName)

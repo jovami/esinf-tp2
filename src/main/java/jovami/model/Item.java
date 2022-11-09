@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public class Item implements Comparable<Item> {
 
-    private String itemCode;
-    private String itemCPC;
-    private String itemDescription;
+    private final String itemCode;
+    private final String itemCPC;
+    private final String itemDescription;
 
     private final AVL<Element> treeCode;
     private final AVL<Element> treeType;
@@ -75,8 +75,7 @@ public class Item implements Comparable<Item> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Item)) return false;
-        Item item = (Item) o;
+        if (!(o instanceof Item item)) return false;
         return itemCode.equals(item.itemCode)
             && itemCPC.equals(item.itemCPC)
             && itemDescription.equals(item.itemDescription)

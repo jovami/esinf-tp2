@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public class Element implements Comparable<Element> {
 
-    private String elementCode;
-    private String elementType;
+    private final String elementCode;
+    private final String elementType;
 
     private final AVL<Year> treeYear;
 
@@ -70,8 +70,7 @@ public class Element implements Comparable<Element> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Element)) return false;
-        Element element = (Element) o;
+        if (!(o instanceof Element element)) return false;
         return elementCode.equals(element.elementCode) &&
             elementType.equals(element.elementType) &&
             treeYear.equals(element.treeYear);

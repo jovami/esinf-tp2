@@ -14,13 +14,11 @@ public class Exercise5 implements Runnable {
     //Exercise5 Worst case time complexity: O(nLog n)
 
 
-
-    private final App app;
-    private AreaKDTree areaTree;
-    private ItemTree itemStore;
+    private final AreaKDTree areaTree;
+    private final ItemTree itemStore;
 
     public Exercise5() {
-        app = App.getInstance();
+        App app = App.getInstance();
         areaTree = app.getKDAreaTree();
         itemStore = app.getItemTree();
     }
@@ -40,7 +38,7 @@ public class Exercise5 implements Runnable {
 
         Optional<Item> itemDesired = itemStore.getItemByItemCode(itemCode);     //O(Log n)
 
-        if(!itemDesired.isPresent()){   // 0(1)
+        if(itemDesired.isEmpty()){   // 0(1)
             return;   // 0(1)
         }
 
@@ -63,28 +61,29 @@ public class Exercise5 implements Runnable {
         
         //rangeSearch worst case time complexity: O(n)
         areaTree.getKDtree().rangeSearch(latitudeInicial, longitudeInicial, latitudeFinal, longitudeFinal)      
-            .forEach(area->{                                                                                    //O (n*inside) , inside:O(log n)
-                Optional<Item> item= area.getTreeCode().find(itemDesired);                                      //O (Logn)
+            .forEach(area->{                                                                                //O (n*inside) , inside:O(log n)
+                Optional<Item> item= area.getTreeCode().find(itemDesired);                                  //O (Logn)
 
-                if(!item.isPresent()){                                                                          //O (1)
-                    return;                                                                                     //O (1)
+                if(item.isEmpty()){                                                                         //O (1)
+                    return;                                                                                 //O (1)
                 }
 
-                Optional<Element> element= item.get().getElementByElementCode(elementCode);                     //O (Logn)
-                if(!element.isPresent()){                                                                       //O (1)
-                    return;                                                                                     //O (1)
+                Optional<Element> element= item.get().getElementByElementCode(elementCode);                 //O (Logn)
+                if(element.isEmpty()){                                                                      //O (1)
+                    return;                                                                                 //O (1)
                 }   
-                Optional<Year> year = element.get().getYearByYearCode(yearCode);                                //O (Logn)
-                if(!year.isPresent()){                                                                          //O (1)
-                    return;                                                                                     //O (1)
+                Optional<Year> year = element.get().getYearByYearCode(yearCode);                            //O (Logn)
+                if(year.isEmpty()){                                                                         //O (1)
+                    return;                                                                                 //O (1)
                 }
 
-                Optional<Float> value = year.get().getValue().getValue();                                       //O (1)
-                if(value.isPresent()){                                                                          //O (1)
-                    sum.add(value.get());                                                                       //O (1)
-                }
+                Optional<Float> value = year.get().getValue().getValue();                                   //O (1)
+                if (value.isEmpty()) {
+                    return;
+                }                                                                                           //O (1)
+                sum.add(value.get());                                                                       //O (1)
 
-        });
+            });
         //Worst time complexity -> O(n + nLog(n)) = O(nLog(n))
         return sum.doubleValue();
     }

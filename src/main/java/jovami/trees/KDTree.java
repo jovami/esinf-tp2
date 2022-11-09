@@ -9,8 +9,8 @@ import java.util.function.Consumer;
  *
  * @param <E> the type parameter
  */
-public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterface<E> {
-    //TODO extends bst??
+public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
+
     public static class KDNode<E>{
         protected Point2D.Double coords;
         private E element;          // an element stored at this node
@@ -88,7 +88,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return this.root == null;
     }
 
-    @Override
     public int height() {
         return height(this.root);
     }
@@ -103,7 +102,6 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return 1 + Math.max(left, right);
     }
 
-    @Override
     public int size() {
         return size(this.root);
     }
@@ -196,7 +194,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         return closestNode;
     }
 
-    /**
+  /**
      * This method receives:
      * @param x1    x inicial
      * @param y1    y inicial
@@ -207,6 +205,18 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
     @Override
     public List<E> rangeSearch(double x1, double y1, double x2, double y2) {
         KDNode<E> node = this.root;
+        
+        if(y2<y1){
+            double backup = y2;
+            y2 = y1;
+            y1 = backup;
+        }
+
+        if(x2<x1){
+            double backup = x2;
+            x2 = x1;
+            x1 = backup;
+        }
 
         Point2D.Double coordInicial= new Point2D.Double(x1,y1);
         Point2D.Double coordFinal= new Point2D.Double(x2,y2);
@@ -220,27 +230,33 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
 
 
     private void searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) {
+        boolean outside=false;
 
-        if (node==null){ //Se o node não tiver um valor n faz nada
+        if (node==null){
             return;
         }
 
         double compareInicial= (cmpX ? node.coords.x - coordInicial.x : node.coords.y - coordInicial.y); // >=0 -> inside area
         double compareFinal= (cmpX ? node.coords.x - coordFinal.x : node.coords.y - coordFinal.y);  // <=0 -> outside area
 
-        if(compareInicial >= 0){//if node.coords is above inicial coords
-
-            if (compareFinal <= 0){// node.coords is below final coords
-                // while between the area, we want to check all the possible nodes
-                searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
-                searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
-                action.accept(node.getElement());
-            }
-
-        }else{ // when node.coord are bellow inicial coords, we only want to check greater values
+ 
+        if (compareInicial < 0){   //node.coords is below inicial coords
             searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+            outside=true;
         }
+        if (compareFinal > 0){      // node.coords is above final coords
+            outside=true;
+            searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
+        }
+        if(outside==false){
+            // while between the area, we want to check all the possible nodes
+            searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
+            searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
 
+            if(isInside(node.coords, coordInicial, coordFinal))
+                action.accept(node.getElement());
+         
+        }
     }
     @Override
     public Iterable<E> inOrder() {
@@ -268,8 +284,7 @@ public class KDTree<E extends Comparable<E>> extends BST<E> implements KDInterfa
         inOrderSubtree(node.getRight(), consumer);
     }
 
-    @Override
-    public List<E> kNearestNeighbors(double x, double y, int n) {
-        throw new UnsupportedOperationException("Not implemented!");
+    private boolean isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal){
+        return ((nodeCoords.x >= coordInicial.x && nodeCoords.x <= coordFinal.x) && (nodeCoords.y >=coordInicial.y && nodeCoords.y <= coordFinal.y) ) ;
     }
 }

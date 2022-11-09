@@ -131,6 +131,19 @@ public class BSTTest {
         instance.remove(8);
         assertEquals(10, instance.smallestElement());
     }
+
+    /**
+     * Test of biggestelement method, of class TREE.
+     */
+    @Test
+    public void testBiggestlement() {
+        System.out.println("biggestElement");
+        assertEquals(50, instance.biggestElement());
+        instance.remove(50);
+        assertEquals(40, instance.biggestElement());
+        instance.remove(40);
+        assertEquals(30, instance.biggestElement());
+    }
     /**
      * Test of processBstByLevel method, of class TREE.
      */

@@ -26,7 +26,7 @@ public class Exercise2 implements Runnable {
 
     @Override
     public void run() {
-        final String areaCode = "174"; // FIXME: change to int
+        final String areaCode = "174";
         final int yearMin = 1996, yearMax = 2005;
 
         final var list = getAreaAverages(areaCode, yearMin, yearMax);
@@ -44,7 +44,7 @@ public class Exercise2 implements Runnable {
         );
 
         for (final var element : list) {
-            System.out.printf("Item: \"%s\", Element: \"%s\" ==> Average: %.2f\n",
+            System.out.printf("Item: %-70s -> Element: %-30s -> Average: %.2f\n",
                               element.first(),
                               element.second(),
                               element.third()
@@ -54,7 +54,6 @@ public class Exercise2 implements Runnable {
 
     // methods to find the area by each property
 
-    // FIXME: change areaCode to be an integer
     public List<Triplet<String, String, Float>>
     getAreaAverages(final String areaCode, final int yearMin, final int yearMax)
     {

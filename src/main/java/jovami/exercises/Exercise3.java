@@ -11,6 +11,9 @@ import java.util.*;
 
 public class Exercise3 implements Runnable {
 
+    //Worst case Scenario O(n logn)
+
+
     protected final Comparator<Pair<Area, Value>> comparator =
             Comparator.comparing(Pair::second, Comparator.reverseOrder());
 
@@ -32,12 +35,14 @@ public class Exercise3 implements Runnable {
         String elementCode = "5510";
         int topNumArea = 6;
 
+        //O (n logn)
         getListLastYearValues(itemCode, elementCode);
-
+        //O (n logn)
         sortListDescending(listBiggestValues);
+        //O (n)
         addTopNValuesToList(topNumArea);
 
-
+        //O (n)
         for (Pair<Area, Value> areaValuePair : listTopN) {
             System.out.printf("Area: %-25s -> Value: %.4f %s\n", areaValuePair.first().getAreaName(),
                     areaValuePair.second().getValue().orElse(0.0f), areaValuePair.second().getUnit());
@@ -51,12 +56,17 @@ public class Exercise3 implements Runnable {
      */
     protected void getListLastYearValues(String itemCode, String elementCode) {
 
+        //O (n)
         areaTree.getNameTree().forEach(area -> {
+            //O (logn)
             Optional<Item> i = area.getItemByItemCode(itemCode);
             if (i.isPresent()) {
+                //O (logn)
                 Optional<Element> e = i.get().getElementByElementCode(elementCode);
                 if (e.isPresent()) {
+                    //O (logn)
                     Year year = e.get().getTreeYear().biggestElement();
+                    //O (1)
                     addToList(area, year.getValue());
                 }
             }

@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Year implements Comparable<Year> {
 
-    private String yearCode;
-    private int year;
+    private final String yearCode;
+    private final int year;
 
     // NOTE: Optional<Value> may be better
-    private Value value;
+    private final Value value;
 
     public Year(String yearCode, int year, Value v) {
         this.yearCode = yearCode;
@@ -29,10 +29,6 @@ public class Year implements Comparable<Year> {
 
     public Value getValue() {
         return this.value;
-    }
-
-    public void addValue(Value value) {
-        this.value = value;
     }
 
 

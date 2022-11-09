@@ -4,8 +4,8 @@ import java.awt.geom.Point2D;
 
 public class Coordinate extends Point2D {
 
-    private double latitude;
-    private double longitude;
+    private final double latitude;
+    private final double longitude;
 
     public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;

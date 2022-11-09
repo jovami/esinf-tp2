@@ -7,10 +7,10 @@ import java.util.List;
  */
 public interface KDInterface<E> {
 
-    public void insert(E e, double x, double y);
+    void insert(E e, double x, double y);
 
-    public E nearestNeighbor(double x, double y);
+    E nearestNeighbor(double x, double y);
 
-    public List<E> rangeSearch(double x1, double y1, double x2, double y2);
+    List<E> rangeSearch(double x1, double y1, double x2, double y2);
      
 }

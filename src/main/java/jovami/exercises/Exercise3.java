@@ -50,10 +50,7 @@ public class Exercise3 implements Runnable {
 
     }
 
-    /**
-     * @param itemCode
-     * @param elementCode
-     */
+
     protected void getListLastYearValues(String itemCode, String elementCode) {
 
         //O (n)
@@ -73,27 +70,20 @@ public class Exercise3 implements Runnable {
         });
     }
 
-    /**
-     * @param topNumArea
-     */
+
     protected void addTopNValuesToList(int topNumArea) {
         for (int i = 0; i < topNumArea; i++) {
             listTopN.add(listBiggestValues.get(i));
         }
     }
 
-    /**
-     * @param list
-     */
+
     protected void sortListDescending(List<Pair<Area, Value>> list) {
         list.sort(comparator);
     }
 
 
-    /**
-     * @param area
-     * @param value
-     */
+
     protected void addToList(Area area, Value value) {
         listBiggestValues.add(new Pair<>(area, value));
 

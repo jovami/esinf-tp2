@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public class Value implements Comparable<Value>{
 
-    private Float value;
-    private String unit;
-    private Flag flag;
+    private final Float value;
+    private final String unit;
+    private final Flag flag;
 
     public Value(String unit, Float value, Flag flag) {
         this.value = value;
@@ -31,8 +31,7 @@ public class Value implements Comparable<Value>{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Value)) return false;
-        Value value1 = (Value) o;
+        if (!(o instanceof Value value1)) return false;
         return value.equals(value1.value)
             && unit.equals(value1.unit)
             && flag.equals(value1.flag);

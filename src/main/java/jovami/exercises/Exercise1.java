@@ -16,7 +16,6 @@ public class Exercise1 implements Runnable {
 
     List<File> filenames = new LinkedList<>();
     private final App app;
-    private CSVReader csvReader;
 
 
     public Exercise1() {
@@ -103,13 +102,14 @@ public class Exercise1 implements Runnable {
         final File folder = new File("src/main/ficheiroscsv");
         listFilesForFolder(folder);
 
+        CSVReader csvReader;
         for (File f : filenames) {
             String name = f.getName();
             //System.out.println(""+f.getName());
             if (name.contains("Production_Crops_Livestock_E_Flags")) {
                 try {
                     File dir = fileDirReader(name);
-                    this.csvReader = new CSVReader(CSVHeader.HEADER_FLAGS);
+                    csvReader = new CSVReader(CSVHeader.HEADER_FLAGS);
                     saveInfoFlags(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -117,7 +117,7 @@ public class Exercise1 implements Runnable {
             } else if (name.contains("AreaCoordinates")) {
                 try {
                     File dir = fileDirReader(name);
-                    this.csvReader = new CSVReader(CSVHeader.HEADER_AREACOORDINATES);
+                    csvReader = new CSVReader(CSVHeader.HEADER_AREACOORDINATES);
                     saveInfoAreaCoordinates(csvReader.readCSV(dir));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -125,7 +125,7 @@ public class Exercise1 implements Runnable {
             } else if (name.contains("ItemCodes_shuffled")) {
                 try {
                     File dir = fileDirReader(name);
-                    this.csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
+                    csvReader = new CSVReader(CSVHeader.HEADER_ITEMCODES);
                     csvReader.readCSV(dir);
                     saveInfoItemCodes(csvReader.readCSV(dir));
                 } catch (Exception e) {
@@ -142,7 +142,7 @@ public class Exercise1 implements Runnable {
                 //"Production_Crops_Livestock_FR_GER_IT_PT_SP_shuffle_small"
                 try {
                     File dir = fileDirReader(name);
-                    this.csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
+                    csvReader = new CSVReader(CSVHeader.HEADER_SHUFFLE);
                     csvReader.readCSV(dir);
                     saveInfoShuffle(csvReader.readCSV(dir));
                 } catch (Exception e) {
@@ -192,7 +192,7 @@ public class Exercise1 implements Runnable {
 
             //linha 98 do ficheiro "AreaCoordinates ,na coluna longitude tem dois numeros"
             if(info[ColunasAreaCoordinates.LATITUDE.getColuna()].matches(".*\\s.*") )                                        //O(1)
-                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()].                                   //O(1)  
+                latitude = Double.parseDouble(info[ColunasAreaCoordinates.LATITUDE.getColuna()].                                   //O(1)
                             substring(0, info[ColunasAreaCoordinates.LATITUDE.getColuna()].indexOf(' ')));
 
             if(info[ColunasAreaCoordinates.LONGITUDE.getColuna()].matches(".*\\s.*"))                                       //O(1)

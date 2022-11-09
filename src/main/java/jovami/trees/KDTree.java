@@ -252,7 +252,7 @@ public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
             outside=true;
             searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);
         }
-        if(outside==false){
+        if(!outside){
             // while between the area, we want to check all the possible nodes
             searchArea (node.getRight(),coordInicial, coordFinal, !cmpX,action);
             searchArea (node.getLeft(),coordInicial, coordFinal, !cmpX,action);

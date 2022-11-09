@@ -48,7 +48,7 @@ public class AreaTree {
 
     /**
      * checks if area is already in the tree
-     * @param area
+     * @param area area
      * @return boolean
      */
     public boolean exists(Area area) {

@@ -16,7 +16,7 @@ public class Main {
         exercises.add(new Exercise1());
         exercises.add(new Exercise2());
         exercises.add(new Exercise3());
-        //exercises.add(new Exercise4());
+        exercises.add(new Exercise4());
         exercises.add(new Exercise5());
 
 

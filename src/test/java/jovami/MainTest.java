@@ -9,7 +9,6 @@ import jovami.model.reader.CSVHeader;
 
 public class MainTest {
 
-    @Deprecated
     public static void beforeEach() {
         resetSingleton();
 

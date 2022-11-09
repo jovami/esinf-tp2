@@ -204,26 +204,26 @@ public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
      */
     @Override
     public List<E> rangeSearch(double x1, double y1, double x2, double y2) {
-        KDNode<E> node = this.root;
+        KDNode<E> node = this.root;                                                  //O(1)
         
-        if(y2<y1){
+        if(y2<y1){                                                                   //O(1)
             double backup = y2;
             y2 = y1;
             y1 = backup;
         }
 
-        if(x2<x1){
+        if(x2<x1){                                                                   //O(1)
             double backup = x2;
             x2 = x1;
             x1 = backup;
         }
 
-        Point2D.Double coordInicial= new Point2D.Double(x1,y1);
-        Point2D.Double coordFinal= new Point2D.Double(x2,y2);
+        Point2D.Double coordInicial= new Point2D.Double(x1,y1);                       //O(1)
+        Point2D.Double coordFinal= new Point2D.Double(x2,y2);                         //O(1)
 
-        List<E> result = new LinkedList<>();
+        List<E> result = new LinkedList<>();                                          //O(1)
 
-        searchArea(node, coordInicial,coordFinal, true,result::add);
+        searchArea(node, coordInicial,coordFinal, true,result::add);            //Worst time complexity O(n)
 
         return result;
     }

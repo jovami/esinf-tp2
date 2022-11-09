@@ -145,6 +145,7 @@ class Value
     +equals(Object o)
     +hashCode()
     +toString()
+    +compareTo(Value o)
 }
 
 class Year
@@ -250,8 +251,7 @@ class BST
     #root()
     +isEmpty()
     +find(E element)
-    +find(E element, Comparator<? super E> cmp)
-    #find(Node<E> node, E element, Comparator<? super E> cmp)
+    #find(Node<E> node, E element)
     +insert(E element)
     -insert(E element, Node<E> node)
     +remove(E element)
@@ -262,6 +262,8 @@ class BST
     #height(Node<E> node)
     +smallestElement()
     #smallestElement(Node<E> node)
+    +biggestElement()
+    #biggestElement(Node<E> node)
     +inOrder()
     +inOrderForEach(Consumer<? super E> action)
     -inOrderSubtree(Node<E> node, Consumer<? super E> consumer)
@@ -340,7 +342,11 @@ class KDTree
     #nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX)
     +rangeSearch(double x1, double y1, double x2, double y2)
     -searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) 
-    +kNearestNeighbors(double x, double y, int n)
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    +inOrderSubtree(KDNode<E> node, Consumer<? super E> consumer)
+    -isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal)
+
 }
 
 class KDNode
@@ -365,6 +371,7 @@ class Utils
 {
     +{static} avlSort(List<E> unsorted)
     +{static} avlSort(List<E> unsorted, Comparator<? super E> cmp)
+    +mergeSort(List<E> unsorted, Comparator<? super E> cmp)
 }
 
 abstract class Point2D
@@ -376,11 +383,23 @@ class Triplet
     +toString()
 }
 
+class Pair
+{
+    +toString()
+}
+
+class ListPrinter
+{
+    +{static} print(Collection<E> list, String header, PrintStream stream)
+}
+
 
 Main ..> App
 Main ..> Utils
 Main ..> CSVReader
 Main ..> Triplet
+Main ..> Pair
+Main ..> ListPrinter
 CSVReader --> CSVHeader
 
 
@@ -426,6 +445,7 @@ KDTree *-- KDNode
 Area ..> Coordinate
 
 KDNode ..> Point2D
+KDTree ..> Point2D
 
 Coordinate --|> Point2D
 

@@ -435,7 +435,6 @@ AreaKDTree ..> KDTree
 AVL --|> BST
 BST ..|> BSTInterface
 KDInterface --|> BSTInterface
-KDTree --|> BST
 KDTree ..|> KDInterface
 
 

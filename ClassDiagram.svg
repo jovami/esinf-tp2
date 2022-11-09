@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="5003px" preserveAspectRatio="none" style="width:2825px;height:5003px;background:#FFFFFF;" version="1.1" viewBox="0 0 2825 5003" width="2825px" zoomAndPan="magnify"><defs/><g><!--MD5=[84718776d214be480e4c259efcb737fc]
+class Main--><g id="elem_Main"><rect codeLine="8" fill="#F1F1F1" height="76.3984" id="Main" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="191" x="1757" y="7"/><ellipse cx="1825.25" cy="24.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1827.7231,30.7427 Q1827.1421,31.0415 1826.5029,31.1909 Q1825.8638,31.3403 1825.1582,31.3403 Q1822.6514,31.3403 1821.3315,29.6885 Q1820.0117,28.0366 1820.0117,24.9155 Q1820.0117,21.7861 1821.3315,20.1343 Q1822.6514,18.4824 1825.1582,18.4824 Q1825.8638,18.4824 1826.5112,18.6318 Q1827.1587,18.7813 1827.7231,19.0801 L1827.7231,21.8027 Q1827.0923,21.2217 1826.4988,20.9519 Q1825.9053,20.6821 1825.2744,20.6821 Q1823.9297,20.6821 1823.2449,21.7488 Q1822.5601,22.8154 1822.5601,24.9155 Q1822.5601,27.0073 1823.2449,28.074 Q1823.9297,29.1406 1825.2744,29.1406 Q1825.9053,29.1406 1826.4988,28.8708 Q1827.0923,28.6011 1827.7231,28.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="42" x="1847.75" y="31.4023">Main</text><line style="stroke:#181818;stroke-width:0.5;" x1="1758" x2="1947" y1="42.1992" y2="42.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1758" x2="1947" y1="50.1992" y2="50.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="175" x="1765" y="73.6016">+main(String[] args)</text></g><!--MD5=[335f4d9be48430461c68bf6d6fdba145]
+class App--><g id="elem_App"><rect codeLine="13" fill="#F1F1F1" height="328.3906" id="App" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="234" x="549.5" y="183"/><ellipse cx="643.25" cy="200.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M645.7231,206.7427 Q645.1421,207.0415 644.5029,207.1909 Q643.8638,207.3403 643.1582,207.3403 Q640.6514,207.3403 639.3315,205.6885 Q638.0117,204.0366 638.0117,200.9155 Q638.0117,197.7861 639.3315,196.1343 Q640.6514,194.4824 643.1582,194.4824 Q643.8638,194.4824 644.5112,194.6318 Q645.1587,194.7813 645.7231,195.0801 L645.7231,197.8027 Q645.0923,197.2217 644.4988,196.9519 Q643.9053,196.6821 643.2744,196.6821 Q641.9297,196.6821 641.2449,197.7488 Q640.5601,198.8154 640.5601,200.9155 Q640.5601,203.0073 641.2449,204.074 Q641.9297,205.1406 643.2744,205.1406 Q643.9053,205.1406 644.4988,204.8708 Q645.0923,204.6011 645.7231,204.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="34" x="665.75" y="207.4023">App</text><line style="stroke:#181818;stroke-width:0.5;" x1="550.5" x2="782.5" y1="218.1992" y2="218.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="168" x="557.5" y="241.6016">-AreaTree areaTree</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="170" x="557.5" y="266.8008">-ItemTree itemTree</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="175" x="557.5" y="292">-FlagStore flagStore</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="218" x="557.5" y="317.1992">-AreaKDTree areaKDTree</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="557.5" y="342.3984"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="188" x="557.5" y="367.5977">-App singleton = null</text><line style="stroke:#181818;stroke-width:0.5;" x1="550.5" x2="782.5" y1="377.3945" y2="377.3945"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="131" x="557.5" y="400.7969">+getAreaTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="156" x="557.5" y="425.9961">+getKDAreaTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="131" x="557.5" y="451.1953">+getItemTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="191" x="557.5" y="476.3945">+FlagStore flagStore()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="126" x="557.5" y="501.5938">+getInstance()</text></g><!--MD5=[7cfcec95ce8c7b3cc21f2a5540b61e10]
+class Area--><g id="elem_Area"><rect codeLine="28" fill="#F1F1F1" height="781.9766" id="Area" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="405" x="793" y="1014"/><ellipse cx="969.75" cy="1031.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M972.2231,1037.7427 Q971.6421,1038.0415 971.0029,1038.1909 Q970.3638,1038.3403 969.6582,1038.3403 Q967.1514,1038.3403 965.8315,1036.6885 Q964.5117,1035.0366 964.5117,1031.9155 Q964.5117,1028.7861 965.8315,1027.1343 Q967.1514,1025.4824 969.6582,1025.4824 Q970.3638,1025.4824 971.0112,1025.6318 Q971.6587,1025.7813 972.2231,1026.0801 L972.2231,1028.8027 Q971.5923,1028.2217 970.9988,1027.9519 Q970.4053,1027.6821 969.7744,1027.6821 Q968.4297,1027.6821 967.7449,1028.7488 Q967.0601,1029.8154 967.0601,1031.9155 Q967.0601,1034.0073 967.7449,1035.074 Q968.4297,1036.1406 969.7744,1036.1406 Q970.4053,1036.1406 970.9988,1035.8708 Q971.5923,1035.6011 972.2231,1035.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="39" x="992.25" y="1038.4023">Area</text><line style="stroke:#181818;stroke-width:0.5;" x1="794" x2="1197" y1="1049.1992" y2="1049.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="148" x="801" y="1072.6016">-String areaCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="146" x="801" y="1097.8008">-String codeM49</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="154" x="801" y="1123">-String areaName</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="169" x="801" y="1148.1992">-Coordinate coords</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="132" x="801" y="1173.3984">-String country</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="801" y="1198.5977"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="239" x="801" y="1223.7969">-final AVL&lt;Item&gt; treeCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="236" x="801" y="1248.9961">-final AVL&lt;Item&gt; treeDesc</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="801" y="1274.1953"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="389" x="801" y="1299.3945">+final Comparator&lt;? super Area&gt; cmpName</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="383" x="801" y="1324.5938">+final Comparator&lt;? super Area&gt; cmpCode</text><line style="stroke:#181818;stroke-width:0.5;" x1="794" x2="1197" y1="1334.3906" y2="1334.3906"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="273" x="801" y="1357.793">+setAreaCode(String areaCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="232" x="801" y="1382.9922">+setCode(String codeM49)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="137" x="801" y="1408.1914">+getAreaCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="136" x="801" y="1433.3906">+getCodeM49()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="143" x="801" y="1458.5898">+getAreaName()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="115" x="801" y="1483.7891">+getCoords()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="122" x="801" y="1508.9883">+getCountry()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="801" y="1534.1875"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="136" x="801" y="1559.3867">+getTreeCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="133" x="801" y="1584.5859">+getTreeDesc()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="181" x="801" y="1609.7852">+addItem(Item item)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="335" x="801" y="1634.9844">+getItemByItemCode(String itemCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="345" x="801" y="1660.1836">+getItemByItemDescription(String desc)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="236" x="801" y="1685.3828">+getItembyItem(Item item)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="801" y="1710.582">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="801" y="1735.7813">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="801" y="1760.9805">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="179" x="801" y="1786.1797">+compareTo(Area o)</text></g><!--MD5=[8c7d7abc12e214c3cc12c9ab70edee11]
+class Coordinate--><g id="elem_Coordinate"><rect codeLine="62" fill="#F1F1F1" height="227.5938" id="Coordinate" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="304" x="1253.5" y="2085"/><ellipse cx="1351.75" cy="2102.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1354.2231,2108.7427 Q1353.6421,2109.0415 1353.0029,2109.1909 Q1352.3638,2109.3403 1351.6582,2109.3403 Q1349.1514,2109.3403 1347.8315,2107.6885 Q1346.5117,2106.0366 1346.5117,2102.9155 Q1346.5117,2099.7861 1347.8315,2098.1343 Q1349.1514,2096.4824 1351.6582,2096.4824 Q1352.3638,2096.4824 1353.0112,2096.6318 Q1353.6587,2096.7813 1354.2231,2097.0801 L1354.2231,2099.8027 Q1353.5923,2099.2217 1352.9988,2098.9519 Q1352.4053,2098.6821 1351.7744,2098.6821 Q1350.4297,2098.6821 1349.7449,2099.7488 Q1349.0601,2100.8154 1349.0601,2102.9155 Q1349.0601,2105.0073 1349.7449,2106.074 Q1350.4297,2107.1406 1351.7744,2107.1406 Q1352.4053,2107.1406 1352.9988,2106.8708 Q1353.5923,2106.6011 1354.2231,2106.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="1374.25" y="2109.4023">Coordinate</text><line style="stroke:#181818;stroke-width:0.5;" x1="1254.5" x2="1556.5" y1="2120.1992" y2="2120.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="141" x="1261.5" y="2143.6016">-double latitude</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="157" x="1261.5" y="2168.8008">-double longitude</text><line style="stroke:#181818;stroke-width:0.5;" x1="1254.5" x2="1556.5" y1="2178.5977" y2="2178.5977"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="125" x="1261.5" y="2202">+getLatitude()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="141" x="1261.5" y="2227.1992">+getLongitude()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="65" x="1261.5" y="2252.3984">+getX()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="65" x="1261.5" y="2277.5977">+getY()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="288" x="1261.5" y="2302.7969">+setLocation(double x, double y)</text></g><!--MD5=[95174e42ee347a14b6cb78d6855f19b5]
+class Element--><g id="elem_Element"><rect codeLine="74" fill="#F1F1F1" height="504.7852" id="Element" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="430" x="646.5" y="2602"/><ellipse cx="820.25" cy="2619.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M822.7231,2625.7427 Q822.1421,2626.0415 821.5029,2626.1909 Q820.8638,2626.3403 820.1582,2626.3403 Q817.6514,2626.3403 816.3315,2624.6885 Q815.0117,2623.0366 815.0117,2619.9155 Q815.0117,2616.7861 816.3315,2615.1343 Q817.6514,2613.4824 820.1582,2613.4824 Q820.8638,2613.4824 821.5112,2613.6318 Q822.1587,2613.7813 822.7231,2614.0801 L822.7231,2616.8027 Q822.0923,2616.2217 821.4988,2615.9519 Q820.9053,2615.6821 820.2744,2615.6821 Q818.9297,2615.6821 818.2449,2616.7488 Q817.5601,2617.8154 817.5601,2619.9155 Q817.5601,2622.0073 818.2449,2623.074 Q818.9297,2624.1406 820.2744,2624.1406 Q820.9053,2624.1406 821.4988,2623.8708 Q822.0923,2623.6011 822.7231,2623.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="70" x="842.75" y="2626.4023">Element</text><line style="stroke:#181818;stroke-width:0.5;" x1="647.5" x2="1075.5" y1="2637.1992" y2="2637.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="181" x="654.5" y="2660.6016">-String elementCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="178" x="654.5" y="2685.8008">-String elementType</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="654.5" y="2711"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="232" x="654.5" y="2736.1992">-final AVL&lt;Year&gt; treeYear</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="654.5" y="2761.3984"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="414" x="654.5" y="2786.5977">+final Comparator&lt;? super Element&gt; cmpCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="411" x="654.5" y="2811.7969">+final Comparator&lt;? super Element&gt; cmpType</text><line style="stroke:#181818;stroke-width:0.5;" x1="647.5" x2="1075.5" y1="2821.5938" y2="2821.5938"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="168" x="654.5" y="2844.9961">+getElementCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="165" x="654.5" y="2870.1953">+getElementType()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="130" x="654.5" y="2895.3945">+getTreeYear()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="176" x="654.5" y="2920.5938">+addYear(Year year)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="330" x="654.5" y="2945.793">+getYearByYearCode(String yearCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="214" x="654.5" y="2970.9922">+getYearByYear(int year)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="229" x="654.5" y="2996.1914">+getYearByYear(Year year)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="654.5" y="3021.3906">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="654.5" y="3046.5898">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="654.5" y="3071.7891">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="210" x="654.5" y="3096.9883">+compareTo(Element o)</text></g><!--MD5=[f031d4e33d5f3458ef7f3b0d85782377]
+class Flag--><g id="elem_Flag"><rect codeLine="97" fill="#F1F1F1" height="202.3945" id="Flag" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="315" x="322" y="4706.5"/><ellipse cx="455.25" cy="4724.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M457.7231,4730.2427 Q457.1421,4730.5415 456.5029,4730.6909 Q455.8638,4730.8403 455.1582,4730.8403 Q452.6514,4730.8403 451.3315,4729.1885 Q450.0117,4727.5366 450.0117,4724.4155 Q450.0117,4721.2861 451.3315,4719.6343 Q452.6514,4717.9824 455.1582,4717.9824 Q455.8638,4717.9824 456.5112,4718.1318 Q457.1587,4718.2813 457.7231,4718.5801 L457.7231,4721.3027 Q457.0923,4720.7217 456.4988,4720.4519 Q455.9053,4720.1821 455.2744,4720.1821 Q453.9297,4720.1821 453.2449,4721.2488 Q452.5601,4722.3154 452.5601,4724.4155 Q452.5601,4726.5073 453.2449,4727.574 Q453.9297,4728.6406 455.2744,4728.6406 Q455.9053,4728.6406 456.4988,4728.3708 Q457.0923,4728.1011 457.7231,4727.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="36" x="477.75" y="4730.9023">Flag</text><line style="stroke:#181818;stroke-width:0.5;" x1="323" x2="636" y1="4741.6992" y2="4741.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="299" x="330" y="4765.1016">-final Pair&lt;Character, String&gt; pair</text><line style="stroke:#181818;stroke-width:0.5;" x1="323" x2="636" y1="4774.8984" y2="4774.8984"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="67" x="330" y="4798.3008">+code()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="74" x="330" y="4823.5">+name()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="330" y="4848.6992">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="330" y="4873.8984">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="330" y="4899.0977">+toString()</text></g><!--MD5=[44a1b4afaef76c16e6c9ec4990ad0c8d]
+class Item--><g id="elem_Item"><rect codeLine="108" fill="#F1F1F1" height="605.582" id="Item" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="444" x="675.5" y="1896"/><ellipse cx="871.75" cy="1913.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M874.2231,1919.7427 Q873.6421,1920.0415 873.0029,1920.1909 Q872.3638,1920.3403 871.6582,1920.3403 Q869.1514,1920.3403 867.8315,1918.6885 Q866.5117,1917.0366 866.5117,1913.9155 Q866.5117,1910.7861 867.8315,1909.1343 Q869.1514,1907.4824 871.6582,1907.4824 Q872.3638,1907.4824 873.0112,1907.6318 Q873.6587,1907.7813 874.2231,1908.0801 L874.2231,1910.8027 Q873.5923,1910.2217 872.9988,1909.9519 Q872.4053,1909.6821 871.7744,1909.6821 Q870.4297,1909.6821 869.7449,1910.7488 Q869.0601,1911.8154 869.0601,1913.9155 Q869.0601,1916.0073 869.7449,1917.074 Q870.4297,1918.1406 871.7744,1918.1406 Q872.4053,1918.1406 872.9988,1917.8708 Q873.5923,1917.6011 874.2231,1917.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="39" x="894.25" y="1920.4023">Item</text><line style="stroke:#181818;stroke-width:0.5;" x1="676.5" x2="1118.5" y1="1931.1992" y2="1931.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="150" x="683.5" y="1954.6016">-String itemCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="140" x="683.5" y="1979.8008">-String itemCPC</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="204" x="683.5" y="2005">-String itemDescription</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="683.5" y="2030.1992"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="270" x="683.5" y="2055.3984">-final AVL&lt;Element&gt; treeCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="267" x="683.5" y="2080.5977">-final AVL&lt;Element&gt; treeType</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="683.5" y="2105.7969"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="383" x="683.5" y="2130.9961">+final Comparator&lt;? super Item&gt; cmpCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="380" x="683.5" y="2156.1953">+final Comparator&lt;? super Item&gt; cmpDesc</text><line style="stroke:#181818;stroke-width:0.5;" x1="676.5" x2="1118.5" y1="2165.9922" y2="2165.9922"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="137" x="683.5" y="2189.3945">+getItemCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="127" x="683.5" y="2214.5938">+getItemCPC()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="191" x="683.5" y="2239.793">+getItemDescription()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="136" x="683.5" y="2264.9922">+getTreeCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="133" x="683.5" y="2290.1914">+getTreeType()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="274" x="683.5" y="2315.3906">+addElement(Element element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="428" x="683.5" y="2340.5898">+getElementByElementCode(String elementCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="422" x="683.5" y="2365.7891">+getElementByElementType(String elementType)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="359" x="683.5" y="2390.9883">+getElementByElement(Element element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="683.5" y="2416.1875">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="683.5" y="2441.3867">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="683.5" y="2466.5859">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="179" x="683.5" y="2491.7852">+compareTo(Item o)</text></g><!--MD5=[ff3d20c1112759d46dde2fcead238479]
+class Value--><g id="elem_Value"><rect codeLine="135" fill="#F1F1F1" height="303.1914" id="Value" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="204" x="472.5" y="3925"/><ellipse cx="544.25" cy="3942.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M546.7231,3948.7427 Q546.1421,3949.0415 545.5029,3949.1909 Q544.8638,3949.3403 544.1582,3949.3403 Q541.6514,3949.3403 540.3315,3947.6885 Q539.0117,3946.0366 539.0117,3942.9155 Q539.0117,3939.7861 540.3315,3938.1343 Q541.6514,3936.4824 544.1582,3936.4824 Q544.8638,3936.4824 545.5112,3936.6318 Q546.1587,3936.7813 546.7231,3937.0801 L546.7231,3939.8027 Q546.0923,3939.2217 545.4988,3938.9519 Q544.9053,3938.6821 544.2744,3938.6821 Q542.9297,3938.6821 542.2449,3939.7488 Q541.5601,3940.8154 541.5601,3942.9155 Q541.5601,3945.0073 542.2449,3946.074 Q542.9297,3947.1406 544.2744,3947.1406 Q544.9053,3947.1406 545.4988,3946.8708 Q546.0923,3946.6011 546.7231,3946.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="48" x="566.75" y="3949.4023">Value</text><line style="stroke:#181818;stroke-width:0.5;" x1="473.5" x2="675.5" y1="3960.1992" y2="3960.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="104" x="480.5" y="3983.6016">-Float value</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="101" x="480.5" y="4008.8008">-String unit</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="85" x="480.5" y="4034">-Flag flag</text><line style="stroke:#181818;stroke-width:0.5;" x1="473.5" x2="675.5" y1="4043.7969" y2="4043.7969"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="102" x="480.5" y="4067.1992">+getValue()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="89" x="480.5" y="4092.3984">+getUnit()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="480.5" y="4117.5977">+getFlag()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="480.5" y="4142.7969">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="480.5" y="4167.9961">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="480.5" y="4193.1953">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="188" x="480.5" y="4218.3945">+compareTo(Value o)</text></g><!--MD5=[4b7878ea256981c432ee8388bc9b8b8b]
+class Year--><g id="elem_Year"><rect codeLine="150" fill="#F1F1F1" height="328.3906" id="Year" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="229" x="511" y="3207"/><ellipse cx="600.25" cy="3224.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M602.7231,3230.7427 Q602.1421,3231.0415 601.5029,3231.1909 Q600.8638,3231.3403 600.1582,3231.3403 Q597.6514,3231.3403 596.3315,3229.6885 Q595.0117,3228.0366 595.0117,3224.9155 Q595.0117,3221.7861 596.3315,3220.1343 Q597.6514,3218.4824 600.1582,3218.4824 Q600.8638,3218.4824 601.5112,3218.6318 Q602.1587,3218.7813 602.7231,3219.0801 L602.7231,3221.8027 Q602.0923,3221.2217 601.4988,3220.9519 Q600.9053,3220.6821 600.2744,3220.6821 Q598.9297,3220.6821 598.2449,3221.7488 Q597.5601,3222.8154 597.5601,3224.9155 Q597.5601,3227.0073 598.2449,3228.074 Q598.9297,3229.1406 600.2744,3229.1406 Q600.9053,3229.1406 601.4988,3228.8708 Q602.0923,3228.6011 602.7231,3228.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="38" x="622.75" y="3231.4023">Year</text><line style="stroke:#181818;stroke-width:0.5;" x1="512" x2="739" y1="3242.1992" y2="3242.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="147" x="519" y="3265.6016">-String yearCode</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="75" x="519" y="3290.8008">-int year</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="109" x="519" y="3316">-Value value</text><line style="stroke:#181818;stroke-width:0.5;" x1="512" x2="739" y1="3325.7969" y2="3325.7969"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="92" x="519" y="3349.1992">+getYear()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="136" x="519" y="3374.3984">+getYearCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="102" x="519" y="3399.5977">+getValue()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="205" x="519" y="3424.7969">+addValue(Value value)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="155" x="519" y="3449.9961">+equals(Object o)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="111" x="519" y="3475.1953">+hashCode()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="519" y="3500.3945">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="213" x="519" y="3525.5938">+compareTo(Year other)</text></g><!--MD5=[083af83a486c3baf039e55c66c686a06]
+class CSVHeader--><g id="elem_CSVHeader"><rect codeLine="166" fill="#F1F1F1" height="151.9961" id="CSVHeader" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="204" x="1292.5" y="686.5"/><ellipse cx="1340.75" cy="704.0996" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1344.3643,710.5996 L1336.6445,710.5996 L1336.6445,698.2065 L1344.3643,698.2065 L1344.3643,700.3647 L1339.0933,700.3647 L1339.0933,703.0376 L1343.8662,703.0376 L1343.8662,705.1958 L1339.0933,705.1958 L1339.0933,708.4414 L1344.3643,708.4414 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="1363.25" y="710.9023">CSVHeader</text><line style="stroke:#181818;stroke-width:0.5;" x1="1293.5" x2="1495.5" y1="721.6992" y2="721.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="156" x="1300.5" y="745.1016">-final int columns</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="188" x="1300.5" y="770.3008">-final String delimiter</text><line style="stroke:#181818;stroke-width:0.5;" x1="1293.5" x2="1495.5" y1="780.0977" y2="780.0977"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="173" x="1300.5" y="803.5">+getColumnCount()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="133" x="1300.5" y="828.6992">+getDelimiter()</text></g><!--MD5=[60b59e3d7d8b95aff167b5157d975660]
+class CSVReader--><g id="elem_CSVReader"><rect codeLine="174" fill="#F1F1F1" height="252.793" id="CSVReader" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="339" x="1022" y="220.5"/><ellipse cx="1138.75" cy="238.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1141.2231,244.2427 Q1140.6421,244.5415 1140.0029,244.6909 Q1139.3638,244.8403 1138.6582,244.8403 Q1136.1514,244.8403 1134.8315,243.1885 Q1133.5117,241.5366 1133.5117,238.4155 Q1133.5117,235.2861 1134.8315,233.6343 Q1136.1514,231.9824 1138.6582,231.9824 Q1139.3638,231.9824 1140.0112,232.1318 Q1140.6587,232.2813 1141.2231,232.5801 L1141.2231,235.3027 Q1140.5923,234.7217 1139.9988,234.4519 Q1139.4053,234.1821 1138.7744,234.1821 Q1137.4297,234.1821 1136.7449,235.2488 Q1136.0601,236.3154 1136.0601,238.4155 Q1136.0601,240.5073 1136.7449,241.574 Q1137.4297,242.6406 1138.7744,242.6406 Q1139.4053,242.6406 1139.9988,242.3708 Q1140.5923,242.1011 1141.2231,241.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="93" x="1161.25" y="244.9023">CSVReader</text><line style="stroke:#181818;stroke-width:0.5;" x1="1023" x2="1360" y1="255.6992" y2="255.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="214" x="1030" y="279.1016">-final CSVHeader header</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="266" x="1030" y="304.3008">-final int EXPECTED_COLUMNS</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="295" x="1030" y="329.5">-final String DEFAULT_DELIMITER;</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="222" x="1030" y="354.6992">-final char BOM = '\ufeff'</text><line style="stroke:#181818;stroke-width:0.5;" x1="1023" x2="1360" y1="364.4961" y2="364.4961"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="157" x="1030" y="387.8984">+readCSV(File dir)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="185" x="1030" y="413.0977">-isHeader(String line)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="274" x="1030" y="438.2969">-maybeSkipBom(Reader reader)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="323" x="1030" y="463.4961">-checkQuotationMark(Reader reader)</text></g><!--MD5=[4a07d53132a6bd4990f856126f4e699c]
+class AreaKDTree--><g id="elem_AreaKDTree"><rect codeLine="186" fill="#F1F1F1" height="101.5977" id="AreaKDTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="375" x="882" y="711.5"/><ellipse cx="1012.25" cy="729.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1014.7231,735.2427 Q1014.1421,735.5415 1013.5029,735.6909 Q1012.8638,735.8403 1012.1582,735.8403 Q1009.6514,735.8403 1008.3315,734.1885 Q1007.0117,732.5366 1007.0117,729.4155 Q1007.0117,726.2861 1008.3315,724.6343 Q1009.6514,722.9824 1012.1582,722.9824 Q1012.8638,722.9824 1013.5112,723.1318 Q1014.1587,723.2813 1014.7231,723.5801 L1014.7231,726.3027 Q1014.0923,725.7217 1013.4988,725.4519 Q1012.9053,725.1821 1012.2744,725.1821 Q1010.9297,725.1821 1010.2449,726.2488 Q1009.5601,727.3154 1009.5601,729.4155 Q1009.5601,731.5073 1010.2449,732.574 Q1010.9297,733.6406 1012.2744,733.6406 Q1012.9053,733.6406 1013.4988,733.3708 Q1014.0923,733.1011 1014.7231,732.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="102" x="1034.75" y="735.9023">AreaKDTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="883" x2="1256" y1="746.6992" y2="746.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="288" x="890" y="770.1016">-final KDTree&lt;Area&gt; areaKdTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="883" x2="1256" y1="779.8984" y2="779.8984"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="359" x="890" y="803.3008">+addNode(Area area, double x, double y)</text></g><!--MD5=[1d05beee137f4676e59b5e50c0546b9e]
+class AreaTree--><g id="elem_AreaTree"><rect codeLine="193" fill="#F1F1F1" height="303.1914" id="AreaTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="361" x="486" y="611"/><ellipse cx="621.75" cy="628.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M624.2231,634.7427 Q623.6421,635.0415 623.0029,635.1909 Q622.3638,635.3403 621.6582,635.3403 Q619.1514,635.3403 617.8315,633.6885 Q616.5117,632.0366 616.5117,628.9155 Q616.5117,625.7861 617.8315,624.1343 Q619.1514,622.4824 621.6582,622.4824 Q622.3638,622.4824 623.0112,622.6318 Q623.6587,622.7813 624.2231,623.0801 L624.2231,625.8027 Q623.5923,625.2217 622.9988,624.9519 Q622.4053,624.6821 621.7744,624.6821 Q620.4297,624.6821 619.7449,625.7488 Q619.0601,626.8154 619.0601,628.9155 Q619.0601,631.0073 619.7449,632.074 Q620.4297,633.1406 621.7744,633.1406 Q622.4053,633.1406 622.9988,632.8708 Q623.5923,632.6011 624.2231,632.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="77" x="644.25" y="635.4023">AreaTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="487" x2="846" y1="646.1992" y2="646.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="247" x="494" y="669.6016">-final AVL&lt;Area&gt; nameTree</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="240" x="494" y="694.8008">-final AVL&lt;Area&gt; codeTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="487" x2="846" y1="704.5977" y2="704.5977"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="142" x="494" y="728">+getNameTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="136" x="494" y="753.1992">+getCodeTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="130" x="494" y="778.3984">+fillCodeTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="179" x="494" y="803.5977">+addArea(Area area)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="333" x="494" y="828.7969">+getAreaByAreaCode(String areaCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="345" x="494" y="853.9961">+getAreaByAreaName(String areaName)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="233" x="494" y="879.1953">+getAreaByArea(Area area)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="159" x="494" y="904.3945">+exists(Area area)</text></g><!--MD5=[9f1812e6113878599cb0680a6172a5b3]
+class FlagStore--><g id="elem_FlagStore"><rect codeLine="208" fill="#F1F1F1" height="202.3945" id="FlagStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="415" x="7" y="2753.5"/><ellipse cx="167.75" cy="2771.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M170.2231,2777.2427 Q169.6421,2777.5415 169.0029,2777.6909 Q168.3638,2777.8403 167.6582,2777.8403 Q165.1514,2777.8403 163.8315,2776.1885 Q162.5117,2774.5366 162.5117,2771.4155 Q162.5117,2768.2861 163.8315,2766.6343 Q165.1514,2764.9824 167.6582,2764.9824 Q168.3638,2764.9824 169.0112,2765.1318 Q169.6587,2765.2813 170.2231,2765.5801 L170.2231,2768.3027 Q169.5923,2767.7217 168.9988,2767.4519 Q168.4053,2767.1821 167.7744,2767.1821 Q166.4297,2767.1821 165.7449,2768.2488 Q165.0601,2769.3154 165.0601,2771.4155 Q165.0601,2773.5073 165.7449,2774.574 Q166.4297,2775.6406 167.7744,2775.6406 Q168.4053,2775.6406 168.9988,2775.3708 Q169.5923,2775.1011 170.2231,2774.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="81" x="190.25" y="2777.9023">FlagStore</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="421" y1="2788.6992" y2="2788.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="399" x="15" y="2812.1016">-final LinkedHashMap&lt;Character, Flag&gt; flags</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="421" y1="2821.8984" y2="2821.8984"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="138" x="15" y="2845.3008">+get(char code)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="259" x="15" y="2870.5">+add(char code, String name)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="305" x="15" y="2895.6992">+forceAdd(char code, String name)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="15" y="2920.8984">+iterator()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="15" y="2946.0977">+toString()</text></g><!--MD5=[68d9d5420bd263a2439f638f5204b588]
+class ItemTree--><g id="elem_ItemTree"><rect codeLine="219" fill="#F1F1F1" height="202.3945" id="ItemTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="351" x="260" y="1304"/><ellipse cx="390.75" cy="1321.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M393.2231,1327.7427 Q392.6421,1328.0415 392.0029,1328.1909 Q391.3638,1328.3403 390.6582,1328.3403 Q388.1514,1328.3403 386.8315,1326.6885 Q385.5117,1325.0366 385.5117,1321.9155 Q385.5117,1318.7861 386.8315,1317.1343 Q388.1514,1315.4824 390.6582,1315.4824 Q391.3638,1315.4824 392.0112,1315.6318 Q392.6587,1315.7813 393.2231,1316.0801 L393.2231,1318.8027 Q392.5923,1318.2217 391.9988,1317.9519 Q391.4053,1317.6821 390.7744,1317.6821 Q389.4297,1317.6821 388.7449,1318.7488 Q388.0601,1319.8154 388.0601,1321.9155 Q388.0601,1324.0073 388.7449,1325.074 Q389.4297,1326.1406 390.7744,1326.1406 Q391.4053,1326.1406 391.9988,1325.8708 Q392.5923,1325.6011 393.2231,1325.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="77" x="413.25" y="1328.4023">ItemTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="261" x2="610" y1="1339.1992" y2="1339.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="195" x="268" y="1362.6016">-final AVL&lt;Item&gt; tree</text><line style="stroke:#181818;stroke-width:0.5;" x1="261" x2="610" y1="1372.3984" y2="1372.3984"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="92" x="268" y="1395.8008">+getTree()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="181" x="268" y="1421">+addItem(Item item)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="335" x="268" y="1446.1992">+getItemByItemCode(String itemCode)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="235" x="268" y="1471.3984">+getItemByItem(Item item)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="161" x="268" y="1496.5977">+exists(Item item)</text></g><!--MD5=[76c64cf519b79fd01de2fb03066f8d81]
+class AVL--><g id="elem_AVL"><rect codeLine="230" fill="#F1F1F1" height="328.3906" id="AVL" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="379" x="806" y="3207"/><ellipse cx="972.25" cy="3224.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M974.7231,3230.7427 Q974.1421,3231.0415 973.5029,3231.1909 Q972.8638,3231.3403 972.1582,3231.3403 Q969.6514,3231.3403 968.3315,3229.6885 Q967.0117,3228.0366 967.0117,3224.9155 Q967.0117,3221.7861 968.3315,3220.1343 Q969.6514,3218.4824 972.1582,3218.4824 Q972.8638,3218.4824 973.5112,3218.6318 Q974.1587,3218.7813 974.7231,3219.0801 L974.7231,3221.8027 Q974.0923,3221.2217 973.4988,3220.9519 Q972.9053,3220.6821 972.2744,3220.6821 Q970.9297,3220.6821 970.2449,3221.7488 Q969.5601,3222.8154 969.5601,3224.9155 Q969.5601,3227.0073 970.2449,3228.074 Q970.9297,3229.1406 972.2744,3229.1406 Q972.9053,3229.1406 973.4988,3228.8708 Q974.0923,3228.6011 974.7231,3228.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="34" x="994.75" y="3231.4023">AVL</text><line style="stroke:#181818;stroke-width:0.5;" x1="807" x2="1184" y1="3242.1992" y2="3242.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="807" x2="1184" y1="3250.1992" y2="3250.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="274" x="814" y="3273.6016">-balanceFactor(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="268" x="814" y="3298.8008">-rightRotation(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="256" x="814" y="3324">-leftRotation(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="268" x="814" y="3349.1992">-twoRotations(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="265" x="814" y="3374.3984">-balanceNode(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="161" x="814" y="3399.5977">+insert(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="301" x="814" y="3424.7969">-insert(E element, Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="176" x="814" y="3449.9961">+remove(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="316" x="814" y="3475.1953">-remove(E element, Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="220" x="814" y="3500.3945">+equals(Object otherObj)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="363" x="814" y="3525.5938">#equals(Node&lt;E&gt; root1, Node&lt;E&gt; root2)</text></g><!--MD5=[b4a9ab6cffd58937cfea07eb2954e1bd]
+class BST--><g id="elem_BST"><rect codeLine="245" fill="#F1F1F1" height="882.7734" id="BST" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="673" x="729" y="3635"/><ellipse cx="1043.75" cy="3652.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1046.2231,3658.7427 Q1045.6421,3659.0415 1045.0029,3659.1909 Q1044.3638,3659.3403 1043.6582,3659.3403 Q1041.1514,3659.3403 1039.8315,3657.6885 Q1038.5117,3656.0366 1038.5117,3652.9155 Q1038.5117,3649.7861 1039.8315,3648.1343 Q1041.1514,3646.4824 1043.6582,3646.4824 Q1044.3638,3646.4824 1045.0112,3646.6318 Q1045.6587,3646.7813 1046.2231,3647.0801 L1046.2231,3649.8027 Q1045.5923,3649.2217 1044.9988,3648.9519 Q1044.4053,3648.6821 1043.7744,3648.6821 Q1042.4297,3648.6821 1041.7449,3649.7488 Q1041.0601,3650.8154 1041.0601,3652.9155 Q1041.0601,3655.0073 1041.7449,3656.074 Q1042.4297,3657.1406 1043.7744,3657.1406 Q1044.4053,3657.1406 1044.9988,3656.8708 Q1045.5923,3656.6011 1046.2231,3656.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="31" x="1066.25" y="3659.4023">BST</text><line style="stroke:#181818;stroke-width:0.5;" x1="730" x2="1401" y1="3670.1992" y2="3670.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="194" x="737" y="3693.6016">#Node&lt;E&gt; root = null</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="263" x="737" y="3718.8008">#Comparator&lt;? super E&gt; cmp</text><line style="stroke:#181818;stroke-width:0.5;" x1="730" x2="1401" y1="3728.5977" y2="3728.5977"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="59" x="737" y="3752">#root()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="94" x="737" y="3777.1992">+isEmpty()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="146" x="737" y="3802.3984">+find(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="287" x="737" y="3827.5977">#find(Node&lt;E&gt; node, E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="161" x="737" y="3852.7969">+insert(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="301" x="737" y="3877.9961">-insert(E element, Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="176" x="737" y="3903.1953">+remove(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="316" x="737" y="3928.3945">-remove(E element, Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="60" x="737" y="3953.5938">+size()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="188" x="737" y="3978.793">-size(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="81" x="737" y="4003.9922">+height()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="210" x="737" y="4029.1914">#height(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="168" x="737" y="4054.3906">+smallestElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="297" x="737" y="4079.5898">#smallestElement(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="160" x="737" y="4104.7891">+biggestElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="289" x="737" y="4129.9883">#biggestElement(Node&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="91" x="737" y="4155.1875">+inOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="412" x="737" y="4180.3867">+inOrderForEach(Consumer&lt;? super E&gt; action)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="582" x="737" y="4205.5859">-inOrderSubtree(Node&lt;E&gt; node, Consumer&lt;? super E&gt; consumer)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="103" x="737" y="4230.7852">+preOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="424" x="737" y="4255.9844">+preOrderForEach(Consumer&lt;? super E&gt; action)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="598" x="737" y="4281.1836">+preOrderSubtree(Node&lt;E&gt; node, Consumer&lt;? super E&gt; consumer)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="106" x="737" y="4306.3828">+posOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="427" x="737" y="4331.582">+posOrderForEach(Consumer&lt;? super E&gt; action)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="597" x="737" y="4356.7813">-posOrderSubtree(Node&lt;E&gt; node, Consumer&lt;? super E&gt; consumer)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="141" x="737" y="4381.9805">+nodesByLevel()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="657" x="737" y="4407.1797">-processBstByLevel(Node&lt;E&gt; node, Map&lt;Integer,List&lt;E&gt;&gt; result, int level)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="737" y="4432.3789">+toString()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="474" x="737" y="4457.5781">-toStringRec(Node&lt;E&gt; root, int level, StringBuilder sb)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="737" y="4482.7773">+iterator()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="344" x="737" y="4507.9766">+forEach(Consumer&lt;? super E&gt; action)</text></g><!--MD5=[3fee75583bb7a64f68d843a3c9534ab3]
+class Node--><g id="elem_Node"><rect codeLine="283" fill="#F1F1F1" height="378.7891" id="Node" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="287" x="922" y="4618"/><ellipse cx="1036.75" cy="4635.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1039.2231,4641.7427 Q1038.6421,4642.0415 1038.0029,4642.1909 Q1037.3638,4642.3403 1036.6582,4642.3403 Q1034.1514,4642.3403 1032.8315,4640.6885 Q1031.5117,4639.0366 1031.5117,4635.9155 Q1031.5117,4632.7861 1032.8315,4631.1343 Q1034.1514,4629.4824 1036.6582,4629.4824 Q1037.3638,4629.4824 1038.0112,4629.6318 Q1038.6587,4629.7813 1039.2231,4630.0801 L1039.2231,4632.8027 Q1038.5923,4632.2217 1037.9988,4631.9519 Q1037.4053,4631.6821 1036.7744,4631.6821 Q1035.4297,4631.6821 1034.7449,4632.7488 Q1034.0601,4633.8154 1034.0601,4635.9155 Q1034.0601,4638.0073 1034.7449,4639.074 Q1035.4297,4640.1406 1036.7744,4640.1406 Q1037.4053,4640.1406 1037.9988,4639.8708 Q1038.5923,4639.6011 1039.2231,4639.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="45" x="1059.25" y="4642.4023">Node</text><line style="stroke:#181818;stroke-width:0.5;" x1="923" x2="1208" y1="4653.1992" y2="4653.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="96" x="930" y="4676.6016">-E element</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="128" x="930" y="4701.8008">-Node&lt;E&gt; left</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="140" x="930" y="4727">-Node&lt;E&gt; right</text><line style="stroke:#181818;stroke-width:0.5;" x1="923" x2="1208" y1="4736.7969" y2="4736.7969"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="126" x="930" y="4760.1992">+hasElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="930" y="4785.3984">+hasLeft()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="101" x="930" y="4810.5977">+hasRight()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="124" x="930" y="4835.7969">+getElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="88" x="930" y="4860.9961">+getLeft()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="99" x="930" y="4886.1953">+getRight()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="148" x="930" y="4911.3945">+setElement(E e)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="248" x="930" y="4936.5938">+setLeft(Node&lt;E&gt; leftChild)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="271" x="930" y="4961.793">+setRight(Node&lt;E&gt; rightChild)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="77" x="930" y="4986.9922">+isLeaf()</text></g><!--MD5=[3d48caa4ac00011ece90c3fd6d5fdec0]
+class BSTInterface--><g id="elem_BSTInterface"><rect codeLine="301" fill="#F1F1F1" height="353.5898" id="BSTInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="192" x="1301.5" y="4630.5"/><ellipse cx="1338.55" cy="4648.0996" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1334.9777,4644.3647 L1334.9777,4642.2065 L1342.3571,4642.2065 L1342.3571,4644.3647 L1339.8918,4644.3647 L1339.8918,4652.4414 L1342.3571,4652.4414 L1342.3571,4654.5996 L1334.9777,4654.5996 L1334.9777,4652.4414 L1337.4431,4652.4414 L1337.4431,4644.3647 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" font-style="italic" lengthAdjust="spacing" textLength="107" x="1359.45" y="4654.9023">BSTInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="1302.5" x2="1492.5" y1="4665.6992" y2="4665.6992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1302.5" x2="1492.5" y1="4673.6992" y2="4673.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="94" x="1309.5" y="4697.1016">+isEmpty()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="161" x="1309.5" y="4722.3008">+insert(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="176" x="1309.5" y="4747.5">+remove(E element)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="1309.5" y="4772.6992"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="60" x="1309.5" y="4797.8984">+size()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="81" x="1309.5" y="4823.0977">+height()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="1309.5" y="4848.2969"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="168" x="1309.5" y="4873.4961">+smallestElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="91" x="1309.5" y="4898.6953">+inOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="103" x="1309.5" y="4923.8945">+preOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="106" x="1309.5" y="4949.0938">+posOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="141" x="1309.5" y="4974.293">+nodesByLevel()</text></g><!--MD5=[22e8064791be91c8285069e708a64fc5]
+class KDInterface--><g id="elem_KDInterface"><rect codeLine="317" fill="#F1F1F1" height="227.5938" id="KDInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="528" x="1235.5" y="3257"/><ellipse cx="1442.75" cy="3274.5996" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1439.1777,3270.8647 L1439.1777,3268.7065 L1446.5571,3268.7065 L1446.5571,3270.8647 L1444.0918,3270.8647 L1444.0918,3278.9414 L1446.5571,3278.9414 L1446.5571,3281.0996 L1439.1777,3281.0996 L1439.1777,3278.9414 L1441.6431,3278.9414 L1441.6431,3270.8647 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" font-style="italic" lengthAdjust="spacing" textLength="101" x="1465.25" y="3281.4023">KDInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="1236.5" x2="1762.5" y1="3292.1992" y2="3292.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1236.5" x2="1762.5" y1="3300.1992" y2="3300.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="275" x="1243.5" y="3323.6016">+insert(E e, double x, double y)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="1243.5" y="3348.8008"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="331" x="1243.5" y="3374">+nearestNeighbor(double x, double y)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="1243.5" y="3399.1992"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="405" x="1243.5" y="3424.3984">+kNearestNeighbors(double x, double y, int n)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="6" x="1243.5" y="3449.5977"> </text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="512" x="1243.5" y="3474.7969">+rangeSearch(double x1, double y1, double x2, double y2)</text></g><!--MD5=[e9680dcbbd57ee38dfd053ffcea751cd]
+class KDTree--><g id="elem_KDTree"><rect codeLine="328" fill="#F1F1F1" height="504.7852" id="KDTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="1173" x="1233" y="1152.5"/><ellipse cx="1781.75" cy="1170.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1784.2231,1176.2427 Q1783.6421,1176.5415 1783.0029,1176.6909 Q1782.3638,1176.8403 1781.6582,1176.8403 Q1779.1514,1176.8403 1777.8315,1175.1885 Q1776.5117,1173.5366 1776.5117,1170.4155 Q1776.5117,1167.2861 1777.8315,1165.6343 Q1779.1514,1163.9824 1781.6582,1163.9824 Q1782.3638,1163.9824 1783.0112,1164.1318 Q1783.6587,1164.2813 1784.2231,1164.5801 L1784.2231,1167.3027 Q1783.5923,1166.7217 1782.9988,1166.4519 Q1782.4053,1166.1821 1781.7744,1166.1821 Q1780.4297,1166.1821 1779.7449,1167.2488 Q1779.0601,1168.3154 1779.0601,1170.4155 Q1779.0601,1172.5073 1779.7449,1173.574 Q1780.4297,1174.6406 1781.7744,1174.6406 Q1782.4053,1174.6406 1782.9988,1174.3708 Q1783.5923,1174.1011 1784.2231,1173.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="63" x="1804.25" y="1176.9023">KDTree</text><line style="stroke:#181818;stroke-width:0.5;" x1="1234" x2="2405" y1="1187.6992" y2="1187.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="161" x="1241" y="1211.1016">#KDNode&lt;E&gt; root</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="347" x="1241" y="1236.3008">-final Comparator&lt;KDNode&lt;E&gt;&gt; cmpX</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="347" x="1241" y="1261.5">-final Comparator&lt;KDNode&lt;E&gt;&gt; cmpY</text><line style="stroke:#181818;stroke-width:0.5;" x1="1234" x2="2405" y1="1271.2969" y2="1271.2969"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="94" x="1241" y="1294.6992">+isEmpty()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="81" x="1241" y="1319.8984">+height()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="235" x="1241" y="1345.0977">#height(KDNode&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="60" x="1241" y="1370.2969">+size()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="214" x="1241" y="1395.4961">#size(KDNode&lt;E&gt; node)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="275" x="1241" y="1420.6953">+insert(E e, double x, double y)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="584" x="1241" y="1445.8945">-insert(KDNode&lt;E&gt; currentNode, KDNode&lt;E&gt; node, boolean divX)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="331" x="1241" y="1471.0938">+nearestNeighbor(double x, double y)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="851" x="1241" y="1496.293">#nearestNeighbor(KDNode&lt;E&gt; node, double x, double y, KDNode&lt;E&gt; closestNode, boolean divX)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="512" x="1241" y="1521.4922">+rangeSearch(double x1, double y1, double x2, double y2)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="1157" x="1241" y="1546.6914">-searchArea(KDNode&lt;E&gt; node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer&lt;? super E&gt; action )</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="91" x="1241" y="1571.8906">+inOrder()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="412" x="1241" y="1597.0898">+inOrderForEach(Consumer&lt;? super E&gt; action)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="611" x="1241" y="1622.2891">+inOrderSubtree(KDNode&lt;E&gt; node, Consumer&lt;? super E&gt; consumer)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="815" x="1241" y="1647.4883">-isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal)</text></g><!--MD5=[d7f576e5d7d5cb46974ab787e4bf90e3]
+class KDNode--><g id="elem_KDNode"><rect codeLine="351" fill="#F1F1F1" height="378.7891" id="KDNode" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="312" x="1663.5" y="2009.5"/><ellipse cx="1778.25" cy="2027.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1780.7231,2033.2427 Q1780.1421,2033.5415 1779.5029,2033.6909 Q1778.8638,2033.8403 1778.1582,2033.8403 Q1775.6514,2033.8403 1774.3315,2032.1885 Q1773.0117,2030.5366 1773.0117,2027.4155 Q1773.0117,2024.2861 1774.3315,2022.6343 Q1775.6514,2020.9824 1778.1582,2020.9824 Q1778.8638,2020.9824 1779.5112,2021.1318 Q1780.1587,2021.2813 1780.7231,2021.5801 L1780.7231,2024.3027 Q1780.0923,2023.7217 1779.4988,2023.4519 Q1778.9053,2023.1821 1778.2744,2023.1821 Q1776.9297,2023.1821 1776.2449,2024.2488 Q1775.5601,2025.3154 1775.5601,2027.4155 Q1775.5601,2029.5073 1776.2449,2030.574 Q1776.9297,2031.6406 1778.2744,2031.6406 Q1778.9053,2031.6406 1779.4988,2031.3708 Q1780.0923,2031.1011 1780.7231,2030.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="70" x="1800.75" y="2033.9023">KDNode</text><line style="stroke:#181818;stroke-width:0.5;" x1="1664.5" x2="1974.5" y1="2044.6992" y2="2044.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="210" x="1671.5" y="2068.1016">#Point2D.Double coords</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="96" x="1671.5" y="2093.3008">-E element</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="153" x="1671.5" y="2118.5">-KDNode&lt;E&gt; left</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="165" x="1671.5" y="2143.6992">-KDNode&lt;E&gt; right</text><line style="stroke:#181818;stroke-width:0.5;" x1="1664.5" x2="1974.5" y1="2153.4961" y2="2153.4961"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="126" x="1671.5" y="2176.8984">+hasElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="1671.5" y="2202.0977">+hasLeft()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="101" x="1671.5" y="2227.2969">+hasRight()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="124" x="1671.5" y="2252.4961">+getElement()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="88" x="1671.5" y="2277.6953">+getLeft()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="99" x="1671.5" y="2302.8945">+getRight()</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="148" x="1671.5" y="2328.0938">+setElement(E e)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="273" x="1671.5" y="2353.293">+setLeft(KDNode&lt;E&gt; leftChild)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="296" x="1671.5" y="2378.4922">+setRight(KDNode&lt;E&gt; rightChild)</text></g><!--MD5=[f8d2b21678b6ea5d90e779ee6463ca37]
+class Utils--><g id="elem_Utils"><rect codeLine="369" fill="#F1F1F1" height="126.7969" id="Utils" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="548" x="1396.5" y="283.5"/><ellipse cx="1645.25" cy="301.0996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1647.7231,307.2427 Q1647.1421,307.5415 1646.5029,307.6909 Q1645.8638,307.8403 1645.1582,307.8403 Q1642.6514,307.8403 1641.3315,306.1885 Q1640.0117,304.5366 1640.0117,301.4155 Q1640.0117,298.2861 1641.3315,296.6343 Q1642.6514,294.9824 1645.1582,294.9824 Q1645.8638,294.9824 1646.5112,295.1318 Q1647.1587,295.2813 1647.7231,295.5801 L1647.7231,298.3027 Q1647.0923,297.7217 1646.4988,297.4519 Q1645.9053,297.1821 1645.2744,297.1821 Q1643.9297,297.1821 1643.2449,298.2488 Q1642.5601,299.3154 1642.5601,301.4155 Q1642.5601,303.5073 1643.2449,304.574 Q1643.9297,305.6406 1645.2744,305.6406 Q1645.9053,305.6406 1646.4988,305.3708 Q1647.0923,305.1011 1647.7231,304.52 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="38" x="1667.75" y="307.9023">Utils</text><line style="stroke:#181818;stroke-width:0.5;" x1="1397.5" x2="1943.5" y1="318.6992" y2="318.6992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1397.5" x2="1943.5" y1="326.6992" y2="326.6992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="237" x="1404.5" y="350.1016">+avlSort(List&lt;E&gt; unsorted)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="501" x="1404.5" y="375.3008">+avlSort(List&lt;E&gt; unsorted, Comparator&lt;? super E&gt; cmp)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="532" x="1404.5" y="400.5">+mergeSort(List&lt;E&gt; unsorted, Comparator&lt;? super E&gt; cmp)</text></g><!--MD5=[c008e698830d501392e3abec76d38556]
+class Point2D--><g id="elem_Point2D"><rect codeLine="376" fill="#F1F1F1" height="51.1992" id="Point2D" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="104" x="1558.5" y="2829"/><ellipse cx="1573.5" cy="2846.5996" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1573.3633,2841.9478 L1572.2095,2847.0195 L1574.5254,2847.0195 Z M1571.8691,2839.7065 L1574.8657,2839.7065 L1578.2109,2852.0996 L1575.7622,2852.0996 L1574.9985,2849.0366 L1571.7197,2849.0366 L1570.9727,2852.0996 L1568.5239,2852.0996 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" font-style="italic" lengthAdjust="spacing" textLength="68" x="1589.5" y="2853.4023">Point2D</text><line style="stroke:#181818;stroke-width:0.5;" x1="1559.5" x2="1661.5" y1="2864.1992" y2="2864.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1559.5" x2="1661.5" y1="2872.1992" y2="2872.1992"/></g><!--MD5=[bbd035254ef19fa475e788fdcf1df111]
+class Triplet--><g id="elem_Triplet"><rect codeLine="380" fill="#F1F1F1" height="76.3984" id="Triplet" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="111" x="1980" y="309"/><ellipse cx="2003.55" cy="326.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M2006.0231,332.7427 Q2005.4421,333.0415 2004.8029,333.1909 Q2004.1638,333.3403 2003.4582,333.3403 Q2000.9514,333.3403 1999.6315,331.6885 Q1998.3117,330.0366 1998.3117,326.9155 Q1998.3117,323.7861 1999.6315,322.1343 Q2000.9514,320.4824 2003.4582,320.4824 Q2004.1638,320.4824 2004.8112,320.6318 Q2005.4587,320.7813 2006.0231,321.0801 L2006.0231,323.8027 Q2005.3923,323.2217 2004.7988,322.9519 Q2004.2053,322.6821 2003.5744,322.6821 Q2002.2297,322.6821 2001.5449,323.7488 Q2000.8601,324.8154 2000.8601,326.9155 Q2000.8601,329.0073 2001.5449,330.074 Q2002.2297,331.1406 2003.5744,331.1406 Q2004.2053,331.1406 2004.7988,330.8708 Q2005.3923,330.6011 2006.0231,330.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="56" x="2021.45" y="333.4023">Triplet</text><line style="stroke:#181818;stroke-width:0.5;" x1="1981" x2="2090" y1="344.1992" y2="344.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="1981" x2="2090" y1="352.1992" y2="352.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="1988" y="375.6016">+toString()</text></g><!--MD5=[220f5f32351d35cc72380e3951491ed2]
+class Pair--><g id="elem_Pair"><rect codeLine="385" fill="#F1F1F1" height="76.3984" id="Pair" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="111" x="2126" y="309"/><ellipse cx="2160.35" cy="326.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M2162.8231,332.7427 Q2162.2421,333.0415 2161.6029,333.1909 Q2160.9638,333.3403 2160.2582,333.3403 Q2157.7514,333.3403 2156.4315,331.6885 Q2155.1117,330.0366 2155.1117,326.9155 Q2155.1117,323.7861 2156.4315,322.1343 Q2157.7514,320.4824 2160.2582,320.4824 Q2160.9638,320.4824 2161.6112,320.6318 Q2162.2587,320.7813 2162.8231,321.0801 L2162.8231,323.8027 Q2162.1923,323.2217 2161.5988,322.9519 Q2161.0053,322.6821 2160.3744,322.6821 Q2159.0297,322.6821 2158.3449,323.7488 Q2157.6601,324.8154 2157.6601,326.9155 Q2157.6601,329.0073 2158.3449,330.074 Q2159.0297,331.1406 2160.3744,331.1406 Q2161.0053,331.1406 2161.5988,330.8708 Q2162.1923,330.6011 2162.8231,330.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="32" x="2180.65" y="333.4023">Pair</text><line style="stroke:#181818;stroke-width:0.5;" x1="2127" x2="2236" y1="344.1992" y2="344.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="2127" x2="2236" y1="352.1992" y2="352.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="95" x="2134" y="375.6016">+toString()</text></g><!--MD5=[bd648356c7c69cfd829ed5fe9ffe8b1f]
+class ListPrinter--><g id="elem_ListPrinter"><rect codeLine="390" fill="#F1F1F1" height="76.3984" id="ListPrinter" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="546" x="2272.5" y="309"/><ellipse cx="2495.25" cy="326.5996" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M2497.7231,332.7427 Q2497.1421,333.0415 2496.5029,333.1909 Q2495.8638,333.3403 2495.1582,333.3403 Q2492.6514,333.3403 2491.3315,331.6885 Q2490.0117,330.0366 2490.0117,326.9155 Q2490.0117,323.7861 2491.3315,322.1343 Q2492.6514,320.4824 2495.1582,320.4824 Q2495.8638,320.4824 2496.5112,320.6318 Q2497.1587,320.7813 2497.7231,321.0801 L2497.7231,323.8027 Q2497.0923,323.2217 2496.4988,322.9519 Q2495.9053,322.6821 2495.2744,322.6821 Q2493.9297,322.6821 2493.2449,323.7488 Q2492.5601,324.8154 2492.5601,326.9155 Q2492.5601,329.0073 2493.2449,330.074 Q2493.9297,331.1406 2495.2744,331.1406 Q2495.9053,331.1406 2496.4988,330.8708 Q2497.0923,330.6011 2497.7231,330.02 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="88" x="2517.75" y="333.4023">ListPrinter</text><line style="stroke:#181818;stroke-width:0.5;" x1="2273.5" x2="2817.5" y1="344.1992" y2="344.1992"/><line style="stroke:#181818;stroke-width:0.5;" x1="2273.5" x2="2817.5" y1="352.1992" y2="352.1992"/><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" text-decoration="underline" textLength="530" x="2280.5" y="375.6016">+print(Collection&lt;E&gt; list, String header, PrintStream stream)</text></g><!--MD5=[9565ee374c43585bd19dccdcca1c811d]
+link Main to App--><g id="link_Main_App"><path codeLine="396" d="M1756.96,52.41 C1597.74,65.07 1269.46,99.66 1004.5,183 C929.85,206.48 850.84,243.81 788,276.83 " fill="none" id="Main-to-App" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="783.5,279.2,793.3266,278.5388,787.9224,276.8671,789.5941,271.4629,783.5,279.2" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d2f9d9dc63374aa0c493119b7436e823]
+link Main to Utils--><g id="link_Main_Utils"><path codeLine="397" d="M1830,83.09 C1800.37,131.92 1747.75,218.66 1711.08,279.1 " fill="none" id="Main-to-Utils" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1708.47,283.41,1716.5526,277.7822,1711.0593,279.1327,1709.7089,273.6394,1708.47,283.41" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b74e2d3764df2e58b0ab919ea79c07ec]
+link Main to CSVReader--><g id="link_Main_CSVReader"><path codeLine="398" d="M1756.99,60.98 C1657.79,79.36 1500.34,116.57 1378.5,183 C1360.55,192.79 1342.82,204.55 1325.86,217.22 " fill="none" id="Main-to-CSVReader" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1321.56,220.46,1331.155,218.2381,1325.5531,217.4509,1326.3404,211.8491,1321.56,220.46" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[339dbbd65eee2848d6d9d653ff54f5d6]
+link Main to Triplet--><g id="link_Main_Triplet"><path codeLine="399" d="M1886.57,83.02 C1909.85,109.55 1940.38,146.83 1962.5,183 C1986.32,221.96 2006.89,270.03 2020.07,303.84 " fill="none" id="Main-to-Triplet" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="2021.96,308.72,2022.4565,298.8837,2020.1622,304.0544,2014.9915,301.7601,2021.96,308.72" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d0ca89e470f87b402c1428d340fc0d07]
+link Main to Pair--><g id="link_Main_Pair"><path codeLine="400" d="M1948.13,79.36 C2001.01,101.82 2064.68,135.98 2108.5,183 C2140.44,217.27 2160.1,267.85 2170.86,303.57 " fill="none" id="Main-to-Pair" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="2172.38,308.72,2173.6653,298.9554,2170.963,303.925,2165.9933,301.2226,2172.38,308.72" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8fdc2484c9ef3cbe46ac8d63ffe8fde8]
+link Main to ListPrinter--><g id="link_Main_ListPrinter"><path codeLine="401" d="M1948.18,73.23 C2030.82,98 2152.65,137.57 2254.5,183 C2335.81,219.26 2424.41,270.76 2482.22,306.11 " fill="none" id="Main-to-ListPrinter" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="2486.68,308.84,2481.1039,300.7217,2482.4193,306.2235,2476.9175,307.5389,2486.68,308.84" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8ad152fc2c86471d56b3ec8ff59f39b0]
+link CSVReader to CSVHeader--><g id="link_CSVReader_CSVHeader"><path codeLine="402" d="M1253.23,473.75 C1286.43,541.37 1326.37,622.72 1355.3,681.64 " fill="none" id="CSVReader-to-CSVHeader" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1357.53,686.2,1357.1331,676.3591,1355.3168,681.7165,1349.9595,679.9003,1357.53,686.2" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[515762797261fbdce5a4f9fbe865265b]
+link App to AreaTree--><g id="link_App_AreaTree"><path codeLine="405" d="M666.5,511.13 C666.5,542.2 666.5,574.64 666.5,605.48 " fill="none" id="App-to-AreaTree" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="666.5,610.81,670.5,601.81,666.5,605.81,662.5,601.81,666.5,610.81" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f3627c4bc273b9bf436095fb74c25c06]
+link App to ItemTree--><g id="link_App_ItemTree"><path codeLine="406" d="M549.42,471.55 C517.26,512.82 486.35,561.09 468.5,611 C384.73,845.24 402.7,1143.49 420.58,1298.97 " fill="none" id="App-to-ItemTree" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="421.16,1303.99,424.1061,1294.5921,420.589,1299.0227,416.1584,1295.5056,421.16,1303.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[246f4f74f1111905e4c32b2e41c55f4c]
+link App to FlagStore--><g id="link_App_FlagStore"><path codeLine="407" d="M549.39,445.06 C499.12,491.3 442.81,549.82 402.5,611 C296.47,771.92 280.14,825 242.5,1014 C113.41,1662.19 174.72,2464.37 202.96,2748.09 " fill="none" id="App-to-FlagStore" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="203.5,2753.47,206.6059,2744.1237,203.0138,2748.4937,198.6438,2744.9016,203.5,2753.47" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[60b5755f9c69d31cc9f3968cfa6167d7]
+link App to AreaKDTree--><g id="link_App_AreaKDTree"><path codeLine="408" d="M783.61,468.16 C860.7,547.26 957.9,646.99 1016.8,707.42 " fill="none" id="App-to-AreaKDTree" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1020.62,711.35,1017.1775,702.1224,1017.1204,707.7789,1011.4638,707.7218,1020.62,711.35" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[be6586aa43bea0c509c4dfd6d8f3a1e6]
+link AreaTree to Area--><g id="link_AreaTree_Area"><path codeLine="410" d="M743.84,914.07 C759.7,944.95 777.09,978.79 795.07,1013.8 " fill="none" id="AreaTree-Area" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="737.5185" y="936.9466">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="782.8972" y="1001.2325">*</text></g><!--MD5=[3f3428d4660cce3b5bd7ccbced8571ff]
+link AreaTree to AVL--><g id="link_AreaTree_AVL"><path codeLine="411" d="M662.16,914.13 C647.68,1424.31 603.41,3058.15 628.5,3107 C633.92,3117.55 716.31,3176.96 801.65,3236.64 " fill="none" id="AreaTree-to-AVL" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="805.98,3239.66,800.8968,3231.2243,801.8825,3236.7946,796.3122,3237.7803,805.98,3239.66" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f215dc8866bac540efc1e17432bc3278]
+link Area to Item--><g id="link_Area_Item"><path codeLine="413" d="M947.22,1796.2 C943.07,1829.68 938.93,1863.22 934.89,1895.85 " fill="none" id="Area-Item" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="936.1174" y="1818.911">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="927.7504" y="1883.1233">*</text></g><!--MD5=[a88b3f0ce525e1bb2f8a4f41ff4e3fb2]
+link Area to AVL--><g id="link_Area_AVL"><path codeLine="414" d="M1118.25,1796.04 C1125.6,1829.6 1131.88,1863.24 1136.5,1896 C1211.65,2428.95 1267.6,2584.99 1136.5,3107 C1128.44,3139.09 1115.63,3171.53 1100.94,3202.16 " fill="none" id="Area-to-AVL" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1098.76,3206.66,1106.2902,3200.312,1100.9445,3202.1625,1099.0941,3196.8168,1098.76,3206.66" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[18d72aa307049aaeffce12f8ec88e392]
+link Item to Element--><g id="link_Item_Element"><path codeLine="416" d="M880.84,2502.36 C879.01,2535.61 877.16,2569.19 875.37,2601.73 " fill="none" id="Item-Element" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="870.3089" y="2524.2696">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="867.6333" y="2589.52">*</text></g><!--MD5=[e8e26113608ec6a1b964230e9d9ff638]
+link Item to AVL--><g id="link_Item_AVL"><path codeLine="417" d="M1062.42,2502.25 C1075.05,2535.18 1085.84,2568.81 1093.5,2602 C1143.97,2820.7 1133.32,2886.12 1093.5,3107 C1087.84,3138.41 1078.66,3170.96 1068.13,3202.01 " fill="none" id="Item-to-AVL" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1066.43,3206.99,1073.1166,3199.7588,1068.041,3202.2567,1065.5432,3197.1811,1066.43,3206.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[411f476e243ceba5b27f0e2a213cc633]
+link Element to Year--><g id="link_Element_Year"><path codeLine="419" d="M746.09,3107.1 C730.55,3140.99 714.94,3175.02 700.35,3206.82 " fill="none" id="Element-Year" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="732.4856" y="3129.4573">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="695.5151" y="3194.5167">*</text></g><!--MD5=[9c056f5f428fdbf338a453ac1c5b5dd3]
+link Element to AVL--><g id="link_Element_AVL"><path codeLine="420" d="M927.03,3107.1 C935.41,3139.27 943.82,3171.56 951.73,3201.96 " fill="none" id="Element-to-AVL" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="953,3206.82,954.6034,3197.1025,951.7402,3201.9813,946.8614,3199.1182,953,3206.82" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[2602718ee0699cdf0ea382f435e82e87]
+link Year to Value--><g id="link_Year_Value"><path codeLine="422" d="M613.67,3535.17 C605.15,3652.77 593.72,3810.32 585.42,3924.93 " fill="none" id="Year-Value" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="602.8064" y="3558.1486">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="575.6737" y="3912.1963">1</text></g><!--MD5=[663bb0c6d002c1e94b09c6daac21d132]
+link Value to Flag--><g id="link_Value_Flag"><path codeLine="424" d="M554.87,4228.11 C536.21,4371.32 508.66,4582.71 492.55,4706.33 " fill="none" id="Value-Flag" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="543.5485" y="4250.9887">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="483.0677" y="4693.7679">1</text></g><!--MD5=[678fc4e6ed23dbbd5b1a647bfafe611c]
+link FlagStore to Flag--><g id="link_FlagStore_Flag"><path codeLine="426" d="M228.1,2955.61 C273.61,3290.71 420.32,4370.83 465.88,4706.21 " fill="none" id="FlagStore-Flag" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="218.6581" y="2978.2982">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="456.5126" y="4693.6391">*</text></g><!--MD5=[c06dd6fc939537db375782cd5ac76ab4]
+link ItemTree to Item--><g id="link_ItemTree_Item"><path codeLine="428" d="M494.01,1506.31 C551.07,1604.12 640.75,1757.86 721.09,1895.59 " fill="none" id="ItemTree-Item" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="487.8662" y="1529.0129">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="708.2713" y="1882.8564">*</text></g><!--MD5=[63e96244d33e329e940323010cf0b7a0]
+link ItemTree to AVL--><g id="link_ItemTree_AVL"><path codeLine="429" d="M430.96,1506.1 C418.15,1829.7 393.16,2841.99 567.5,3107 C619.95,3186.72 675.77,3157.73 757.5,3207 C771.88,3215.67 786.58,3224.86 801.26,3234.3 " fill="none" id="ItemTree-to-AVL" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="805.82,3237.23,800.3997,3229.0068,801.6099,3234.5327,796.0841,3235.7429,805.82,3237.23" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[31eff4349d6762cc716d06d2e61a680f]
+link AreaKDTree to Area--><g id="link_AreaKDTree_Area"><path codeLine="431" d="M1063.69,813.76 C1058.33,860.21 1049.81,933.93 1040.59,1013.76 " fill="none" id="AreaKDTree-Area" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="1052.2507" y="835.7769">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="6" x="1033.4043" y="1001.1917">*</text></g><!--MD5=[19cecba906bfc605757e40fdd161d5f9]
+link AreaKDTree to KDTree--><g id="link_AreaKDTree_KDTree"><path codeLine="432" d="M1128.35,813.76 C1212.98,886.03 1374.95,1024.35 1520.83,1148.93 " fill="none" id="AreaKDTree-to-KDTree" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1524.7,1152.24,1520.4699,1143.3459,1520.9037,1148.986,1515.2635,1149.4199,1524.7,1152.24" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1cb0b49e81e08bd0536e77b43e8a1dfb]
+link AVL to BST--><g id="link_AVL_BST"><path codeLine="434" d="M1011.74,3535.17 C1014.23,3560.19 1016.9,3587.03 1019.67,3614.87 " fill="none" id="AVL-to-BST" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1026.63,3614.21,1021.65,3634.8,1012.7,3615.59,1026.63,3614.21" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[50f45c985b8a280ad75f3469b543a04c]
+link BST to BSTInterface--><g id="link_BST_BSTInterface"><path codeLine="435" d="M1266.17,4518.12 C1280.99,4550.67 1295.43,4582.37 1308.98,4612.13 " fill="none" id="BST-to-BSTInterface" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1315.38,4609.29,1317.3,4630.39,1302.64,4615.09,1315.38,4609.29" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b1642e2d779d15aa8f642c259f269ab6]
+link KDInterface to BSTInterface--><g id="link_KDInterface_BSTInterface"><path codeLine="436" d="M1491.85,3485.07 C1477.88,3690.68 1447.14,4139.57 1419.5,4518 C1417.32,4547.8 1414.97,4579.32 1412.64,4610.16 " fill="none" id="KDInterface-to-BSTInterface" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1419.61,4610.88,1411.12,4630.3,1405.65,4609.82,1419.61,4610.88" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[321422102bc4736c25ddabdcbc9c9354]
+link KDTree to KDInterface--><g id="link_KDTree_KDInterface"><path codeLine="437" d="M1927.39,1657.79 C1954.53,1733.01 1979.82,1816.6 1993.5,1896 C2039.23,2161.42 2057.36,2240.35 1993.5,2502 C1923.35,2789.44 1727.23,3079.34 1604.25,3240.71 " fill="none" id="KDTree-to-KDInterface" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1609.57,3245.27,1591.84,3256.88,1598.46,3236.75,1609.57,3245.27" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[4c380999864324cf266182d4ae9efd2c]
+reverse link BST to Node--><g id="link_BST_Node"><path codeLine="440" d="M1065.5,4531.47 C1065.5,4561.42 1065.5,4590.52 1065.5,4617.88 " fill="none" id="BST-backto-Node" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1065.5,4518.12,1061.5,4524.12,1065.5,4530.12,1069.5,4524.12,1065.5,4518.12" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[fb485e13d0533c22b6f8b28673d4e6a7]
+reverse link KDTree to KDNode--><g id="link_KDTree_KDNode"><path codeLine="441" d="M1819.5,1670.79 C1819.5,1781.77 1819.5,1908.25 1819.5,2009.5 " fill="none" id="KDTree-backto-KDNode" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1819.5,1657.68,1815.5,1663.68,1819.5,1669.68,1823.5,1663.68,1819.5,1657.68" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d0cd1c4d297b2f9bd485c3345038d520]
+link Area to Coordinate--><g id="link_Area_Coordinate"><path codeLine="443" d="M1197.5,1796.2 C1251.11,1899.76 1304.99,2003.84 1344.48,2080.12 " fill="none" id="Area-to-Coordinate" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1346.82,2084.64,1346.2217,2074.8093,1344.5155,2080.2027,1339.1221,2078.4965,1346.82,2084.64" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[9cce207f63eea7045e4be3d36c927480]
+link KDNode to Point2D--><g id="link_KDNode_Point2D"><path codeLine="445" d="M1759.19,2388.58 C1709.69,2543.34 1643.99,2748.79 1619.88,2824.17 " fill="none" id="KDNode-to-Point2D" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1618.35,2828.95,1624.9115,2821.6051,1619.8796,2824.1897,1617.295,2819.1578,1618.35,2828.95" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[310f20b99b2d8600d3e37d47ba18f152]
+link KDTree to Point2D--><g id="link_KDTree_Point2D"><path codeLine="446" d="M1713.57,1657.81 C1686.43,1733.12 1660.65,1816.75 1645.5,1896 C1576.72,2255.82 1600.38,2705.16 1608.33,2823.71 " fill="none" id="KDTree-to-Point2D" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="1608.67,2828.78,1612.0431,2819.5268,1608.327,2823.7918,1604.062,2820.0756,1608.67,2828.78" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[cea4ccf95eebd3148de8fa8b9b7a29fb]
+link Coordinate to Point2D--><g id="link_Coordinate_Point2D"><path codeLine="448" d="M1440.97,2313.08 C1486.98,2459.76 1565.08,2708.71 1596.65,2809.34 " fill="none" id="Coordinate-to-Point2D" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="1603.42,2807.56,1602.73,2828.73,1590.07,2811.75,1603.42,2807.56" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ec1c88c4dedd8c9811e8f0057b284a1b]
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam classAttributeIconSize 0
+skinparam padding 2
+skinparam ranksep 100
+skinparam classFontSize 18
+
+class Main
+{
+    +{static}main(String[] args)
+}
+
+class App
+{
+    -AreaTree areaTree
+    -ItemTree itemTree
+    -FlagStore flagStore
+    -AreaKDTree areaKDTree
+
+    +getAreaTree()
+    +getKDAreaTree()
+    +getItemTree()
+    +FlagStore flagStore()
+    -{static}App singleton = null
+    +{static}getInstance()
+}
+
+class Area
+{
+    -String areaCode
+    -String codeM49
+    -String areaName
+    -Coordinate coords
+    -String country
+
+    -final AVL<Item> treeCode
+    -final AVL<Item> treeDesc
+
+    +{static}final Comparator<? super Area> cmpName
+    +{static}final Comparator<? super Area> cmpCode
+
+    +setAreaCode(String areaCode)
+    +setCode(String codeM49)
+    +getAreaCode()
+    +getCodeM49() 
+    +getAreaName() 
+    +getCoords()
+    +getCountry()
+
+    +getTreeCode()
+    +getTreeDesc()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItemByItemDescription(String desc)
+    +getItembyItem(Item item)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Area o)
+}
+
+class Coordinate
+{
+    -double latitude
+    -double longitude
+
+    +getLatitude()
+    +getLongitude()
+    +getX()
+    +getY()
+    +setLocation(double x, double y)
+}
+
+class Element
+{
+    -String elementCode
+    -String elementType
+
+    -final AVL<Year> treeYear
+
+    +{static}final Comparator<? super Element> cmpCode
+    +{static}final Comparator<? super Element> cmpType
+
+    +getElementCode()
+    +getElementType()
+    +getTreeYear()
+    +addYear(Year year)
+    +getYearByYearCode(String yearCode)
+    +getYearByYear(int year)
+    +getYearByYear(Year year)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Element o)
+}
+
+class Flag
+{
+    -final Pair<Character, String> pair
+
+    +code()
+    +name()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+}
+
+class Item
+{
+    -String itemCode
+    -String itemCPC
+    -String itemDescription
+
+    -final AVL<Element> treeCode
+    -final AVL<Element> treeType
+
+    +{static}final Comparator<? super Item> cmpCode
+    +{static}final Comparator<? super Item> cmpDesc
+
+    +getItemCode()
+    +getItemCPC()
+    +getItemDescription()
+    +getTreeCode()
+    +getTreeType()
+    +addElement(Element element)
+    +getElementByElementCode(String elementCode)
+    +getElementByElementType(String elementType)
+    +getElementByElement(Element element)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Item o)
+}
+
+class Value
+{
+    -Float value
+    -String unit
+    -Flag flag
+
+    +getValue() 
+    +getUnit() 
+    +getFlag()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Value o)
+}
+
+class Year
+{
+    -String yearCode
+    -int year
+    -Value value
+
+    +getYear() 
+    +getYearCode() 
+    +getValue() 
+    +addValue(Value value)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Year other) 
+}
+
+enum CSVHeader
+{
+    -final int columns
+    -final String delimiter
+    +getColumnCount()
+    +getDelimiter()
+}
+
+class CSVReader
+{
+    -final CSVHeader header
+    -final int EXPECTED_COLUMNS
+    -final String DEFAULT_DELIMITER;
+    -{static}final char BOM = '\ufeff'
+    +readCSV(File dir)
+    -isHeader(String line)
+    -maybeSkipBom(Reader reader)
+    -checkQuotationMark(Reader reader)
+}
+
+class AreaKDTree
+{
+    -final KDTree<Area> areaKdTree
+
+    +addNode(Area area, double x, double y)
+}
+
+class AreaTree 
+{
+    -final AVL<Area> nameTree
+    -final AVL<Area> codeTree 
+
+    +getNameTree()
+    +getCodeTree()
+    +fillCodeTree()
+    +addArea(Area area)
+    +getAreaByAreaCode(String areaCode)
+    +getAreaByAreaName(String areaName)
+    +getAreaByArea(Area area)
+    +exists(Area area)   
+}
+
+class FlagStore
+{
+    -final LinkedHashMap<Character, Flag> flags
+
+    +get(char code)
+    +add(char code, String name)
+    +forceAdd(char code, String name)
+    +iterator()
+    +toString()
+}
+
+class ItemTree
+{
+    -final AVL<Item> tree
+
+    +getTree()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItemByItem(Item item)
+    +exists(Item item)
+}
+
+class AVL
+{
+    -balanceFactor(Node<E> node)
+    -rightRotation(Node<E> node)
+    -leftRotation(Node<E> node)
+    -twoRotations(Node<E> node)
+    -balanceNode(Node<E> node)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +equals(Object otherObj)
+    #equals(Node<E> root1, Node<E> root2)
+}
+
+class BST
+{
+    #Node<E> root = null
+    #Comparator<? super E> cmp
+
+    #root()
+    +isEmpty()
+    +find(E element)
+    #find(Node<E> node, E element)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +size()
+    -size(Node<E> node)
+    +height()
+    #height(Node<E> node)
+    +smallestElement()
+    #smallestElement(Node<E> node)
+    +biggestElement()
+    #biggestElement(Node<E> node)
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    -inOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +preOrder()
+    +preOrderForEach(Consumer<? super E> action)
+    +preOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +posOrder()
+    +posOrderForEach(Consumer<? super E> action)
+    -posOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +nodesByLevel()
+    -processBstByLevel(Node<E> node, Map<Integer,List<E>> result, int level)
+    +toString()
+    -toStringRec(Node<E> root, int level, StringBuilder sb)
+    +iterator()
+    +forEach(Consumer<? super E> action)
+}
+
+class Node
+{
+    -E element        
+    -Node<E> left
+    -Node<E> right
+
+     +hasElement()
+     +hasLeft()
+     +hasRight()
+     +getElement() 
+     +getLeft() 
+     +getRight()
+     +setElement(E e)
+     +setLeft(Node<E> leftChild)
+     +setRight(Node<E> rightChild)
+     +isLeaf()
+}
+
+interface BSTInterface
+{
+    +isEmpty()
+    +insert(E element)
+    +remove(E element)
+
+    +size()
+    +height()
+
+    +smallestElement()
+    +inOrder()
+    +preOrder()
+    +posOrder()
+    +nodesByLevel()
+}
+
+interface KDInterface
+{
+    +insert(E e, double x, double y)
+
+    +nearestNeighbor(double x, double y)
+
+    +kNearestNeighbors(double x, double y, int n)
+
+    +rangeSearch(double x1, double y1, double x2, double y2)
+}
+
+class KDTree
+{
+    #KDNode<E> root
+    -final Comparator<KDNode<E>> cmpX
+    -final Comparator<KDNode<E>> cmpY
+    +isEmpty()
+    +height()
+    #height(KDNode<E> node)
+    +size()
+    #size(KDNode<E> node)
+    +insert(E e, double x, double y)
+    -insert(KDNode<E> currentNode, KDNode<E> node, boolean divX)
+    +nearestNeighbor(double x, double y)
+    #nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX)
+    +rangeSearch(double x1, double y1, double x2, double y2)
+    -searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) 
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    +inOrderSubtree(KDNode<E> node, Consumer<? super E> consumer)
+    -isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal)
+
+}
+
+class KDNode
+{
+    #Point2D.Double coords
+    -E element
+    -KDNode<E> left
+    -KDNode<E> right
+
+    +hasElement()
+    +hasLeft()
+    +hasRight()
+    +getElement() 
+    +getLeft() 
+    +getRight()
+    +setElement(E e)
+    +setLeft(KDNode<E> leftChild)
+    +setRight(KDNode<E> rightChild)
+}
+
+class Utils
+{
+    +{static} avlSort(List<E> unsorted)
+    +{static} avlSort(List<E> unsorted, Comparator<? super E> cmp)
+    +mergeSort(List<E> unsorted, Comparator<? super E> cmp)
+}
+
+abstract class Point2D
+{
+}
+
+class Triplet
+{
+    +toString()
+}
+
+class Pair
+{
+    +toString()
+}
+
+class ListPrinter
+{
+    +{static} print(Collection<E> list, String header, PrintStream stream)
+}
+
+
+Main ..> App
+Main ..> Utils
+Main ..> CSVReader
+Main ..> Triplet
+Main ..> Pair
+Main ..> ListPrinter
+CSVReader - -> CSVHeader
+
+
+App - -> AreaTree
+App - -> ItemTree
+App - -> FlagStore
+App - -> AreaKDTree
+
+AreaTree "1" - - "*" Area
+AreaTree ..> AVL
+
+Area "1" - - "*" Item
+Area ..> AVL
+
+Item "1" - - "*" Element
+Item ..> AVL
+
+Element "1" - - "*" Year
+Element ..> AVL
+
+Year "1" - - "1" Value 
+
+Value "1" - - "1" Flag
+
+FlagStore "1" - - "*" Flag
+
+ItemTree "1" - - "*" Item
+ItemTree ..> AVL
+
+AreaKDTree "1" - - "*" Area
+AreaKDTree ..> KDTree
+
+AVL - -|> BST
+BST ..|> BSTInterface
+KDInterface - -|> BSTInterface
+KDTree ..|> KDInterface
+
+
+BST *- - Node
+KDTree *- - KDNode
+
+Area ..> Coordinate
+
+KDNode ..> Point2D
+KDTree ..> Point2D
+
+Coordinate - -|> Point2D
+
+
+@enduml
+
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam padding 2
+skinparam ranksep 100
+skinparam classFontSize 18
+
+class Main
+{
+    +{static}main(String[] args)
+}
+
+class App
+{
+    -AreaTree areaTree
+    -ItemTree itemTree
+    -FlagStore flagStore
+    -AreaKDTree areaKDTree
+
+    +getAreaTree()
+    +getKDAreaTree()
+    +getItemTree()
+    +FlagStore flagStore()
+    -{static}App singleton = null
+    +{static}getInstance()
+}
+
+class Area
+{
+    -String areaCode
+    -String codeM49
+    -String areaName
+    -Coordinate coords
+    -String country
+
+    -final AVL<Item> treeCode
+    -final AVL<Item> treeDesc
+
+    +{static}final Comparator<? super Area> cmpName
+    +{static}final Comparator<? super Area> cmpCode
+
+    +setAreaCode(String areaCode)
+    +setCode(String codeM49)
+    +getAreaCode()
+    +getCodeM49() 
+    +getAreaName() 
+    +getCoords()
+    +getCountry()
+
+    +getTreeCode()
+    +getTreeDesc()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItemByItemDescription(String desc)
+    +getItembyItem(Item item)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Area o)
+}
+
+class Coordinate
+{
+    -double latitude
+    -double longitude
+
+    +getLatitude()
+    +getLongitude()
+    +getX()
+    +getY()
+    +setLocation(double x, double y)
+}
+
+class Element
+{
+    -String elementCode
+    -String elementType
+
+    -final AVL<Year> treeYear
+
+    +{static}final Comparator<? super Element> cmpCode
+    +{static}final Comparator<? super Element> cmpType
+
+    +getElementCode()
+    +getElementType()
+    +getTreeYear()
+    +addYear(Year year)
+    +getYearByYearCode(String yearCode)
+    +getYearByYear(int year)
+    +getYearByYear(Year year)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Element o)
+}
+
+class Flag
+{
+    -final Pair<Character, String> pair
+
+    +code()
+    +name()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+}
+
+class Item
+{
+    -String itemCode
+    -String itemCPC
+    -String itemDescription
+
+    -final AVL<Element> treeCode
+    -final AVL<Element> treeType
+
+    +{static}final Comparator<? super Item> cmpCode
+    +{static}final Comparator<? super Item> cmpDesc
+
+    +getItemCode()
+    +getItemCPC()
+    +getItemDescription()
+    +getTreeCode()
+    +getTreeType()
+    +addElement(Element element)
+    +getElementByElementCode(String elementCode)
+    +getElementByElementType(String elementType)
+    +getElementByElement(Element element)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Item o)
+}
+
+class Value
+{
+    -Float value
+    -String unit
+    -Flag flag
+
+    +getValue() 
+    +getUnit() 
+    +getFlag()
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Value o)
+}
+
+class Year
+{
+    -String yearCode
+    -int year
+    -Value value
+
+    +getYear() 
+    +getYearCode() 
+    +getValue() 
+    +addValue(Value value)
+    +equals(Object o)
+    +hashCode()
+    +toString()
+    +compareTo(Year other) 
+}
+
+enum CSVHeader
+{
+    -final int columns
+    -final String delimiter
+    +getColumnCount()
+    +getDelimiter()
+}
+
+class CSVReader
+{
+    -final CSVHeader header
+    -final int EXPECTED_COLUMNS
+    -final String DEFAULT_DELIMITER;
+    -{static}final char BOM = '\ufeff'
+    +readCSV(File dir)
+    -isHeader(String line)
+    -maybeSkipBom(Reader reader)
+    -checkQuotationMark(Reader reader)
+}
+
+class AreaKDTree
+{
+    -final KDTree<Area> areaKdTree
+
+    +addNode(Area area, double x, double y)
+}
+
+class AreaTree 
+{
+    -final AVL<Area> nameTree
+    -final AVL<Area> codeTree 
+
+    +getNameTree()
+    +getCodeTree()
+    +fillCodeTree()
+    +addArea(Area area)
+    +getAreaByAreaCode(String areaCode)
+    +getAreaByAreaName(String areaName)
+    +getAreaByArea(Area area)
+    +exists(Area area)   
+}
+
+class FlagStore
+{
+    -final LinkedHashMap<Character, Flag> flags
+
+    +get(char code)
+    +add(char code, String name)
+    +forceAdd(char code, String name)
+    +iterator()
+    +toString()
+}
+
+class ItemTree
+{
+    -final AVL<Item> tree
+
+    +getTree()
+    +addItem(Item item)
+    +getItemByItemCode(String itemCode)
+    +getItemByItem(Item item)
+    +exists(Item item)
+}
+
+class AVL
+{
+    -balanceFactor(Node<E> node)
+    -rightRotation(Node<E> node)
+    -leftRotation(Node<E> node)
+    -twoRotations(Node<E> node)
+    -balanceNode(Node<E> node)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +equals(Object otherObj)
+    #equals(Node<E> root1, Node<E> root2)
+}
+
+class BST
+{
+    #Node<E> root = null
+    #Comparator<? super E> cmp
+
+    #root()
+    +isEmpty()
+    +find(E element)
+    #find(Node<E> node, E element)
+    +insert(E element)
+    -insert(E element, Node<E> node)
+    +remove(E element)
+    -remove(E element, Node<E> node)
+    +size()
+    -size(Node<E> node)
+    +height()
+    #height(Node<E> node)
+    +smallestElement()
+    #smallestElement(Node<E> node)
+    +biggestElement()
+    #biggestElement(Node<E> node)
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    -inOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +preOrder()
+    +preOrderForEach(Consumer<? super E> action)
+    +preOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +posOrder()
+    +posOrderForEach(Consumer<? super E> action)
+    -posOrderSubtree(Node<E> node, Consumer<? super E> consumer)
+    +nodesByLevel()
+    -processBstByLevel(Node<E> node, Map<Integer,List<E>> result, int level)
+    +toString()
+    -toStringRec(Node<E> root, int level, StringBuilder sb)
+    +iterator()
+    +forEach(Consumer<? super E> action)
+}
+
+class Node
+{
+    -E element        
+    -Node<E> left
+    -Node<E> right
+
+     +hasElement()
+     +hasLeft()
+     +hasRight()
+     +getElement() 
+     +getLeft() 
+     +getRight()
+     +setElement(E e)
+     +setLeft(Node<E> leftChild)
+     +setRight(Node<E> rightChild)
+     +isLeaf()
+}
+
+interface BSTInterface
+{
+    +isEmpty()
+    +insert(E element)
+    +remove(E element)
+
+    +size()
+    +height()
+
+    +smallestElement()
+    +inOrder()
+    +preOrder()
+    +posOrder()
+    +nodesByLevel()
+}
+
+interface KDInterface
+{
+    +insert(E e, double x, double y)
+
+    +nearestNeighbor(double x, double y)
+
+    +kNearestNeighbors(double x, double y, int n)
+
+    +rangeSearch(double x1, double y1, double x2, double y2)
+}
+
+class KDTree
+{
+    #KDNode<E> root
+    -final Comparator<KDNode<E>> cmpX
+    -final Comparator<KDNode<E>> cmpY
+    +isEmpty()
+    +height()
+    #height(KDNode<E> node)
+    +size()
+    #size(KDNode<E> node)
+    +insert(E e, double x, double y)
+    -insert(KDNode<E> currentNode, KDNode<E> node, boolean divX)
+    +nearestNeighbor(double x, double y)
+    #nearestNeighbor(KDNode<E> node, double x, double y, KDNode<E> closestNode, boolean divX)
+    +rangeSearch(double x1, double y1, double x2, double y2)
+    -searchArea(KDNode<E> node,Point2D.Double coordInicial,Point2D.Double coordFinal, boolean cmpX,Consumer<? super E> action ) 
+    +inOrder()
+    +inOrderForEach(Consumer<? super E> action)
+    +inOrderSubtree(KDNode<E> node, Consumer<? super E> consumer)
+    -isInside(Point2D.Double nodeCoords,Point2D.Double coordInicial,Point2D.Double coordFinal)
+
+}
+
+class KDNode
+{
+    #Point2D.Double coords
+    -E element
+    -KDNode<E> left
+    -KDNode<E> right
+
+    +hasElement()
+    +hasLeft()
+    +hasRight()
+    +getElement() 
+    +getLeft() 
+    +getRight()
+    +setElement(E e)
+    +setLeft(KDNode<E> leftChild)
+    +setRight(KDNode<E> rightChild)
+}
+
+class Utils
+{
+    +{static} avlSort(List<E> unsorted)
+    +{static} avlSort(List<E> unsorted, Comparator<? super E> cmp)
+    +mergeSort(List<E> unsorted, Comparator<? super E> cmp)
+}
+
+abstract class Point2D
+{
+}
+
+class Triplet
+{
+    +toString()
+}
+
+class Pair
+{
+    +toString()
+}
+
+class ListPrinter
+{
+    +{static} print(Collection<E> list, String header, PrintStream stream)
+}
+
+
+Main ..> App
+Main ..> Utils
+Main ..> CSVReader
+Main ..> Triplet
+Main ..> Pair
+Main ..> ListPrinter
+CSVReader - -> CSVHeader
+
+
+App - -> AreaTree
+App - -> ItemTree
+App - -> FlagStore
+App - -> AreaKDTree
+
+AreaTree "1" - - "*" Area
+AreaTree ..> AVL
+
+Area "1" - - "*" Item
+Area ..> AVL
+
+Item "1" - - "*" Element
+Item ..> AVL
+
+Element "1" - - "*" Year
+Element ..> AVL
+
+Year "1" - - "1" Value 
+
+Value "1" - - "1" Flag
+
+FlagStore "1" - - "*" Flag
+
+ItemTree "1" - - "*" Item
+ItemTree ..> AVL
+
+AreaKDTree "1" - - "*" Area
+AreaKDTree ..> KDTree
+
+AVL - -|> BST
+BST ..|> BSTInterface
+KDInterface - -|> BSTInterface
+KDTree ..|> KDInterface
+
+
+BST *- - Node
+KDTree *- - KDNode
+
+Area ..> Coordinate
+
+KDNode ..> Point2D
+KDTree ..> Point2D
+
+Coordinate - -|> Point2D
+
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 WEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: PT
+--></g></svg>

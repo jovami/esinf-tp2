@@ -2,36 +2,44 @@ package jovami.exercises;
 
 import jovami.App;
 
-import jovami.model.Area;
-import jovami.model.Element;
-import jovami.model.Item;
-import jovami.model.Year;
+import jovami.model.*;
 
 import jovami.trees.KDTree;
-
 import java.util.Optional;
 
 public class Exercise4 implements Runnable {
 
     private final App app;
-    private final KDTree<Area> kdTree ;
 
 
     public Exercise4() {
         app = App.getInstance();
-        this.kdTree = new KDTree<>();
     }
 
     @Override
     public void run() {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
-        final String itemCode = "156", elementCode = "5419", year = "1965";
-        getAreas(itemCode, elementCode, year);
+        final String itemCode = "569", elementCode = "5510", year = "2018";
 
-        Area nearestArea = (Area) kdTree.nearestNeighbor(x, y);
+        Area nearestArea = getAreas(itemCode, elementCode, year).nearestNeighbor(x, y);
+
+        System.out.println("Inserted details:\n=======================" +
+                "\nLatitude -> " + x + "\nLongitude -> " + y +
+                "\nItem Code -> " + itemCode +
+                "\nElement Code -> " + elementCode +
+                "\nYear -> " + year + "\n");
+
+        System.out.println("Nearest area: " +
+                nearestArea.getAreaName()+
+                "\n======================="+
+                "\nLatitude -> " + nearestArea.getCoords().getLatitude() +
+                "\nLongitude -> " + nearestArea.getCoords().getLongitude() + "\n");
+
+        printNearestNeighborDetails(nearestArea);
     }
 
-    public void getAreas(String itemCode, String elementCode, String yearCode){
+    public KDTree<Area> getAreas(String itemCode, String elementCode, String yearCode){
+        KDTree<Area> kdTree = new KDTree<>();
         app.getAreaTree().getNameTree().forEach(area -> {
             Optional<Item> item = area.getItemByItemCode(itemCode);
             if(item.isPresent()) {
@@ -43,15 +51,19 @@ public class Exercise4 implements Runnable {
                 }
             }
         });
+        return kdTree;
     }
 
-    public void kdTest(){
-        int[] arrayteste= new int[]{1,2,3,4,5,6,7,8,9};
-        int[] coordsx= new int[]{2,5,10,-3,6,8,20,35,8};
-        int[] coordsy= new int[]{2,5,10,-3,6,8,20,35,8};
-        KDTree<Integer> teste = new KDTree();
-        for (int i = 0; i < arrayteste.length; i++) {
-            teste.insert(arrayteste[i], coordsx[i], coordsy[i]);
+    private void printNearestNeighborDetails(Area area){
+        System.out.println("Details:\n-----------------------");
+        for (Item item : area.getTreeCode().inOrder()){
+            System.out.println("Item: " + item.getItemDescription() + " (" + item.getItemCode() + ")\n");
+            for (Element element : item.getTreeCode().inOrder()){
+                for (Year year : element.getTreeYear().inOrder()){
+                    System.out.println("-> " + element.getElementType() + " (" + element.getElementCode() +")" + ", in " + year.getYear());
+                }
+            }
+            System.out.println("-----------------------");
         }
     }
 }

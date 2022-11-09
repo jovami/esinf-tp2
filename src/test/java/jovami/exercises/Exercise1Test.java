@@ -63,8 +63,6 @@ class Exercise1Test {
     }
     
 
-
-
     @Test
     void saveInfoItemCodes() throws Exception {
         final File folder = new File("src/main/ficheiroscsv");

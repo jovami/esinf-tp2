@@ -192,6 +192,10 @@ public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
         if (delta2 < closestDist)
             closestNode = nearestNeighbor(node2, x, y, closestNode, !divX);
         return closestNode;
+
+        // Best case: O(log n))
+        // Worst case: O(n)
+        // Deterministic algorithm
     }
 
   /**

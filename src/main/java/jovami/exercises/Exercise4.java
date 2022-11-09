@@ -40,17 +40,19 @@ public class Exercise4 implements Runnable {
 
     public KDTree<Area> getAreas(String itemCode, String elementCode, String yearCode){
         KDTree<Area> kdTree = new KDTree<>();
-        app.getAreaTree().getNameTree().forEach(area -> {
-            Optional<Item> item = area.getItemByItemCode(itemCode);
-            if(item.isPresent()) {
-                Optional<Element> element = item.get().getElementByElementCode(elementCode);
-                if(element.isPresent()){
-                    Optional<Year> year = element.get().getYearByYearCode(yearCode);
-                    if (year.isPresent())
+        app.getAreaTree().getNameTree().forEach(area -> {                                                       // O(n*inside)
+            Optional<Item> item = area.getItemByItemCode(itemCode);                                             // O(log (n))
+            if(item.isPresent()) {                                                                              // O(1)
+                Optional<Element> element = item.get().getElementByElementCode(elementCode);                    // O(log (n))
+                if(element.isPresent()){                                                                        // O(1)
+                    Optional<Year> year = element.get().getYearByYearCode(yearCode);                            // O(log (n))
+                    if (year.isPresent())                                                                       // O(1)
                         kdTree.insert(area, area.getCoords().getLatitude(), area.getCoords().getLongitude());
+                        // O(log (n))
                 }
             }
         });
+        //O(n log(n))
         return kdTree;
     }
 
@@ -69,5 +71,6 @@ public class Exercise4 implements Runnable {
             }
             System.out.println("-----------------------");
         }
+        //O(n^3)
     }
 }

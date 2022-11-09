@@ -258,7 +258,7 @@ public class KDTree<E extends Comparable<E>> implements KDInterface<E> {
          
         }
     }
-    @Override
+    
     public Iterable<E> inOrder() {
         List<E> snapshot = new ArrayList<>();
         inOrderForEach(snapshot::add);

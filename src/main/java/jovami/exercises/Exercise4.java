@@ -21,7 +21,7 @@ public class Exercise4 implements Runnable {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
         final String itemCode = "569", elementCode = "5510", year = "2018";
 
-        Area nearestArea = (Area) getAreas(itemCode, elementCode, year).nearestNeighbor(x, y);
+        Area nearestArea = getAreas(itemCode, elementCode, year).nearestNeighbor(x, y);
 
         System.out.println("Inserted details:\n=======================" +
                 "\nLatitude -> " + x + "\nLongitude -> " + y +
@@ -38,8 +38,8 @@ public class Exercise4 implements Runnable {
         printNearestNeighborDetails(nearestArea);
     }
 
-    public KDTree getAreas(String itemCode, String elementCode, String yearCode){
-        KDTree kdTree = new KDTree<>();
+    public KDTree<Area> getAreas(String itemCode, String elementCode, String yearCode){
+        KDTree<Area> kdTree = new KDTree<>();
         app.getAreaTree().getNameTree().forEach(area -> {
             Optional<Item> item = area.getItemByItemCode(itemCode);
             if(item.isPresent()) {

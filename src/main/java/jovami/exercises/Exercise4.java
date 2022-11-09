@@ -21,7 +21,7 @@ public class Exercise4 implements Runnable {
         final double x = 41.14961, y = -8.61099; //x=latitude, y=longitude
         final String itemCode = "569", elementCode = "5510", year = "2018";
 
-        Area nearestArea = getAreas(itemCode, elementCode, year).nearestNeighbor(x, y);
+        Area nearestArea = getNearestArea(getAreas(itemCode, elementCode, year), x, y);
 
         System.out.println("Inserted details:\n=======================" +
                 "\nLatitude -> " + x + "\nLongitude -> " + y +
@@ -52,6 +52,10 @@ public class Exercise4 implements Runnable {
             }
         });
         return kdTree;
+    }
+
+    public Area getNearestArea(KDTree <Area> tree, double x, double y){
+        return tree.nearestNeighbor(x, y);
     }
 
     private void printNearestNeighborDetails(Area area){

@@ -17,7 +17,7 @@ public class Main {
         exercises.add(new Exercise2());
         exercises.add(new Exercise3());
         //exercises.add(new Exercise4());
-        //exercises.add(new Exercise5());
+        exercises.add(new Exercise5());
 
 
         exercises.forEach(r -> {

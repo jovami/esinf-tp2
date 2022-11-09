@@ -180,8 +180,10 @@ class Exercise1Test {
         {
                 for(String[] arrLine : tempx)
                 {
-                    if (arrayLine[0].compareToIgnoreCase(arrLine[0]) == 0  
-                         && arrayLine[3].compareToIgnoreCase(arrLine[3]) == 0)
+                    if (arrayLine[0].compareToIgnoreCase(arrLine[0]) == 0 
+                        && arrayLine[1].compareToIgnoreCase(arrLine[1]) == 0 
+                            && arrayLine[2].compareToIgnoreCase(arrLine[2]) == 0 
+                                && arrayLine[3].compareToIgnoreCase(arrLine[3]) == 0)
                             countx++;    
                 }
         }
